@@ -1,0 +1,10 @@
+{
+  "name": "pivo-check",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {},
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-equimper": "^1.6.2"
+  }
+}
