@@ -21,6 +21,7 @@
     "cookie-session": "^2.0.0-beta.1",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
+    "isomorphic-fetch": "^2.2.1",
     "mongoose": "^4.9.4",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
