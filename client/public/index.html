@@ -82,29 +82,32 @@
 
 
   <!-- LOGIN PAGE "/login"-->
-  <header role="banner">
-    <a href="#"><h1><span class="visually-hidden">Pivo-Check</span></h1></a>
-  </header>
+  <div class="login-page">
+    <header role="banner">
+      <a href="#"><h1><span class="visually-hidden">Pivo-Check</span></h1></a>
+    </header>
 
-  <main role="main">
-    <form class="" action="index.html" method="post">
-      <fieldset>
-        <legend>Login</legend>
-        <label for="user-email">Email</label>
-        <input id="user-email" type="email" name="email" value="" required="">
-        <label for="user-password">Password</label>
-        <input id="user-password" type="password" name="password" value="" required="">
-      </fieldset>
-      <button type="submit" name="button">Log In</button>
-      <a href="#"><span>Login with</span>Google</a>
-      <a href="#">Register</a>
-      <a href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password.">Forgot Password?</a>
-    </form>
-    <p>Demo Account:</p>
-    <p>email: demo@pivocheck.com pass: justDemoing</p>
-  </main>
+    <main role="main">
+      <form class="" action="index.html" method="post">
+        <fieldset>
+          <legend>Login</legend>
+          <label for="user-email">Email</label>
+          <input id="user-email" type="email" name="email" value="" required="">
+          <label for="user-password">Password</label>
+          <input id="user-password" type="password" name="password" value="" required="">
+        </fieldset>
+        <button type="submit" name="button">Log In</button>
+        <a href="#"><span>Login with</span>Google</a>
+        <a href="#">Register</a>
+        <a href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password.">Forgot Password?</a>
+      </form>
+      <p>Demo Account:</p>
+      <p>email: demo@pivocheck.com pass: justDemoing</p>
+    </main>
 
-  <footer role="contentinfo">&copy; 2017 | <a href="#">BEN VELLEK</a></footer>
+    <footer class="landing-footer" role="contentinfo">Designed and Developed by <a href="https://benvellek.com/" target="_ben-portfolio">BEN VELLEK</a></footer>
+  </div>
+
 
 
 
@@ -112,128 +115,142 @@
 
 
   <!-- REGISTRATION PAGE "/registration"-->
-  <header role="banner">
-    <a href="#"><h1><span class="visually-hidden">Pivo-Check</span></h1></a>
-  </header>
+  <div class="registration-page">
+    <header role="banner">
+      <a href="#"><h1><span class="visually-hidden">Pivo-Check</span></h1></a>
+    </header>
 
-  <main role="main">
-    <form class="" action="index.html" method="post">
-      <fieldset>
-        <legend>Registration Information</legend>
-        <label for="reg-author-first">First Name:</label>
-        <input id="reg-author-first" type="text" name="firstName" value="" required="">
-        <label for="reg-author-last">Last Name:</label>
-        <input id="reg-author-last" type="text" name="lastName" value="" required="">
-        <label for="reg-email">Email:</label>
-        <input id="reg-email" type="email" name="email" value="" required="">
-        <label for="reg-pass">Password:</label>
-        <input id="reg-pass" type="password" name="password" value="" required="">
-        <label for="reg-confirm-pass">Confirm Password:</label>
-        <input id="reg-confirm-pass" type="password" name="confirm-password" value="" required="">
-      </fieldset>
-      <button type="submit" name="button">Submit</button>
-    </form>
-  </main>
+    <main role="main">
+      <form class="" action="index.html" method="post">
+        <fieldset>
+          <legend>Registration Information</legend>
+          <label for="reg-author-first">First Name:</label>
+          <input id="reg-author-first" type="text" name="firstName" value="" required="">
+          <label for="reg-author-last">Last Name:</label>
+          <input id="reg-author-last" type="text" name="lastName" value="" required="">
+          <label for="reg-email">Email:</label>
+          <input id="reg-email" type="email" name="email" value="" required="">
+          <label for="reg-pass">Password:</label>
+          <input id="reg-pass" type="password" name="password" value="" required="">
+          <label for="reg-confirm-pass">Confirm Password:</label>
+          <input id="reg-confirm-pass" type="password" name="confirm-password" value="" required="">
+        </fieldset>
+        <button type="submit" name="button">Submit</button>
+      </form>
+    </main>
 
-  <footer role="contentinfo">&copy; 2017 | <a href="#">BEN VELLEK</a></footer>
+    <footer class="landing-footer" role="contentinfo">Designed and Developed by <a href="https://benvellek.com/" target="_ben-portfolio">BEN VELLEK</a></footer>
+  </div>
+
+
 
 
 
 
 
   <!-- MY CITIES PAGE "/cities" -->
-  <header role="banner">
-    <nav role="navigation">
-      <a href="#">My Cities</a>
-      <a href="#">Logout</a>
-    </nav>
-    <span>Pivo-Check</span>
-  </header>
+  <div class="cities-page">
+    <header role="banner">
+      <nav role="navigation">
+        <a href="#">My Cities</a>
+        <a href="#">Logout</a>
+      </nav>
+      <span>Pivo-Check</span>
+    </header>
 
-  <main role="main">
-    <h1>My Cities</h1>
+    <main role="main">
+      <h1>My Cities</h1>
 
-    <section class="city-add">
-      <form class="" action="index.html" method="post">
-        <label for="city-search">Add a City</label>
-        <input id="city-search" type="search" name="city" value="">
-        <button type="submit" name="addCity">Add</button>
-      </form>
-    </section>
+      <section class="city-add">
+        <form class="" action="index.html" method="post">
+          <label for="city-search">Add a City</label>
+          <input id="city-search" type="search" name="city" value="">
+          <button type="submit" name="addCity">Add</button>
+        </form>
+      </section>
 
-    <!-- if no cities added -->
-    <section class="no-cities">
-      <h2>Add a City!</h2>
-      <p>Looks like you don't have any cities on your checklist. See above to search for a city full of breweries!</p>
-    </section>
+      <!-- if no cities added -->
+      <section class="no-cities">
+        <h2>Add a City!</h2>
+        <p>Looks like you don't have any cities on your checklist. See above to search for a city full of breweries!</p>
+      </section>
 
-    <!-- default -->
-    <section class="cities-list">
-      <ul>
-        <li>
-          <a href="#"><h2>Seattle</h2></a>
-          <p>7/20</p>
-          <form class="" action="index.html" method="post">
-            <button type="button" name="button">❌<span>Delete Seattle</span></button>
-          </form>
-          <div class="">
-            <p>Delete Seattle?</p>
-            <p>Deleting a location will permanently remove it from your checklist and you will lose your visited brewery record.</p>
+      <!-- default -->
+      <section class="cities-list">
+        <ul>
+          <li>
+            <a href="#"><h2>Seattle</h2></a>
+            <p>7/20</p>
             <form class="" action="index.html" method="post">
-              <button type="button" name="button">No, Keep Seattle</button>
-              <button type="button" name="button">❌ Yes, Delete Seattle</button>
+              <button type="button" name="button">❌<span>Delete Seattle</span></button>
             </form>
-          </div>
-        </li>
-        <li>
-          <a href="#"><h2>Portland</h2></a>
-          <p>2/68</p>
-          <form class="" action="index.html" method="post">
-            <button type="button" name="button">❌<span>Delete Portland</span></button>
-          </form>
-        </li>
-        <li>
-          <a href="#"><h2>Austin</h2></a>
-          <p>5/19</p>
-          <form class="" action="index.html" method="post">
-            <button type="button" name="button">❌<span>Delete Austin</span></button>
-          </form>
-        </li>
-      </ul>
-    </section>
-  </main>
+            <div class="">
+              <p>Delete Seattle?</p>
+              <p>Deleting a location will permanently remove it from your checklist and you will lose your visited brewery record.</p>
+              <form class="" action="index.html" method="post">
+                <button type="button" name="button">No, Keep Seattle</button>
+                <button type="button" name="button">❌ Yes, Delete Seattle</button>
+              </form>
+            </div>
+          </li>
+          <li>
+            <a href="#"><h2>Portland</h2></a>
+            <p>2/68</p>
+            <form class="" action="index.html" method="post">
+              <button type="button" name="button">❌<span>Delete Portland</span></button>
+            </form>
+          </li>
+          <li>
+            <a href="#"><h2>Austin</h2></a>
+            <p>5/19</p>
+            <form class="" action="index.html" method="post">
+              <button type="button" name="button">❌<span>Delete Austin</span></button>
+            </form>
+          </li>
+        </ul>
+      </section>
+    </main>
 
-  <footer role="contentinfo">&copy; 2017 | <a href="#">BEN VELLEK</a></footer>
+    <footer class="landing-footer" role="contentinfo">Designed and Developed by <a href="https://benvellek.com/" target="_ben-portfolio">BEN VELLEK</a></footer>
+  </div>
 
 
 
   <!-- SPECIFIC CITY PAGE "/cities/seattleWA" -->
-  <header role="banner">
-    <nav role="navigation">
-      <a href="#">My Cities</a>
-      <a href="#">Logout</a>
-    </nav>
-    <span>Pivo-Check</span>
-  </header>
+  <div class="city-page">
+    <header role="banner">
+      <nav role="navigation">
+        <a href="#">My Cities</a>
+        <a href="#">Logout</a>
+      </nav>
+      <span>Pivo-Check</span>
+    </header>
 
-  <main role="main">
-    <h1>Seattle, WA</h1>
-    <select class="" name="">
-        <optgroup label="Completed">
-          <option value="">Visited</option>
-          <option value="">Not Visited</option>
-        </optgroup>
-        <optgroup label="Brewery Type">
-          <option value="">Production Facility</option>
-          <option value="">Micro Brewery</option>
-          <option value="">Nano Brewery</option>
-          <option value="">Restaurant/Ale House</option>
-          <option value="">Brewpub</option>
-          <option value="">Cidery</option>
-          <option value="">Tasting Room</option>
-          <option value="">Office</option>
-        </optgroup>
-      </select>
+    <main role="main">
+      <h1>Seattle, WA</h1>
+      <label for="brewery-filter">Brewery Filter</label>
+      <select id="brewery-filter" class="" name="">
+          <option selected value="">All Seattle Breweries</option>
+          <optgroup label="Completed">
+            <option value="">Visited</option>
+            <option value="">Not Visited</option>
+          </optgroup>
+          <optgroup label="Brewery Type">
+            <option value="">Production Facility</option>
+            <option value="">Micro Brewery</option>
+            <option value="">Nano Brewery</option>
+            <option value="">Restaurant/Ale House</option>
+            <option value="">Brewpub</option>
+            <option value="">Cidery</option>
+            <option value="">Tasting Room</option>
+            <option value="">Office</option>
+          </optgroup>
+        </select>
+    </main>
+
+    <footer class="landing-footer" role="contentinfo">Designed and Developed by <a href="https://benvellek.com/" target="_ben-portfolio">BEN VELLEK</a></footer>
+  </div>
+
 
 
   <div id="root"></div>
