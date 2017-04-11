@@ -8,8 +8,7 @@ body {
 h1,h2,h3,h4,h5,h6 {
 	font-weight: 700;
 	line-height: 1.2;
-	font-family: 'Quicksand';
-	color: #44484d;
+	font-family: $heading-text;
 }
 
 h1 {
@@ -18,8 +17,7 @@ h1 {
 	margin-top: 0.53em;
 	margin-bottom: 0.53em;
 	text-transform: uppercase;
-	font-family: 'Quicksand';
-	color: #44484d;
+	font-family: $heading-text;
 }
 
 h2 {
@@ -27,8 +25,7 @@ h2 {
 	font-weight: 700;
 	margin-top: 0.4em;
 	margin-bottom: 0.4em;
-	font-family: 'Quicksand';
-	color: #44484d;
+	font-family: $heading-text;
 }
 
 h3 {
@@ -36,8 +33,7 @@ h3 {
 	font-weight: 700;
 	margin-top: 0.4em;
 	margin-bottom: 0.4em;
-	font-family: 'Quicksand';
-	color: #44484d;
+	font-family: $heading-text;
 }
 
 h4 {
@@ -45,8 +41,7 @@ h4 {
 	font-weight: 700;
 	margin-top: 0.67em;
 	margin-bottom: 0.67em;
-	font-family: 'Quicksand';
-	color: #44484d;
+	font-family: $heading-text;
 }
 
 h5 {
@@ -54,8 +49,7 @@ h5 {
 	font-weight: 700;
 	margin-top: 0.94em;
 	margin-bottom: 0.94em;
-	font-family: 'Quicksand';
-	color: #44484d;
+	font-family: $heading-text;
 }
 
 h6 {
@@ -63,8 +57,7 @@ h6 {
 	font-weight: 700;
 	margin-top: 1em;
 	margin-bottom: 1em;
-	font-family: 'Quicksand';
-	color: #44484d;
+	font-family: $heading-text;
 }
 
 p {
@@ -72,13 +65,10 @@ p {
 	margin-bottom: 1.5em;
 	font-family: 'Lato';
 	font-weight: 400;
-	color: #44484d;
 }
 
 strong {
 	font-weight: 700;
-	font-family: 'Lato';
-	color: #44484d;
 }
 
 em {
@@ -86,13 +76,12 @@ em {
 }
 
 a {
-	color: #ffbab3;
-	font-family: 'Lato';
+	color: $lt-brick;
+  transition: color 0.4s ease-in;
 }
 
 a:hover {
-	font-family: 'Lato';
-	color: #d9766c;
+	color: $brick;
 }
 
 ul,ol {

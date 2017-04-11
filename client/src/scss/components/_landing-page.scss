@@ -1,0 +1,43 @@
+.landing-page {
+  background-color: $dk-grey;
+}
+
+
+.landing-header {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1em;
+}
+
+.landing-nav {
+  text-align: right;
+  text-transform: lowercase;
+  font-family: $heading-text;
+  font-size: 0.8em;
+  padding: 0.2em;
+}
+
+.banner {
+  color: $white;
+
+  .landing-logo {
+    max-width: 8em;
+    margin: 0;
+
+    @media only screen and (min-width: $tiny-break) {
+		    margin: 0.5em 0;
+	  }
+
+    .svg-logo {
+      width: 100%;
+      // max-width: 10em;
+    }
+  }
+
+  .landing-callout {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
