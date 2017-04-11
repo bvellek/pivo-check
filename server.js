@@ -15,7 +15,7 @@ mongoose.Promise = global.Promise;
 // Compression for pagespeed
 // app.use(compression({ level: 9, threshold: 0 }));
 
-require('./config/passport')(passport);
+// require('./config/passport')(passport);
 
 app.use(morgan('common'));
 app.use(cookieParser());

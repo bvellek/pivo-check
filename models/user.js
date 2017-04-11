@@ -31,8 +31,18 @@ const userSchema = new mongoose.Schema({
     id: String,
     token: String
   },
-
-})
+  cityList: [
+    {
+      cityName: String,
+      cityCoords: {
+        lat: String,
+        lng: String
+      }
+      brewTotal: Number,
+      brewCompleted: Number
+    }
+  ]
+});
 
 
 userSchema.methods.validPassword = (password) => bcrypt.compareSync(password, this.password);
