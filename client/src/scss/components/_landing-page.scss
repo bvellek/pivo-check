@@ -1,3 +1,6 @@
+
+// General Landing
+
 .landing-page-bg {
   background-color: $dk-grey;
   width: 100%;
@@ -6,13 +9,17 @@
 .landing-page-wrapper {
   max-width: 60em;
   margin: 0 auto;
+  padding: 1em;
+  color: white;
 }
+
+
+
+// Landing Header
 
 .landing-header {
   display: flex;
   flex-direction: column;
-
-  padding: 1em;
 }
 
 .landing-nav {
@@ -21,10 +28,13 @@
   font-family: $heading-text;
   font-size: 0.8em;
   padding: 0.2em;
+
+  a {
+    padding: 1em;
+  }
 }
 
 .banner {
-  color: $white;
 
   .landing-logo {
     max-width: 8em;
@@ -42,7 +52,7 @@
 
     @media only screen and (min-width: $medium-break) {
       position: relative;
-      padding-bottom: 28em;
+      padding-bottom: 32em;
     }
 
     .callout-text {
@@ -107,9 +117,14 @@
   }
 }
 
+
+
+//Landing Call to Action
+
 .landing-cta {
 
   margin-top: 4em;
+  margin-bottom: 4em;
 
   h2 {
     text-align: center;
@@ -123,10 +138,31 @@
     a {
         text-transform: lowercase;
         text-decoration: none;
-        padding: 0.3em;
+        padding: 0.5em;
         border: 4px solid;
         border-radius: 2px;
         box-shadow: 1px 1px 3px;
     }
   }
+}
+
+
+// Landing Features
+
+.landing-features {
+
+  margin-top: 1em;
+
+  @media only screen and (min-width: $small-break) {
+    padding-left: 1em;
+  }
+
+
+}
+
+
+// Landing Footer
+
+.landing-footer {
+  color: $white;
 }

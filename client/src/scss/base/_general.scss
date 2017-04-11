@@ -21,11 +21,15 @@ h1 {
 }
 
 h2 {
-	font-size: 3.33em;
+  font-size: $size-lg-heading-small-vp;
 	font-weight: 700;
 	margin-top: 0.4em;
 	margin-bottom: 0.4em;
 	font-family: $heading-text;
+
+  @media only screen and (min-width: $small-break) {
+    font-size: $size-lg-heading-large-vp;
+  }
 }
 
 h3 {
