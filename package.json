@@ -2,9 +2,29 @@
   "name": "pivo-check",
   "version": "1.0.0",
   "main": "server.js",
-  "repository": {},
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvellek/pivo-check.git"
+  },
   "devDependencies": {
-    "eslint-config-equimper": "^1.6.2"
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint-config-equimper": "^1.6.2",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "mongoose": "^4.9.4",
+    "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0"
   }
 }

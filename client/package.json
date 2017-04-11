@@ -2,7 +2,12 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvellek/pivo-check.git"
+  },
   "devDependencies": {
+    "eslint-config-equimper": "^1.6.2",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
     "react-scripts": "0.9.5"
