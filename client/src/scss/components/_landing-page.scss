@@ -1,7 +1,12 @@
-.landing-page {
+.landing-page-bg {
   background-color: $dk-grey;
+  width: 100%;
 }
 
+.landing-page-wrapper {
+  max-width: 60em;
+  margin: 0 auto;
+}
 
 .landing-header {
   display: flex;
@@ -25,19 +30,103 @@
     max-width: 8em;
     margin: 0;
 
-    @media only screen and (min-width: $tiny-break) {
-		    margin: 0.5em 0;
-	  }
 
     .svg-logo {
       width: 100%;
-      // max-width: 10em;
     }
   }
 
   .landing-callout {
     display: flex;
     flex-direction: column;
-  }
 
+    @media only screen and (min-width: $medium-break) {
+      position: relative;
+      padding-bottom: 28em;
+    }
+
+    .callout-text {
+      max-width: 22rem;
+      margin-left: 1em;
+
+      @media only screen and (min-width: $tiny-break) {
+        margin-left: 2.4em;
+        max-width: 26em;
+      }
+
+      @media only screen and (min-width: $small-break) {
+        margin-left: 3em;
+      }
+
+      @media only screen and (min-width: $medium-break) {
+        margin-left: 5em;
+        position: relative;
+        z-index: 10;
+      }
+
+      .teal-text {
+        color: $teal;
+        font-size: 1.5em;
+      }
+      p:nth-child(1) {
+        font-family: $heading-text;
+        margin-top: 0.5em;
+        margin-bottom: 0;
+        font-size: 1.7em;
+        font-weight: 700;
+
+        @media only screen and (min-width: $tiny-break) {
+          margin-top: 1em;
+          font-size: 2em;
+    	  }
+      }
+      p:nth-child(2) {
+          font-size: 0.8em;
+          margin-top: 1em;
+          margin-bottom: 0;
+
+          @media only screen and (min-width: $tiny-break) {
+      		  font-size: 0.9em;
+      	  }
+      }
+    }
+
+    .callout-img {
+      max-width: 42em;
+      margin: 0 auto;
+
+      @media only screen and (min-width: $medium-break) {
+        position: absolute;
+        top: 7em;
+        left: 20em;
+        transform: rotate(-18deg);
+        margin: 0 0 0 auto;
+      }
+    }
+
+  }
+}
+
+.landing-cta {
+
+  margin-top: 4em;
+
+  h2 {
+    text-align: center;
+    font-size: 1.8em;
+
+    @media only screen and (min-width: $small-break) {
+      font-size: 2em;
+    }
+
+
+    a {
+        text-transform: lowercase;
+        text-decoration: none;
+        padding: 0.3em;
+        border: 4px solid;
+        border-radius: 2px;
+        box-shadow: 1px 1px 3px;
+    }
+  }
 }
