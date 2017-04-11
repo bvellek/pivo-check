@@ -33,10 +33,23 @@ const userSchema = new mongoose.Schema({
   },
   cityList: [
     {
-      cityName: String,
+      cityName: {
+        type: String;
+        lowercase: true,
+        required: true,
+        trim: true
+      },
       cityCoords: {
-        lat: String,
-        lng: String
+        lat: {
+          type: Number,
+          required: true,
+          trim: true
+        },
+        lng: {
+          type: Number,
+          required: true,
+          trim: true
+        },
       }
       brewTotal: Number,
       brewCompleted: Number
