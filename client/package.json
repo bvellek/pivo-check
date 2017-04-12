@@ -7,6 +7,7 @@
     "url": "git+https://github.com/bvellek/pivo-check.git"
   },
   "devDependencies": {
+    "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",

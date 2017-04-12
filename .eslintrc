@@ -1,0 +1,6 @@
+{
+  "extends": "equimper",
+  "rules": {
+        "max-len": 0
+    }
+}
