@@ -54,6 +54,11 @@
 
   legend {
     text-align: center;
+    
+    h2 {
+      text-transform: uppercase;
+      font-size: 1.5em;
+    }
   }
 
   label {
@@ -83,6 +88,10 @@
     text-decoration: none;
     display: flex;
     justify-content: center;
+
+    &:hover span {
+      color: $lt-brick;
+    }
 }
 
 .google-login-anchor span {
@@ -90,10 +99,6 @@
     font-weight: 700;
     color: $dk-grey;
     transition: $link-transition;
-
-    &:hover {
-      color: $lt-brick;
-    }
 }
 
 

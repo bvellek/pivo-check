@@ -7,9 +7,8 @@ const User = require('../models/user');
 // Load auth variables
 const configAuth = require('./auth');
 
+// session setup
 module.exports = function (passport) {
-  // session setup
-
   passport.serializeUser((user, done) => {
     let user = { _id: user._id, firstName: user.firstName, lastName: user.lastName, email: user.email };
     done(null, user);
@@ -21,8 +20,7 @@ module.exports = function (passport) {
     });
   });
 
-// Local registration
-
+  // Local registration
   passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -55,7 +53,6 @@ module.exports = function (passport) {
   }));
 
   // Local Login
-
   passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -76,7 +73,7 @@ module.exports = function (passport) {
     });
   }));
 
-// Google Authentication
+  // Google Authentication
   passport.use(new GoogleStrategy({
     clientID: configAuth.googleAuth.clientID,
     clientSecret: configAuth.googleAuth.clientSecret,
