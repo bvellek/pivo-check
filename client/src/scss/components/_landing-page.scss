@@ -43,12 +43,13 @@
 
     @media only screen and (min-width: $medium-break) {
       position: relative;
-      padding-bottom: 38em;
+      padding-bottom: 36em;
     }
 
     .callout-text {
       max-width: 22rem;
       margin-left: 1em;
+      margin-bottom: 1em;
 
       @media only screen and (min-width: $tiny-break) {
         margin-left: 2.4em;
@@ -114,8 +115,8 @@
 
 .landing-cta {
 
-  margin-top: 4em;
-  margin-bottom: 4em;
+  margin-top: $margin-before * 3;
+  margin-bottom: $margin-after * 4;
 
   h2 {
     text-align: center;
@@ -141,11 +142,14 @@
 // Landing Features
 
 .landing-features {
-
+  max-width: 32em;
   margin-top: 1em;
-
+  
   @media only screen and (min-width: $small-break) {
+    max-width: 35em;
     padding-left: 1em;
+    text-align: center;
+    margin: $margin-before auto $margin-after;
   }
 
 

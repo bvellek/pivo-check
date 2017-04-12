@@ -1,41 +1,106 @@
 
 .login-page {
   @include page-settings;
+  // text-align: center;
+
+  h1 {
+    text-align: center;
+    .svg-logo {
+      max-width: 8em;
+    }
+  }
+  
+  h3 {
+    text-align: center;
+    font-size: 1em;
+  }
+
+  .demo-btn {
+    display: block;
+    margin: 0 auto;
+  }
+  
 }
 
 
 .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: $margin-before auto $margin-after;
-  max-width: 25em;
+  max-width: 20em;
   border-radius: 3px;
-  padding: 0.625em 1em;
+  padding: 2em 1em;
   background-color: darken($white, 2%);
   color: $dk-grey;
 
   a {
     color: darken($brick, 15%);
-    font-weight: 700;
+    font-weight: 400;
 
     &:hover {
       color: $lt-brick;
     }
   }
+
+  fieldset {
+    border: none;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   legend {
     text-align: center;
   }
 
   label {
     display: block;
+    font-weight: 700;
   }
 
   input {
     margin-bottom: 1em;
     width: 95%;
+    max-width: 16em;
     line-height: 2em;
     margin: 0 auto 1em;
   }
 
-  fieldset {
-    border: none;
+  .login-btn {
+    display: block;
+    margin: 0 auto 2em;
   }
+}
+
+.google-login-anchor {
+    margin: 2em auto 0.625em;
+    background-color: transparent;
+    padding: 0.25em;
+    width: 11em;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.google-login-anchor span {
+    align-self: center;
+    font-weight: 700;
+    color: $dk-grey;
+    transition: $link-transition;
+
+    &:hover {
+      color: $lt-brick;
+    }
+}
+
+
+.login-form-links {
+  text-align: center;
+  a {
+    text-decoration: none;
+    padding: 0.25em;
+  }
+  
 }
