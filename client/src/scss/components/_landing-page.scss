@@ -43,7 +43,7 @@
 
     @media only screen and (min-width: $medium-break) {
       position: relative;
-      padding-bottom: 32em;
+      padding-bottom: 38em;
     }
 
     .callout-text {
@@ -98,9 +98,8 @@
 
       @media only screen and (min-width: $medium-break) {
         position: absolute;
-        top: 7em;
-        left: 20em;
-        transform: rotate(-18deg);
+        top: 1em;
+        left: 18em;
         margin: 0 0 0 auto;
       }
     }
