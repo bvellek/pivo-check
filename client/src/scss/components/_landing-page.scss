@@ -1,18 +1,9 @@
 
 // General Landing
 
-.landing-page-bg {
-  background-color: $dk-grey;
-  width: 100%;
+.landing-page {
+  @include page-settings;
 }
-
-.landing-page-wrapper {
-  max-width: 60em;
-  margin: 0 auto;
-  padding: 1em;
-  color: white;
-}
-
 
 
 // Landing Header

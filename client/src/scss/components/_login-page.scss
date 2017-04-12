@@ -1,0 +1,41 @@
+
+.login-page {
+  @include page-settings;
+}
+
+
+.login-form {
+  margin: $margin-before auto $margin-after;
+  max-width: 25em;
+  border-radius: 3px;
+  padding: 0.625em 1em;
+  background-color: darken($white, 2%);
+  color: $dk-grey;
+
+  a {
+    color: darken($brick, 15%);
+    font-weight: 700;
+
+    &:hover {
+      color: $lt-brick;
+    }
+  }
+  legend {
+    text-align: center;
+  }
+
+  label {
+    display: block;
+  }
+
+  input {
+    margin-bottom: 1em;
+    width: 95%;
+    line-height: 2em;
+    margin: 0 auto 1em;
+  }
+
+  fieldset {
+    border: none;
+  }
+}
