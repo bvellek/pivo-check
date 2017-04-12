@@ -93,13 +93,14 @@
     }
 
     .callout-img {
-      max-width: 42em;
-      margin: 0 auto;
+      max-width: 36em;
+      margin: 0 auto 4em;
 
       @media only screen and (min-width: $medium-break) {
+        max-width: 40em;
         position: absolute;
         top: 1em;
-        left: 18em;
+        left: 16em;
         margin: 0 0 0 auto;
       }
     }

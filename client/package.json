@@ -6,6 +6,17 @@
     "type": "git",
     "url": "git+https://github.com/bvellek/pivo-check.git"
   },
+  "scripts": {
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
+  },
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
@@ -16,14 +27,5 @@
   "dependencies": {
     "react": "^15.5.3",
     "react-dom": "^15.5.3"
-  },
-  "scripts": {
-    "build-css": "node-sass src/ -o src/",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
   }
 }
