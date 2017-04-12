@@ -1,22 +1,21 @@
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 
 const checkoffSchema = new mongoose.Schema({
   breweryID: {
     type: String,
-    required: true
+    required: true,
   },
   userID: {
     type: String,
-    required: true
+    required: true,
   },
   rating: {
-    type: Number
+    type: Number,
   },
   completionStatus: {
-    type: Boolean
-  }
+    type: Boolean,
+  },
 });
-
 
 const Checkoff = mongoose.model('Checkoff', checkoffSchema);
 

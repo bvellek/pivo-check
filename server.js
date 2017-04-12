@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
+require('isomorphic-fetch');
 
 const app = express();
 const { PORT, DATABASE_URL } = require('./config/config');
@@ -22,11 +23,12 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({ secret: 'beerME', saveUninitialized: true, resave: true }));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({ secret: 'beerME', saveUninitialized: true, resave: true }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-// require('./routes')(app, passport);
+require('./apiRoutes')(app, passport);
+
 app.use(express.static('public'));
 
 let server;
