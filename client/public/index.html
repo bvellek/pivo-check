@@ -90,19 +90,19 @@
     <main role="main">
       <form class="" action="index.html" method="post">
         <fieldset>
-          <legend>Login</legend>
+          <legend><h2>Login</h2></legend>
           <label for="user-email">Email</label>
           <input id="user-email" type="email" name="email" value="" required="">
           <label for="user-password">Password</label>
           <input id="user-password" type="password" name="password" value="" required="">
         </fieldset>
         <button type="submit" name="button">Log In</button>
-        <a href="#"><span>Login with</span>Google</a>
+        <a href="#"><span>Login with&nbsp;</span><img src="./img/btn_google_light_normal_ios.svg" alt="google login"></a>
         <a href="#">Register</a>
         <a href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password.">Forgot Password?</a>
       </form>
-      <p>Demo Account:</p>
-      <p>email: demo@pivocheck.com pass: justDemoing</p>
+      <h3>Try it out!</h3>
+      <button type="button" name="button">Demo 🍻</button>
     </main>
 
     <footer class="landing-footer" role="contentinfo">Designed and Developed by <a href="https://benvellek.com/" target="_ben-portfolio">BEN VELLEK</a></footer>
@@ -227,9 +227,10 @@
     </header>
 
     <main role="main">
-      <h1>Seattle, WA</h1>
-      <label for="brewery-filter">Brewery Filter</label>
-      <select id="brewery-filter" class="" name="">
+      <header>
+        <h1>Seattle, WA</h1>
+        <label for="brewery-filter"><h2>Brewery Filter</h2></label>
+        <select id="brewery-filter" class="" name="">
           <option selected value="">All Seattle Breweries</option>
           <optgroup label="Completed">
             <option value="">Visited</option>
@@ -246,6 +247,53 @@
             <option value="">Office</option>
           </optgroup>
         </select>
+      </header>
+      <section class="breweries-list">
+
+        <ul>
+          <li>
+            <form class="checkoff-form" action="index.html" method="post">
+              <label for="check-KX35c" class="visually-hidden">Checkoff Bainbride Island Brewing Company</label>
+              <input id="check-KX35c" type="checkbox" name="Brewery1" value="">
+            </form>
+            <div class="brewery-info-container">
+              <h3><a href="http://www.bainbridgebeer.com/" target="_KX35c">Bainbridge Island Brewing Company</a></h3>
+              <img class="brewery-logo" src="https://s3.amazonaws.com/brewerydbapi/brewery/1KX35c/upload_yn8mQV-squareMedium.png" alt="Bainbridge Island Brewing Company Logo">
+              <form class="brewery-rating-form" action="index.html" method="post">
+                <label for="rating-KX35c">Rating <span class="visually-hidden">for Bainbridge Island Brewing Company</span></label>
+                <select id="rating-KX35c" class="brew-rating-select" name="">
+                  <option selected disabled value=""></option>
+                  <option value="1">🍺</option>
+                  <option value="2">🍺🍺</option>
+                  <option value="3">🍺🍺🍺</option>
+                </select>
+              </form>
+              <a class="brewery-adr-link"
+               href="https://www.google.com/maps/place/9415+Coppertop+Lane,+Suite+103-104,+Bainbridge+Island,+WA+98110" target="_map-KX35c">
+                <div class="adr">
+                  <div class="street-address">94115 Coppertop Lane</div>
+                  <div class="extended-address">Suite 103-104</div>
+                  <span class="locality">Bainbridge Island</span>
+                  <span class="comma-one">, </span>
+                  <span class="region">WA</span>
+                  <span class="postal-code">98110</span>
+                </div>
+              </a>
+              <div class="brewery-phone">
+                <span>Phone: </span>
+                <a href="tel:(206) 451.4646" class="tel">(206) 451.4646</a>
+              </div>
+              <details>
+                <summary><h4>Details <span class="visually-hidden">for Bainbridge Island Brewing Company</span></h4></summary>
+                <p class="brewery-description">Making a great beer requires a combination of art and science.  Science, in knowing what the gear and the ingredients can do.  Art, in imagining what beer can be.  Whether it's excellent versions of classic styles, or boundary pushing experimental brews, we strive to blend the art and science of beer. But beer is also a social beverage.  The pub is part of our culture, and here in the Northwest that means locally brewed craft beer.  The local brewery is part of the fabric of the community, giving it character, individuality, and indeed, an air of hometown pride.  Bainbridge Island is certainly a great place to live, but it's been lacking one thing: our own craft microbrewery.  Well, no longer!  Bainbridge Island Brewing is the island's brewery, and the island is as much a part of us as we are of it.</p>
+                <p>Type: <span>Micro Brewery</span></p>
+              </details>
+            </div>
+          </li>
+        </ul>
+
+      </section>
+
     </main>
 
     <footer class="landing-footer" role="contentinfo">Designed and Developed by <a href="https://benvellek.com/" target="_ben-portfolio">BEN VELLEK</a></footer>
