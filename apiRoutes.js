@@ -6,8 +6,13 @@ const User = require('./models/user');
 mongoose.Promise = global.Promise;
 
 module.exports = function (app, passport) {
-
-
+// Login
+  app.post('/api/login', passport.authenticate('local-login', {
+    successRedirect: '/myrecipes',
+    failureRedirect: '/login',
+    failureFlash: true,
+    session: true,
+  }));
 
 // BreweryDB API proxy
   app.post('/api/city', (req, res) => {

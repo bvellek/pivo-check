@@ -36,7 +36,7 @@ module.exports = function (passport) {
           return done(null, false, req.flash('registrationMessage', 'That email is already taken.'));
         } else if (!(password === req.body['user-confirm-password'])) {
           return done(null, false, req.flash('registrationMessage', 'Passwords do not match.'));
-        } 
+        }
         const newUser = new User();
         newUser.email = email;
         newUser.password = newUser.hashPassword(password);
@@ -47,7 +47,7 @@ module.exports = function (passport) {
             throw err;
           }
           return done(null, newUser);
-        });       
+        });
       });
     });
   }));
