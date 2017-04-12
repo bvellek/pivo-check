@@ -7,9 +7,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 
-
 const app = express();
-const {PORT, DATABASE_URL} = require('./config/config');
+const { PORT, DATABASE_URL } = require('./config/config');
+
 mongoose.Promise = global.Promise;
 
 // Compression for pagespeed
@@ -20,19 +20,14 @@ mongoose.Promise = global.Promise;
 app.use(morgan('common'));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({secret: 'beerME', saveUninitialized: true, resave: true}));
+app.use(session({ secret: 'beerME', saveUninitialized: true, resave: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // require('./routes')(app, passport);
 app.use(express.static('public'));
-
-
-
-
 
 let server;
 // closeServer needs access to a server object, but that only
@@ -61,17 +56,15 @@ function runServer() {
 // this function closes the server, and returns a promise. we'll
 // use it in our integration tests later.
 function closeServer() {
-  return mongoose.disconnect().then(() => {
-     return new Promise((resolve, reject) => {
-       console.log('Closing server');
-       server.close(err => {
-           if (err) {
-               return reject(err);
-           }
-           resolve();
-       });
-     });
-  });
+  return mongoose.disconnect().then(() => new Promise((resolve, reject) => {
+    console.log('Closing server');
+    server.close(err => {
+      if (err) {
+        return reject(err);
+      }
+      resolve();
+    });
+  }));
 }
 
 // if server.js is called directly (aka, with `node server.js`), this block
@@ -80,4 +73,4 @@ if (require.main === module) {
   runServer().catch(err => console.error(err));
 }
 
-module.exports = {app, runServer, closeServer};
+module.exports = { app, runServer, closeServer };
