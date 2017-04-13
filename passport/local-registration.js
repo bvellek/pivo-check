@@ -13,6 +13,7 @@ module.exports = new LocalStrategy({
   const userData = {
     email: email.trim(),
     password: password.trim(),
+    confirmPassword: req.body.confirmPassword.trim(),
     firstName: req.body.firstName.trim(),
     lastName: req.body.lastName.trim(),
   };

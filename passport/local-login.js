@@ -19,11 +19,14 @@ module.exports = new LocalStrategy({
 
   // find user by email
   return User.findOne({ email: userData.email }, (err, user) => {
+    console.log('%');
     if (err) {
+      console.log('%%');
       return done(err);
     }
 
     if (!user) {
+      console.log('%%%');
       const error = new Error('Email not found.');
       error.name = 'IncorrectEmailError';
 
@@ -32,11 +35,14 @@ module.exports = new LocalStrategy({
 
     // Compare hashed password to value in DB
     return user.comparePassword(userData.password, (passwordErr, isMatch) => {
+      console.log('%%%%');
       if (err) {
+        console.log('&');
         return done(err);
       }
 
       if (!isMatch) {
+        console.log('&&');
         const error = new Error('Incorrect password');
         error.name = 'IncorrectPasswordError';
 

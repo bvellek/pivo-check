@@ -116,17 +116,22 @@ router.post('/registration', (req, res, next) => {
 
 
 router.post('/login', (req, res, next) => {
+    console.log('!*#', req.body);
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
+    console.log('!!**##');
     return res.status(400).json({
       success: false,
       message: validationResult.message,
       errors: validationResult.errors,
     });
   }
+  console.log('!!!***###');
   return passport.authenticate('local-login', (err, token, userData) => {
     if (err) {
+       console.log('!!!!****####');
       if (err.name === 'IncorrectEmailError' || err.name === 'IncorrectPasswordError') {
+        console.log('!!!!!*****#####');
         return res.status(400).json({
           success: false,
           message: err.message,
