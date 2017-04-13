@@ -41,7 +41,6 @@ app.use('/api', authCheckMiddleware);
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
-
 let server;
 // closeServer needs access to a server object, but that only
 // gets created when `runServer` runs, so we declare `server` here
@@ -58,9 +57,9 @@ function runServer() {
         console.log(`Your app is listening on port ${PORT}`);
         resolve(PORT);
       })
-      .on('error', err => {
+      .on('error', error => {
         mongoose.disconnect();
-        reject(err);
+        reject(error);
       });
     });
   });

@@ -77,7 +77,6 @@ function validateLoginForm(payload) {
   };
 }
 
-
 router.post('/registration', (req, res, next) => {
   const validationResult = validateRegistrationForm(req.body);
   if (!validationResult.success) {
@@ -114,9 +113,8 @@ router.post('/registration', (req, res, next) => {
   })(req, res, next);
 });
 
-
 router.post('/login', (req, res, next) => {
-    console.log('!*#', req.body);
+  console.log('!*#', req.body);
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     console.log('!!**##');
@@ -129,7 +127,7 @@ router.post('/login', (req, res, next) => {
   console.log('!!!***###');
   return passport.authenticate('local-login', (err, token, userData) => {
     if (err) {
-       console.log('!!!!****####');
+      console.log('!!!!****####');
       if (err.name === 'IncorrectEmailError' || err.name === 'IncorrectPasswordError') {
         console.log('!!!!!*****#####');
         return res.status(400).json({
