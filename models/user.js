@@ -57,9 +57,35 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
-userSchema.methods.validPassword = (password) => bcrypt.compareSync(password, this.password);
+// Compare passed password with value in database
+userSchema.methods.comparePassword = (password, callback) => bcrypt.compare(password, this.password, callback);
 
-userSchema.methods.hashPassword = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
+// Pre-save hook method
+userSchema.pre('save', function saveHook(next) {
+  const user = this;
+
+  // continue only if password is modified or user is new
+  if (!user.isModified('password')) {
+    return next();
+  }
+
+  return bcrypt.genSalt(10, (saltError, salt) => {
+    if (saltError) {
+      return next(saltError);
+    }
+
+    return bcrypt.hash(user.password, salt, null, (hashError, hash) => {
+      if (hashError) {
+        return next(hashError);
+      }
+
+      // replace password string with hash
+      user.password = hash;
+
+      return next();
+    });
+  });
+});
 
 const User = mongoose.model('User', userSchema);
 

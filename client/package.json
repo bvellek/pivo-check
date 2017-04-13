@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/bvellek/pivo-check.git"
   },
+  "proxy": "http://localhost:3001/",
   "scripts": {
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",

@@ -1,12 +1,11 @@
 const express = require('express');
-const passport = require('passport');
 const mongoose = require('mongoose');
-const session = require('express-session');
 const morgan = require('morgan');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const compression = require('compression');
-require('isomorphic-fetch');
+// const compression = require('compression');
+const authCheckMiddleware = require('./middleware/auth-check');
+const authRoutes = require('./routes/auth');
+const apiRoutes = require('./routes/api');
 
 const app = express();
 const { PORT, DATABASE_URL } = require('./config/config');
@@ -16,20 +15,18 @@ mongoose.Promise = global.Promise;
 // Compression for pagespeed
 // app.use(compression({ level: 9, threshold: 0 }));
 
-// require('./config/passport')(passport);
+// serve static files including the app bundle
+app.use(express.static('./client/build'));
 
 app.use(morgan('common'));
-app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(session({ secret: 'beerME', saveUninitialized: true, resave: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
 
-require('./apiRoutes')(app, passport);
+app.use('/api', authCheckMiddleware);
+app.use('/auth', authRoutes);
+app.use('/api', apiRoutes);
 
-app.use(express.static('public'));
 
 let server;
 // closeServer needs access to a server object, but that only
