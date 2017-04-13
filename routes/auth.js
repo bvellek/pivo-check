@@ -109,7 +109,7 @@ router.post('/registration', (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      message: 'You have successfully registered! Now you should be able to log in.'
+      message: 'You have successfully registered! Now you should be able to log in.',
     });
   })(req, res, next);
 });
