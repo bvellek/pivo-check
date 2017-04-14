@@ -4571,6 +4571,12 @@ react-dom@^15.5.3:
     object-assign "^4.1.0"
     prop-types "~15.5.0"
 
+react-places-autocomplete@^4.1.3:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/react-places-autocomplete/-/react-places-autocomplete-4.1.3.tgz#1e73d4d018613692c3923c5334577a9118c2fcbc"
+  dependencies:
+    react "^15.0.0"
+
 react-router@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.1.1.tgz#d448f3b7c1b429a6fbb03395099949c606b1fe95"
@@ -4628,7 +4634,7 @@ react-scripts@0.9.5:
   optionalDependencies:
     fsevents "1.0.17"
 
-react@^15.5.3:
+react@^15.0.0, react@^15.5.3:
   version "15.5.3"
   resolved "https://registry.yarnpkg.com/react/-/react-15.5.3.tgz#84055382c025dec4e3b902bb61a8697cc79c1258"
   dependencies:
