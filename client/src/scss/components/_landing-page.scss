@@ -12,7 +12,7 @@
 
   @media only screen and (min-width: $medium-break) {
     position: relative;
-    padding-bottom: 36em;
+    padding-bottom: 32em;
   }
 
   .callout-text {
@@ -68,18 +68,45 @@
   }
 
   .callout-img {
-    max-width: 42em;
+    max-width: 40em;
     margin: 0 auto;
 
     @media only screen and (min-width: $medium-break) {
       position: absolute;
       top: 1em;
-      left: 18em;
+      left: 16em;
       margin: 0 0 0 auto;
     }
   }
 }
 
+
+
+
+
+// Landing Description
+
+.landing-description {
+  margin-top: 2em;
+  max-width: 30em;
+
+  h2 {
+    font-size: $size-lg-heading-small-vp;
+
+    @media only screen and (min-width: $small-break) {
+      font-size: $size-lg-heading-large-vp;
+    }
+  }
+
+  @media only screen and (min-width: $small-break) {
+    text-align: center;
+    padding-left: 1em;
+    margin: 1em auto;
+    max-width: 35em;
+  }
+
+
+}
 
 //Landing Call to Action
 
@@ -96,7 +123,6 @@
       font-size: 2em;
     }
 
-
     a {
         text-transform: lowercase;
         text-decoration: none;
@@ -109,29 +135,8 @@
 }
 
 
-// Landing Features
-
-.landing-features {
-  margin-top: 1em;
-
-  h2 {
-    font-size: $size-lg-heading-small-vp;
-
-    @media only screen and (min-width: $small-break) {
-      font-size: $size-lg-heading-large-vp;
-    }
-  }
-
-  @media only screen and (min-width: $small-break) {
-    padding-left: 1em;
-  }
-
-
-}
-
-
 // Landing Footer
 
-.landing-footer {
-  color: $white;
-}
+// .landing-footer {
+//   color: $white;
+// }
