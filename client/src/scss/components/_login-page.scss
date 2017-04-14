@@ -22,11 +22,11 @@
   max-width: 20em;
   border-radius: 3px;
   padding: 2em 1em;
-  background-color: darken($white, 2%);
+  background-color: $dk-white;
   color: $dk-grey;
 
   a {
-    color: darken($brick, 15%);
+    color: $dk-brick;
     font-weight: 400;
 
     &:hover {

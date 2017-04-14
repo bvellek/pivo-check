@@ -276,33 +276,46 @@
       <section class="cities-list">
         <ul>
           <li>
-            <a href="#"><h2>Seattle</h2></a>
-            <p>7/20</p>
-            <form class="" action="index.html" method="post">
-              <button type="button" name="button">❌<span>Delete Seattle</span></button>
-            </form>
-            <div class="">
-              <p>Delete Seattle?</p>
+            <div class="city-item">
+              <a href="#"><h2 class="city-list-title">Seattle, WA</h2></a>
+              <div class="city-info">
+                <p class="city-list-brew-count">7/20</p>
+                <form class="city-list-delete-form" action="index.html" method="post">
+                  <button type="submit" name="button">❌<span class="visually-hidden">Delete Seattle</span></button>
+                </form>
+              </div>
+            </div>
+
+            <div class="delete-city-warning">
+              <h3>Delete Seattle?</h3>
               <p>Deleting a location will permanently remove it from your checklist and you will lose your visited brewery record.</p>
-              <form class="" action="index.html" method="post">
-                <button type="button" name="button">No, Keep Seattle</button>
-                <button type="button" name="button">❌ Yes, Delete Seattle</button>
+              <form class="delete-city-form" action="index.html" method="post">
+                <button class="keep-city-btn" type="button" name="button">No, Keep Seattle</button>
+                <button class="delete-city-btn" type="button" name="button">❌ Yes, Delete Seattle</button>
               </form>
             </div>
           </li>
           <li>
-            <a href="#"><h2>Portland</h2></a>
-            <p>2/68</p>
-            <form class="" action="index.html" method="post">
-              <button type="button" name="button">❌<span>Delete Portland</span></button>
-            </form>
+            <div class="city-item">
+              <a href="#"><h2 class="city-list-title">Portland, OR</h2></a>
+              <div class="city-info">
+                <p class="city-list-brew-count">2/68</p>
+                <form class="city-list-delete-form" action="index.html" method="post">
+                  <button type="button" name="button">❌<span class="visually-hidden">Delete Portland</span></button>
+                </form>
+              </div>
+            </div>
           </li>
           <li>
-            <a href="#"><h2>Austin</h2></a>
-            <p>5/19</p>
-            <form class="" action="index.html" method="post">
-              <button type="button" name="button">❌<span>Delete Austin</span></button>
-            </form>
+            <div class="city-item">
+              <a href="#"><h2 class="city-list-title">Rancho Santa Margarita, TX</h2></a>
+              <div class="city-info">
+                <p class="city-list-brew-count">5/19</p>
+                <form class="city-list-delete-form" action="index.html" method="post">
+                  <button type="button" name="button">❌<span class="visually-hidden">Delete Austin</span></button>
+                </form>
+              </div>
+            </div>
           </li>
         </ul>
       </section>
