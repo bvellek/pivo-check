@@ -114,7 +114,6 @@
 
 
   <!-- LOGIN PAGE "/login"-->
-
   <header class="auth-header top-header" role="banner">
     <a href="#">
       <h1>
@@ -258,10 +257,12 @@
       <h1>My Cities</h1>
 
       <section class="city-add">
-        <form class="" action="index.html" method="post">
-          <label for="city-search">Add a City</label>
-          <input id="city-search" type="search" name="city" value="">
-          <button type="submit" name="addCity">Add</button>
+        <form class="city-add-form" action="index.html" method="post">
+          <div>
+            <label for="city-search">Add a city</label>
+            <input id="city-search" type="search" name="city" value="" placeholder="Seattle, WA">
+            <button aria-label="add city" type="submit" name="addCity">Submit City 📍</button>
+          </div>
         </form>
       </section>
 
