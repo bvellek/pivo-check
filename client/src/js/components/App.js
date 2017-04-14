@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import Footer from './Footer';
+import LandingHeader from './LandingHeader';
+import LandingPage from './LandingPage';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Footer />
+        <LandingHeader />
+        <LandingPage />
       </div>
     );
   }
