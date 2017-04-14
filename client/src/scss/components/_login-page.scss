@@ -1,7 +1,6 @@
 
 .login-page {
   @include page-settings;
-  // text-align: center;
 
   h1 {
     text-align: center;
@@ -20,7 +19,6 @@
     display: block;
     margin: 0 auto;
   }
-
 }
 
 
@@ -79,28 +77,6 @@
     margin: 0 auto 2em;
   }
 }
-
-// .google-login-anchor {
-//     margin: 2em auto 0.625em;
-//     background-color: transparent;
-//     padding: 0.25em;
-//     width: 11em;
-//     text-decoration: none;
-//     display: flex;
-//     justify-content: center;
-
-//     &:hover span {
-//       color: $lt-brick;
-//     }
-// }
-
-// .google-login-anchor span {
-//     align-self: center;
-//     font-weight: 700;
-//     color: $dk-grey;
-//     transition: $link-transition;
-// }
-
 
 .login-form-links {
   text-align: center;
