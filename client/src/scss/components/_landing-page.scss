@@ -6,113 +6,79 @@
 }
 
 
-// Landing Header
-
-.landing-header {
+.landing-callout {
   display: flex;
   flex-direction: column;
-}
 
-.landing-nav {
-  text-align: right;
-  text-transform: lowercase;
-  font-family: $heading-text;
-  font-size: 0.8em;
-  padding: 0.2em;
-
-  a {
-    padding: 1em;
+  @media only screen and (min-width: $medium-break) {
+    position: relative;
+    padding-bottom: 36em;
   }
-}
 
-.banner {
+  .callout-text {
+    max-width: 22rem;
+    margin-left: 1em;
+    margin-bottom: 1em;
 
-  .landing-logo {
-    max-width: 8em;
-    margin: 0;
-
-
-    .svg-logo {
-      width: 100%;
+    @media only screen and (min-width: $tiny-break) {
+      margin-left: 2.4em;
+      max-width: 26em;
     }
-  }
 
-  .landing-callout {
-    display: flex;
-    flex-direction: column;
+    @media only screen and (min-width: $small-break) {
+      margin-left: 3em;
+    }
 
     @media only screen and (min-width: $medium-break) {
+      margin-left: 5em;
       position: relative;
-      padding-bottom: 36em;
+      z-index: 10;
     }
 
-    .callout-text {
-      max-width: 22rem;
-      margin-left: 1em;
-      margin-bottom: 1em;
+    .teal-text {
+      color: $teal;
+      font-size: 1.5em;
+    }
+
+    p:nth-child(1) {
+      font-family: $heading-text;
+      margin-top: 0.5em;
+      margin-bottom: 0;
+      font-size: 1.7em;
+      font-weight: 700;
 
       @media only screen and (min-width: $tiny-break) {
-        margin-left: 2.4em;
-        max-width: 26em;
+        margin-top: 1em;
+        font-size: 2em;
       }
-
-      @media only screen and (min-width: $small-break) {
-        margin-left: 3em;
-      }
-
-      @media only screen and (min-width: $medium-break) {
-        margin-left: 5em;
-        position: relative;
-        z-index: 10;
-      }
-
-      .teal-text {
-        color: $teal;
-        font-size: 1.5em;
-      }
-
-      p:nth-child(1) {
-        font-family: $heading-text;
+    }
+    p:nth-child(2) {
+        font-size: 0.8em;
         margin-top: 0.5em;
         margin-bottom: 0;
-        font-size: 1.7em;
-        font-weight: 700;
+
+        .teal-text {
+          font-size: 2em;
+        }
 
         @media only screen and (min-width: $tiny-break) {
-          margin-top: 1em;
-          font-size: 2em;
-    	  }
-      }
-      p:nth-child(2) {
-          font-size: 0.8em;
-          margin-top: 0.5em;
-          margin-bottom: 0;
-
-          .teal-text {
-            font-size: 2em;
-          }
-
-          @media only screen and (min-width: $tiny-break) {
-      		  font-size: 0.9em;
-      	  }
-      }
+          font-size: 0.9em;
+        }
     }
+  }
 
-    .callout-img {
-      max-width: 42em;
-      margin: 0 auto;
+  .callout-img {
+    max-width: 42em;
+    margin: 0 auto;
 
-      @media only screen and (min-width: $medium-break) {
-        position: absolute;
-        top: 1em;
-        left: 18em;
-        margin: 0 0 0 auto;
-      }
+    @media only screen and (min-width: $medium-break) {
+      position: absolute;
+      top: 1em;
+      left: 18em;
+      margin: 0 0 0 auto;
     }
-
   }
 }
-
 
 
 //Landing Call to Action

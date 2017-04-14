@@ -2,14 +2,6 @@
 .login-page {
   @include page-settings;
 
-  h1 {
-    text-align: center;
-    margin-top: 0;
-    .svg-logo {
-      max-width: 8em;
-    }
-  }
-
   h3 {
     text-align: center;
     font-size: 1em;

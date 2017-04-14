@@ -1,0 +1,83 @@
+.top-header {
+  background-color: $dk-grey;
+  padding: 1em 1em 0;
+}
+
+
+// Landing
+.landing-header {
+
+  .landing-wrapper {
+    max-width: 60em;
+    margin: 0 auto;
+  }
+
+  .landing-nav {
+    text-align: right;
+    text-transform: lowercase;
+    font-family: $heading-text;
+    font-size: 0.8em;
+    padding: 0.2em;
+
+    a {
+      padding: 1em;
+    }
+  }
+
+  .landing-logo {
+    max-width: 8em;
+    margin: 0;
+
+
+    .svg-logo {
+      width: 100%;
+    }
+  }
+}
+
+// Login and Registration
+.auth-header{
+  h1 {
+    text-align: center;
+    margin-top: 0;
+
+    .svg-logo {
+      max-width: 7em;
+    }
+  }
+}
+
+// My Cities and Specific Cities
+.in-app-header{
+  background-color: darken($dk-grey, 8%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1em;
+
+  .in-app-logo {
+    max-width: 30em;
+    width: 100%;
+
+    .svg-logo {
+      width: 100%;
+    }
+  }
+
+  nav {
+    font-size: 0.9em;
+    text-transform: lowercase;
+
+    @media only screen and (min-width: $small-break) {
+      font-size: 1em;
+    }
+
+    a {
+      padding: 0.8em;
+    }
+  }
+
+  hr {
+    width: 100%;
+  }
+}
