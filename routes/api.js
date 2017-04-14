@@ -26,10 +26,14 @@ router.post('/city', (req, res) => {
     response.json()
   ))
   .then((rawResults) => {
-    const brewArr = rawResults.data;
-    // console.log('all', brewArr.length);
-    const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
-    return publicBreweries;
+    console.log(rawResults);
+    if (rawResults.totalResults >= 1) {
+      const brewArr = rawResults.data;
+      // console.log('all', brewArr.length);
+      const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
+      return publicBreweries;
+    }
+    throw new Error('There are no breweries here');
   })
   .then((publicBreweries) => {
     // console.log('public', publicBreweries.length);
@@ -40,8 +44,10 @@ router.post('/city', (req, res) => {
   .then((results) => {
     res.status(200).json(results);
   })
-  .catch(() => {
-    res.status(500).json({ error: 'could not get city brewery data' });
+  .catch((err) => {
+    console.log(err);
+    // if (err === '')
+    res.status(500).json(err.Error);
   });
 });
 

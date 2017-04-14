@@ -21,24 +21,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // use passport middleware
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
 // load passport strategies
-const localRegistrationStrategy = require('.//passport/local-registration');
-const localLoginStrategy = require('.//passport/local-login');
+// const localRegistrationStrategy = require('.//passport/local-registration');
+// const localLoginStrategy = require('.//passport/local-login');
 
-passport.use('local-registration', localRegistrationStrategy);
-passport.use('local-login', localLoginStrategy);
+// passport.use('local-registration', localRegistrationStrategy);
+// passport.use('local-login', localLoginStrategy);
 
 // pass the authentication checker middleware
-const authCheckMiddleware = require('./middleware/auth-check');
+// const authCheckMiddleware = require('./middleware/auth-check');
 
 // routes
-const authRoutes = require('./routes/auth');
+// const authRoutes = require('./routes/auth');
 const apiRoutes = require('./routes/api');
 
-app.use('/api', authCheckMiddleware);
-app.use('/auth', authRoutes);
+// app.use('/api', authCheckMiddleware);
+// app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
 let server;
