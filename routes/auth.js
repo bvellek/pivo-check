@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-// const validator = require('validator'); // add this to the first if !validator.isEmail(payload)
+const validator = require('validator');
 
 const router = new express.Router();
 
@@ -12,9 +12,9 @@ function validateRegistrationForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim() === 0) {
+  if (!payload || typeof payload.email !== 'string' || payload.email.trim() === 0 || !validator.isEmail(payload.email)) {
     isFormValid = false;
-    errors.email = 'Please provide an email address.';
+    errors.email = 'Please provide a valid email address.';
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
