@@ -112,8 +112,15 @@
 // Landing Features
 
 .landing-features {
-
   margin-top: 1em;
+
+  h2 {
+    font-size: $size-lg-heading-small-vp;
+
+    @media only screen and (min-width: $small-break) {
+      font-size: $size-lg-heading-large-vp;
+    }
+  }
 
   @media only screen and (min-width: $small-break) {
     padding-left: 1em;

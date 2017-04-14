@@ -2,4 +2,12 @@
 
 .cities-page {
   @include page-settings;
+
+  h1 {
+    font-size: $size-lg-heading-small-vp;
+
+    @media only screen and (min-width: $small-break) {
+      font-size: $size-lg-heading-large-vp;
+    }
+  }
 }
