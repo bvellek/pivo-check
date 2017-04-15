@@ -17,9 +17,9 @@ class LoginPage extends Component {
     this.setState({
       userEmail: 'demouser@PivoCheck.com',
       userPassword: 'demoPassword',
+    }, () => {
+      document.querySelector('.login-btn').click();
     });
-    console.log(this.state);
-    // then call loginSubmit?
   }
 
   handleEmailChange = (e) => {
@@ -69,8 +69,11 @@ class LoginPage extends Component {
                 </div>
               </fieldset>
             </form>
-            <h3>Try it out!</h3>
+            <h3>
+              <label htmlFor='demo-btn'>Try it out!</label>
+            </h3>
             <button
+              id='demo-btn'
               className="demo-btn"
               type="button"
               name="demo-btn"

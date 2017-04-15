@@ -54,10 +54,15 @@ class CityAddForm extends React.Component {
 
     return (
 
-      <section className="city-add">
-        <form className="city-add-form" action="index.html" method="post" onSubmit={this.handleFormSubmit}>
-          <div className="city-form-content">
-            <label htmlFor="city-search">Add a city</label>
+      <section className='city-add'>
+        <form
+          className='city-add-form'
+          method='post'
+          autoComplete='off'
+          onSubmit={this.handleFormSubmit}
+        >
+          <div className='city-form-content'>
+            <label htmlFor='city-search'>Add a city</label>
             <PlacesAutocomplete
               value={this.state.address}
               onChange={this.onChange}
@@ -68,7 +73,7 @@ class CityAddForm extends React.Component {
               styles={myStyles}
               placeholder={'Seattle, WA'}
             />
-            <button aria-label="add city" type="submit" name="addCity">Submit City 📍</button>
+            <button aria-label='Add city' type='submit' name='addCity'>Submit City 📍</button>
           </div>
         </form>
       </section>

@@ -26,28 +26,33 @@ router.post('/city', (req, res) => {
     response.json()
   ))
   .then((rawResults) => {
-    console.log(rawResults);
     if (rawResults.totalResults >= 1) {
       const brewArr = rawResults.data;
-      // console.log('all', brewArr.length);
       const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
       return publicBreweries;
     }
-    throw new Error('There are no breweries here');
+    function BrewError(message) {
+      this.name = 'brewError';
+      this.message = message || 'Brew Error';
+      this.stack = (new Error()).stack;
+    }
+    BrewError.prototype = Object.create(Error.prototype);
+    BrewError.prototype.constructor = BrewError;
+    throw new BrewError('There are no breweries here.');
   })
   .then((publicBreweries) => {
-    // console.log('public', publicBreweries.length);
     const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
-    // console.log('open', openBreweries.length);
     return openBreweries;
   })
   .then((results) => {
     res.status(200).json(results);
   })
   .catch((err) => {
-    console.log(err);
-    // if (err === '')
-    res.status(500).json(err.Error);
+    if (err.name === 'brewError') {
+      res.status(202).json(err.message);
+    } else {
+      res.status(500).json(err.message);
+    }
   });
 });
 
