@@ -34,11 +34,29 @@ class CityAddForm extends React.Component {
       componentRestrictions: { country: 'US' },
       types: ['(cities)'],
     };
+
+    const myStyles = {
+      root: {
+        position: 'relative',
+        margin: '0 auto',
+        width: '100%',
+        maxWidth: '22em',
+        padding: '0',
+      },
+      input: {
+        boxSizing: 'border-box',
+        width: '100%',
+        lineHeight: '2em',
+        margin: '0 auto',
+        padding: '0 0.2em',
+      },
+    };
+
     return (
 
       <section className="city-add">
         <form className="city-add-form" action="index.html" method="post" onSubmit={this.handleFormSubmit}>
-          <div>
+          <div className="city-form-content">
             <label htmlFor="city-search">Add a city</label>
             <PlacesAutocomplete
               value={this.state.address}
@@ -47,6 +65,7 @@ class CityAddForm extends React.Component {
               options={options}
               inputId={'city-search'}
               inputName={'city'}
+              styles={myStyles}
               placeholder={'Seattle, WA'}
             />
             <button aria-label="add city" type="submit" name="addCity">Submit City 📍</button>

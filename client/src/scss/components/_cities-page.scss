@@ -27,13 +27,14 @@
       border: 1px solid $white;
       border-radius: 3px;
       padding: 1em 0.5em 1em;
-      max-width: 32em;
+      max-width: 24em;
       width: 92%;
       background-color: lighten($dk-grey, 3%);
       color: $white;
+      text-align: center;
 
 
-      div {
+      .city-form-content {
         max-width: 30em;
         width: 100%;
         font-size: 1em;
@@ -44,8 +45,8 @@
       display: block;
       font-weight: 700;
       margin-bottom: 0.5em;
-      text-align: left;
     }
+
     input {
       margin-bottom: 0;
       width: 100%;
@@ -55,7 +56,6 @@
 
     button {
       color: $dk-grey;
-      // text-transform: uppercase;
       text-align: center;
       margin-top: 1em;
       padding: 0.5em;
@@ -102,6 +102,7 @@
 
         @media only screen and (min-width: $small-break) {
           font-size: 1.8em;
+          max-width: 9em;
         }
       }
 
