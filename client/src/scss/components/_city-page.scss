@@ -1,0 +1,18 @@
+// General Landing
+
+.city-page {
+  @include page-settings;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    font-size: $size-lg-heading-small-vp;
+
+    @media only screen and (min-width: $small-break) {
+      font-size: $size-lg-heading-large-vp;
+    }
+  }
+}
+
