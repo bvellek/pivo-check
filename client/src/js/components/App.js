@@ -5,7 +5,8 @@ import '../../App.css';
 import LandingPage from './LandingPage';
 import LoginPage from './LoginPage';
 import RegistrationPage from './RegistrationPage';
-import CityAddForm from './CityAddForm';
+import CitiesPage from './CitiesPage';
+import CityPage from './CityPage';
 
 class App extends Component {
   render() {
@@ -28,7 +29,8 @@ class App extends Component {
           <LandingPage />
           <LoginPage />
           <RegistrationPage />
-          <CityAddForm />
+          <CitiesPage />
+          <CityPage />
         </div>
       </BrowserRouter>
 

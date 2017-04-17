@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 
-class CityAddForm extends React.Component {
+class CityAddForm extends Component {
   constructor(props) {
     super(props);
     this.state = { address: '' };
