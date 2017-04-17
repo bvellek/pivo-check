@@ -1,12 +1,10 @@
 import 'isomorphic-fetch';
 
-
 // Loading Element
 export const LOADING_STATUS_TRUE = 'LOADING_STATUS_TRUE';
 export const loadingStatusTrue = () => ({
   type: LOADING_STATUS_TRUE,
 });
-
 
 // Register User
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
@@ -21,6 +19,7 @@ export const registerUserError = (registrationErrorMessage) => ({
   registrationErrorMessage,
 });
 
+// AJAX to server for registration
 export const registerUser = user => dispatch => {
   dispatch(loadingStatusTrue());
   const registrationEndpoint = '/auth/registration';
@@ -47,7 +46,9 @@ export const registerUser = user => dispatch => {
           errors.summary = errorResponse.message;
           dispatch(registerUserError(errors));
         });
-  });
+  }).catch((error) => (
+    console.log(error)
+  ));
 };
 
 // export const fetchSunTimes = coords => dispatch => {
