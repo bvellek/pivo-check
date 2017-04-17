@@ -70,7 +70,6 @@ const RegistrationPage = ({
           <span>{errors.lastName}</span>
           <span>{errors.email}</span>
           <span>{errors.password}</span>
-          <span>{errors.confirmPassword}</span>
         </p>}
       </main>
       <Footer />

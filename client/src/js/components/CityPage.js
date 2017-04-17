@@ -58,7 +58,7 @@ class CityPage extends Component {
                     <form className="brewery-rating-form" action="index.html" method="post">
                       <label htmlFor="rating-KX35c">Rating: <span className="visually-hidden">for Bainbridge Island Brewing Company</span></label>
                       <select id="rating-KX35c" className="brew-rating-select" name="">
-                        <option defaultValue disabled value="" />
+                        <option selected="true" disabled value="" />
                         <option value="1">🍺</option>
                         <option value="2">🍺🍺</option>
                         <option value="3">🍺🍺🍺</option>
@@ -71,7 +71,7 @@ class CityPage extends Component {
                         <div className="extended-address">Suite 103-104</div>
                         <span className="locality">Bainbridge Island</span>
                         <span className="comma-one">, </span>
-                        <span className="region">WA</span>
+                        <span className="region">WA</span>{' '}
                         <span className="postal-code">98110</span>
                         </a>
                       </div>
@@ -107,7 +107,7 @@ class CityPage extends Component {
                     <form className="brewery-rating-form" action="index.html" method="post">
                       <label htmlFor="rating-qlT9u4">Rating: <span className="visually-hidden">for Holy Mountain Brewing Company</span></label>
                       <select id="rating-qlT9u4" className="brew-rating-select" name="">
-                        <option defaultValue disabled value="" />
+                        <option selected="true" disabled value="" />
                         <option value="1">🍺</option>
                         <option value="2">🍺🍺</option>
                         <option value="3">🍺🍺🍺</option>
@@ -120,7 +120,7 @@ class CityPage extends Component {
                           <div className="extended-address" />
                           <span className="locality">Seattle</span>
                           <span className="comma-one">, </span>
-                          <span className="region">WA</span>
+                          <span className="region">WA</span>{' '}
                           <span className="postal-code">98119</span>
                         </a>
                       </div>
