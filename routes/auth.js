@@ -8,31 +8,33 @@ const router = new express.Router();
 // payload object is the HTTP body message
 // returns the result of validation. object contains boolean validation, error tips and a global message for whole form
 function validateRegistrationForm(payload) {
+  console.log('*', payload);
+  const response = payload.userData;
   const errors = {};
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim() === 0 || !validator.isEmail(payload.email)) {
+  if (!response || typeof response.email !== 'string' || response.email.trim() === 0 || !validator.isEmail(response.email)) {
     isFormValid = false;
     errors.email = 'Please provide a valid email address.';
   }
 
-  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
+  if (!response || typeof response.password !== 'string' || response.password.trim().length === 0) {
     isFormValid = false;
     errors.password = 'Please provide a password.';
   }
 
-  if (!payload || typeof payload.password !== 'string' || payload.password.trim() !== payload.confirmPassword.trim()) {
+  if (!response || typeof response.password !== 'string' || response.password.trim() !== response.confirmPassword.trim()) {
     isFormValid = false;
     errors.password = 'Passwords do not match. Please try again.';
   }
 
-  if (!payload || typeof payload.firstName !== 'string' || payload.firstName.trim().length === 0) {
+  if (!response || typeof response.firstName !== 'string' || response.firstName.trim().length === 0) {
     isFormValid = false;
     errors.firstName = 'Please provide your first name.';
   }
 
-  if (!payload || typeof payload.lastName !== 'string' || payload.lastName.trim().length === 0) {
+  if (!response || typeof response.lastName !== 'string' || response.lastName.trim().length === 0) {
     isFormValid = false;
     errors.lastName = 'Please provide your last name.';
   }
@@ -78,7 +80,9 @@ function validateLoginForm(payload) {
 }
 
 router.post('/registration', (req, res, next) => {
+  console.log('**', req.body);
   const validationResult = validateRegistrationForm(req.body);
+  console.log('***', validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,

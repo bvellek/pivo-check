@@ -24,11 +24,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 
 // load passport strategies
-// const localRegistrationStrategy = require('.//passport/local-registration');
-// const localLoginStrategy = require('.//passport/local-login');
+const localRegistrationStrategy = require('.//passport/local-registration');
+const localLoginStrategy = require('.//passport/local-login');
 
-// passport.use('local-registration', localRegistrationStrategy);
-// passport.use('local-login', localLoginStrategy);
+passport.use('local-registration', localRegistrationStrategy);
+passport.use('local-login', localLoginStrategy);
 
 // pass the authentication checker middleware
 // const authCheckMiddleware = require('./middleware/auth-check');

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import RegistrationPage from './RegistrationPage';
 import * as actions from '../actions/index';
 
@@ -52,4 +53,4 @@ class RegistrationPageContainer extends Component {
   }
 }
 
-export default RegistrationPageContainer;
+export default connect()(RegistrationPageContainer);
