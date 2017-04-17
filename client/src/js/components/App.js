@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import '../../App.css';
 
 import LandingPage from './LandingPage';
-import LoginPage from './LoginPage';
+import LoginPageContainer from './LoginPageContainer';
 import RegistrationPageContainer from './RegistrationPageContainer';
 import CitiesPage from './CitiesPage';
 import CityPage from './CityPage';
@@ -27,7 +27,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <LandingPage />
-          <LoginPage />
+          <LoginPageContainer />
           <RegistrationPageContainer />
           <CitiesPage />
           <CityPage />

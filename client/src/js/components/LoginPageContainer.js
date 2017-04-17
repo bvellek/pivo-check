@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import RegistrationPage from './RegistrationPage';
+import LoginPage from './LoginPage';
 
-class RegistrationPageContainer extends Component {
+class LoginPageContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -9,10 +9,7 @@ class RegistrationPageContainer extends Component {
       errors: {},
       user: {
         email: '',
-        firstName: '',
-        lastName: '',
         password: '',
-        confirmPassword: '',
       },
     };
   }
@@ -29,23 +26,35 @@ class RegistrationPageContainer extends Component {
 
   processForm = (e) => {
     e.preventDefault();
-    console.log(`firstName: ${this.state.user.firstName}`);
-    console.log(`lastName: ${this.state.user.lastName}`);
     console.log(`email: ${this.state.user.email}`);
     console.log(`password: ${this.state.user.password}`);
-    console.log(`confirmPassword: ${this.state.user.confirmPassword}`);
+  }
+
+  demoSubmit = (e) => {
+    e.preventDefault();
+    this.setState({
+      user: {
+        password: 'demoPassword',
+        email: 'demouser@PivoCheck.com',
+      },
+    }, () => {
+      document.querySelector('.login-btn').click();
+    });
+    console.log(`email: ${this.state.user.email}`);
+    console.log(`password: ${this.state.user.password}`);
   }
 
   render() {
     return (
-      <RegistrationPage
+      <LoginPage
         onSubmit={this.processForm}
         onChange={this.changeUser}
         errors={this.state.errors}
         user={this.state.user}
+        demoSubmit={this.demoSubmit}
       />
     );
   }
 }
 
-export default RegistrationPageContainer;
+export default LoginPageContainer;
