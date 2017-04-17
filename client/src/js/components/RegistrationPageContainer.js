@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import RegistrationPage from './RegistrationPage';
+import * as actions from '../actions/index';
+
 
 class RegistrationPageContainer extends Component {
   constructor(props) {
@@ -29,6 +31,8 @@ class RegistrationPageContainer extends Component {
 
   processForm = (e) => {
     e.preventDefault();
+
+    this.props.dispatch(actions.registerUser(this.state.user));
     console.log(`firstName: ${this.state.user.firstName}`);
     console.log(`lastName: ${this.state.user.lastName}`);
     console.log(`email: ${this.state.user.email}`);

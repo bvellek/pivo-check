@@ -1,18 +1,8 @@
 import { combineReducers } from 'redux';
+import auth from './authReducer';
 
 const rootReducer = combineReducers({
-  // reducers
+  auth,
 });
 
 export default rootReducer;
-
-// import * as actions from '../actions/index';
-
-// export const initialState = {
-//   userID: '',
-// };
-
-// export const locationReducer = (state = initialState, action) => {
-//   return state;
-// };
-

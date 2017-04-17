@@ -1,5 +1,55 @@
 import 'isomorphic-fetch';
 
+
+// Loading Element
+export const LOADING_STATUS_TRUE = 'LOADING_STATUS_TRUE';
+export const loadingStatusTrue = () => ({
+  type: LOADING_STATUS_TRUE,
+});
+
+
+// Register User
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export const registerUserSuccess = (registrationSuccessMessage) => ({
+  type: REGISTER_USER_SUCCESS,
+  registrationSuccessMessage,
+});
+
+export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
+export const registerUserError = (registrationErrorMessage) => ({
+  type: REGISTER_USER_ERROR,
+  registrationErrorMessage,
+});
+
+export const registerUser = user => dispatch => {
+  dispatch(loadingStatusTrue());
+  const registrationEndpoint = '/auth/registration';
+  const userData = user;
+  return fetch(registrationEndpoint, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({ userData }),
+  }).then((response) => {
+    if (response.status === 200) {
+      // success
+      console.log('the form is valid!');
+      return response.json()
+        .then((successResponse) => (
+          dispatch(registerUserSuccess(successResponse))
+        ));
+    } return response.json()
+      // failure
+        .then((errorResponse) => {
+          const errors = errorResponse.errors ? errorResponse.errors : {};
+          errors.summary = errorResponse.message;
+          dispatch(registerUserError(errors));
+        });
+  });
+};
+
 // export const fetchSunTimes = coords => dispatch => {
 //   const url = 'https://lumen-spot.herokuapp.com/location'; // server requires absolute address
 //   const coordinates = coords;
@@ -31,25 +81,11 @@ import 'isomorphic-fetch';
 //   ));
 // };
 
-// // Loading Element
-// export const COORDS_LOADING_STATUS_TRUE = 'COORDS_LOADING_STATUS_TRUE';
-// export const coordsLoadingStatusTrue = () => ({
-//   type: COORDS_LOADING_STATUS_TRUE,
-// });
+
 
 
 // // Search Location to Lat/Long
-// export const FETCH_LOCATION_COORDS_SUCCESS = 'FETCH_LOCATION_COORDS_SUCCESS';
-// export const fetchLocationCoordsSuccess = (coords) => ({
-//   type: FETCH_LOCATION_COORDS_SUCCESS,
-//   coords
-// });
 
-// export const FETCH_LOCATION_COORDS_ERROR = 'FETCH_LOCATION_COORDS_ERROR';
-// export const fetchLocationCoordsError = (error) => ({
-//   type: FETCH_LOCATION_COORDS_ERROR,
-//   error
-// });
 
 // export const fetchLocationCoords = searchQuery => dispatch => {
 //   dispatch(coordsLoadingStatusTrue());
