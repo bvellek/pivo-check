@@ -4,7 +4,7 @@ import '../../App.css';
 
 import LandingPage from './LandingPage';
 import LoginPage from './LoginPage';
-import RegistrationPage from './RegistrationPage';
+import RegistrationPageContainer from './RegistrationPageContainer';
 import CitiesPage from './CitiesPage';
 import CityPage from './CityPage';
 
@@ -28,7 +28,7 @@ class App extends Component {
         <div className="App">
           <LandingPage />
           <LoginPage />
-          <RegistrationPage />
+          <RegistrationPageContainer />
           <CitiesPage />
           <CityPage />
         </div>

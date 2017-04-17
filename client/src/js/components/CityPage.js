@@ -20,7 +20,7 @@ class CityPage extends Component {
               <h1>Seattle, WA</h1>
               <label htmlFor="brewery-filter"><h2>Brewery&nbsp;Filter: </h2></label> {' '}
               <select id="brewery-filter" name="brewery-filter">
-                <option selected value="">All Seattle Breweries</option>
+                <option defaultValue value="">All Seattle Breweries</option>
                 <optgroup label="Completed">
                   <option value="">Visited</option>
                   <option value="">Not Visited</option>
@@ -58,7 +58,7 @@ class CityPage extends Component {
                     <form className="brewery-rating-form" action="index.html" method="post">
                       <label htmlFor="rating-KX35c">Rating: <span className="visually-hidden">for Bainbridge Island Brewing Company</span></label>
                       <select id="rating-KX35c" className="brew-rating-select" name="">
-                        <option selected disabled value="" />
+                        <option defaultValue disabled value="" />
                         <option value="1">🍺</option>
                         <option value="2">🍺🍺</option>
                         <option value="3">🍺🍺🍺</option>
@@ -107,7 +107,7 @@ class CityPage extends Component {
                     <form className="brewery-rating-form" action="index.html" method="post">
                       <label htmlFor="rating-qlT9u4">Rating: <span className="visually-hidden">for Holy Mountain Brewing Company</span></label>
                       <select id="rating-qlT9u4" className="brew-rating-select" name="">
-                        <option selected disabled value="" />
+                        <option defaultValue disabled value="" />
                         <option value="1">🍺</option>
                         <option value="2">🍺🍺</option>
                         <option value="3">🍺🍺🍺</option>

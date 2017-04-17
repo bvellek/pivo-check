@@ -19,17 +19,22 @@
     "lint:fix": "eslint --fix src"
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "react-places-autocomplete": "^4.1.3",
-    "react-router-dom": "^4.1.1"
+    "react-redux": "^5.0.4",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "redux-logger": "^3.0.1"
   }
 }
