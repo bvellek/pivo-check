@@ -361,8 +361,8 @@
     <main role="main">
       <header>
         <h1>Seattle, WA</h1>
-        <label for="brewery-filter"><h2>Brewery Filter</h2></label>
-        <select id="brewery-filter" class="" name="brewery-filter">
+        <label for="brewery-filter"><h2>Brewery&nbsp;Filter: </h2></label>
+        <select id="brewery-filter" name="brewery-filter">
           <option selected value="">All Seattle Breweries</option>
           <optgroup label="Completed">
             <option value="">Visited</option>
@@ -394,10 +394,13 @@
               </div>
             </form>
             <div class="brewery-info-container">
-              <h3><a href="http://www.bainbridgebeer.com/" target="_KX35c">Bainbridge Island Brewing Company</a></h3>
-              <img class="brewery-logo" src="https://s3.amazonaws.com/brewerydbapi/brewery/1KX35c/upload_yn8mQV-squareMedium.png" alt="Bainbridge Island Brewing Company Logo">
+              <header>
+                <h3><a href="http://www.bainbridgebeer.com/" target="_KX35c">Bainbridge Island Brewing Company</a></h3>
+                <img class="brewery-logo" src="https://s3.amazonaws.com/brewerydbapi/brewery/1KX35c/upload_yn8mQV-squareMedium.png" alt="Bainbridge Island Brewing Company Logo">
+              </header>
+
               <form class="brewery-rating-form" action="index.html" method="post">
-                <label for="rating-KX35c">Rating <span class="visually-hidden">for Bainbridge Island Brewing Company</span></label>
+                <label for="rating-KX35c">Rating: <span class="visually-hidden">for Bainbridge Island Brewing Company</span></label>
                 <select id="rating-KX35c" class="brew-rating-select" name="">
                   <option selected disabled value=""></option>
                   <option value="1">🍺</option>
@@ -405,9 +408,10 @@
                   <option value="3">🍺🍺🍺</option>
                 </select>
               </form>
-              <a class="brewery-adr-link"
-               href="https://www.google.com/maps/place/9415+Coppertop+Lane,+Suite+103-104,+Bainbridge+Island,+WA+98110" target="_map-KX35c">
-                <div class="adr">
+
+                <div class="adr"><span>Address:</span>
+                  <a class="brewery-adr-link"
+                    href="https://www.google.com/maps/place/9415+Coppertop+Lane,+Suite+103-104,+Bainbridge+Island,+WA+98110" target="_map-KX35c">
                   <div class="street-address">94115 Coppertop Lane</div>
                   <div class="extended-address">Suite 103-104</div>
                   <span class="locality">Bainbridge Island</span>
@@ -421,9 +425,55 @@
                 <a href="tel:(206) 451.4646" class="tel">(206) 451.4646</a>
               </div>
               <details>
-                <summary><h4>Details <span class="visually-hidden">for Bainbridge Island Brewing Company</span></h4></summary>
+                <summary>Details <span class="visually-hidden">for Bainbridge Island Brewing Company</span></summary>
+                <p><span>Type: </span>Micro Brewery</p>
                 <p class="brewery-description">Making a great beer requires a combination of art and science.  Science, in knowing what the gear and the ingredients can do.  Art, in imagining what beer can be.  Whether it's excellent versions of classic styles, or boundary pushing experimental brews, we strive to blend the art and science of beer. But beer is also a social beverage.  The pub is part of our culture, and here in the Northwest that means locally brewed craft beer.  The local brewery is part of the fabric of the community, giving it character, individuality, and indeed, an air of hometown pride.  Bainbridge Island is certainly a great place to live, but it's been lacking one thing: our own craft microbrewery.  Well, no longer!  Bainbridge Island Brewing is the island's brewery, and the island is as much a part of us as we are of it.</p>
-                <p>Type: <span>Micro Brewery</span></p>
+              </details>
+            </div>
+          </li>
+
+          <li>
+            <form class="checkoff-form" action="index.html" method="post">
+              <label for="check-qlT9u4" class="visually-hidden">Checkoff Holy Mountain Brewing Company</label>
+              <div class='brew-check'>
+                <input id="check-qlT9u4" type='checkbox' name="Brewery2">
+                  <div>&#10003;</div>
+                  <div>&#10003;</div>
+                  <div>&#10003;</div>
+              </div>
+            </form>
+            <div class="brewery-info-container">
+              <header>
+                <h3><a href="http://blog.holymountainbrewing.com/"
+                target="_qlT9u4">Holy Mountain Brewing Company</a></h3>
+                <img class="brewery-logo" src="https://s3.amazonaws.com/brewerydbapi/brewery/qlT9u4/upload_9yn1gT-squareMedium.png" alt="Bainbridge Island Brewing Company Logo">
+              </header>
+
+              <form class="brewery-rating-form" action="index.html" method="post">
+                <label for="rating-qlT9u4">Rating: <span class="visually-hidden">for Holy Mountain Brewing Company</span></label>
+                <select id="rating-qlT9u4" class="brew-rating-select" name="">
+                  <option selected disabled value=""></option>
+                  <option value="1">🍺</option>
+                  <option value="2">🍺🍺</option>
+                  <option value="3">🍺🍺🍺</option>
+                </select>
+              </form>
+
+                <div class="adr"><span>Address:</span>
+                  <a class="brewery-adr-link"
+                    href="https://www.google.com/maps/place/1421+Elliott+Ave+W,+Seattle,+Washington+98119" target="_map-qlT9u4">
+                  <div class="street-address">1421 Elliott Ave W</div>
+                  <div class="extended-address"></div>
+                  <span class="locality">Seattle</span>
+                  <span class="comma-one">, </span>
+                  <span class="region">WA</span>
+                  <span class="postal-code">98119</span>
+                </div>
+              </a>
+              <details>
+                <summary>Details <span class="visually-hidden">for Holy Mountain Brewing Company</span></summary>
+                <p><span>Type: </span>Micro Brewery</p>
+                <p class="brewery-description">Barrels, Brett, hops. Brewery and Taproom in Seattle, Washington.</p>
               </details>
             </div>
           </li>
