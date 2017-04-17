@@ -6,6 +6,7 @@
 @import "scss/base/_size-variables";
 @import "scss/base/_general";
 @import "scss/base/_visually-hidden";
+@import "scss/base/_missing-focus";
 
 
 @import "scss/components/_no-js";
@@ -15,4 +16,4 @@
 @import "scss/components/_login-page";
 @import "scss/components/_registration-page";
 @import "scss/components/_cities-page";
-@import "scss/components/_city-page.scss";
+@import "scss/components/_city-page";
