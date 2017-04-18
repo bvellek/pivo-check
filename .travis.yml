@@ -1,6 +1,13 @@
 language: node_js
 node_js: node
 services:
-  - mongodb
+- mongodb
 script:
-  - cd client && yarn install && yarn test && yarn run build
+- cd client && yarn install && yarn test && yarn run build
+deploy:
+  provider: heroku
+  api_key:
+    secure: VdkN8+Rnmk6djpc/da/H3lxr4TWvEFn+F818qlfuTnlNuA8VMRNTOVXIjAmCT3GkJzmHtPFcv05XvbgI1LTzsn3mDgIk5uqGxdd3ECZudoFFqFUmHDs4ds3ki5JQZdUX9LPpB2qpZCXgvgvnaPRbrX2G2WSIg419zbl7yl9GQfaAlstF0I4fK3xzBueWua0w6B76cT4T5cJNLUVt2U6bQb44fzGOcxrEBtaJAt2WSCIRD7p4Ml2Z8TWgC3x9eaI+x5Tfwrf+7xbHuIMl1+dR0A83uI+CBT5IxdokKYJ5aupJMj05IxloPJI2JlSGlgBk8lenTvX2jam1VW8Lxac1Y9o7oSiCvY284lGSxOr5XGwUTikksM/GobnWzab7bN8r4aF4lfMtZ1yh7mVeIe0pAMQOafHpFjoBmeyOvcjuWARTWfjXe4+FX3QWGuTV7aitYNMMr+J20K4mdZaOlY4vogwSADbKYcwskakYdjw12SVNG5M4zHO6c782mgvWNauk5Iy43b52fVaLHQeKvm20skqhijlC6nC1U7jAZRfcgnleMJGEunY9KVNRQ9kUYww0qjfGN2Qh4ok8HedAARYGG2MHQyIVdGhy9PlasgUycl5acpS9GNlg1X2HspemzO4JcRtxDxOE/GGDwnTkAaC6TJG6mhNSwdBHdBTnPHPG+eU=
+  app: pivo-check
+  on:
+    repo: bvellek/pivo-check
