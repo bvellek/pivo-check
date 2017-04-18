@@ -8,7 +8,6 @@ const router = new express.Router();
 // payload object is the HTTP body message
 // returns the result of validation. object contains boolean validation, error tips and a global message for whole form
 function validateRegistrationForm(payload) {
-  console.log('*Registraion', payload);
   const errors = {};
   let isFormValid = true;
   let message = '';
@@ -53,7 +52,6 @@ function validateRegistrationForm(payload) {
 // payload object is the HTTP body message
 // returns the result of validation. object contains boolean validation, error tips and a global message for whole form
 function validateLoginForm(payload) {
-  console.log('*Login', payload);
   const errors = {};
   let isFormValid = true;
   let message = '';
@@ -116,7 +114,6 @@ router.post('/registration', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-  console.log('$login', req.body);
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
@@ -150,7 +147,7 @@ router.post('/login', (req, res, next) => {
         message: 'Could not process the form.',
       });
     }
-    console.log('$Login-return', userData);
+
     return res.status(200).json({
       success: true,
       message: 'You have successfully logged in!',
