@@ -11,28 +11,24 @@ import CityPage from './CityPage';
 class App extends Component {
   render() {
     return (
-      // <BrowserRouter>
-      //   <Route exact path="/" component={LandingPage} />
-      //   <Route path="/login" component={LoginPage} />
-      //   <Route path="/registration" component={RegistrationPage} />
-      //   <Route path="/cities/:city" component={CityPage} />
-      //   <Route path="/cities" render={({ path }) => (
-      //     <div>
-      //       <InAppHeader />
-      //       <Route exact path={path} component={CitiesPage} />
-      //       <Route path={`${path}/:id`} component={CityPage} />
-      //     </div>
-      //   )} />
-      // </BrowserRouter>
       <BrowserRouter>
         <div className="App">
-          <LandingPage />
-          <LoginPageContainer />
-          <RegistrationPageContainer />
-          <CitiesPage />
-          <CityPage />
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/login" component={LoginPageContainer} />
+          <Route path="/registration" component={RegistrationPageContainer} />
+          <Route path="/cities/:city" component={CitiesPage} />
+          <Route exact path="/cities" component={CityPage} />
         </div>
       </BrowserRouter>
+      // <BrowserRouter>
+      //   <div className="App">
+      //     <LandingPage />
+      //     <LoginPageContainer />
+      //     <RegistrationPageContainer />
+      //     <CitiesPage />
+      //     <CityPage />
+      //   </div>
+      // </BrowserRouter>
 
     );
   }

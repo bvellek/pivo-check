@@ -48,7 +48,7 @@ const LoginPage = ({
             </p> : <div />}
             <button className="login-btn" type="submit" name="button">Log In 🍻</button>
             <div className="login-form-links">
-              <Link to='/register'>Register</Link> {' | '}
+              <Link to='/registration'>Register</Link> {' | '}
               <a href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password.">Forgot Password?</a>
             </div>
           </fieldset>
