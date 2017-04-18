@@ -47,6 +47,7 @@ class LoginPageContainer extends Component {
   }
 
   render() {
+    console.log('^^LoginContainer', this.props.errors);
     return (
       <LoginPage
         onSubmit={this.processForm}

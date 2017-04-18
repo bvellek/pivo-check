@@ -30,7 +30,7 @@ export const registerUser = user => dispatch => {
       Accept: 'application/json',
       'Content-type': 'application/json',
     },
-    body: JSON.stringify({ userData }),
+    body: JSON.stringify(userData),
   }).then((response) => {
     if (response.status === 200) {
       // success
@@ -75,7 +75,7 @@ export const loginUser = user => dispatch => {
       Accept: 'application/json',
       'Content-type': 'application/json',
     },
-    body: JSON.stringify({ userData }),
+    body: JSON.stringify(userData),
   }).then((response) => {
     if (response.status === 200) {
       // success
@@ -89,6 +89,7 @@ export const loginUser = user => dispatch => {
         .then((errorResponse) => {
           const errors = errorResponse.errors ? errorResponse.errors : {};
           errors.summary = errorResponse.message;
+          console.log('!!LoginAction', errorResponse);
           dispatch(loginUserError(errors));
         });
   }).catch((error) => (

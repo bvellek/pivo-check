@@ -20,7 +20,7 @@ const LoginPage = ({
       <main role="main">
         <form className="login-form" method="post" onSubmit={onSubmit}>
           <fieldset>
-          {registrationSuccessMessage && <p className="success-message">{registrationSuccessMessage.message}</p>}
+          {registrationSuccessMessage.message ? <p className="success-message">{registrationSuccessMessage.message}</p> : <div /> }
             <legend><h2>Login</h2></legend>
             <label htmlFor="user-email">Email</label>
             <input
@@ -31,6 +31,9 @@ const LoginPage = ({
               onChange={onChange}
               required
             />
+            {errors.email ? <p className="error-message">
+              <span>{errors.email}</span>
+            </p> : <div />}
             <label htmlFor="user-password">Password</label>
             <input
               id="user-password"
@@ -40,17 +43,15 @@ const LoginPage = ({
               onChange={onChange}
               required
             />
+            {errors.password ? <p className="error-message">
+              <span>{errors.password}</span>
+            </p> : <div />}
             <button className="login-btn" type="submit" name="button">Log In 🍻</button>
             <div className="login-form-links">
               <Link to='/register'>Register</Link> {' | '}
               <a href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password.">Forgot Password?</a>
             </div>
           </fieldset>
-          {errors && <p className="error-message">
-          <span>{errors.summary}</span>
-          <span>{errors.email}</span>
-          <span>{errors.password}</span>
-        </p>}
         </form>
         <h3>
           <label htmlFor='demo-btn'>Try it out!</label>

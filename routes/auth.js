@@ -9,32 +9,31 @@ const router = new express.Router();
 // returns the result of validation. object contains boolean validation, error tips and a global message for whole form
 function validateRegistrationForm(payload) {
   console.log('*Registraion', payload);
-  const response = payload.userData;
   const errors = {};
   let isFormValid = true;
   let message = '';
 
-  if (!response || typeof response.email !== 'string' || response.email.trim() === 0 || !validator.isEmail(response.email)) {
+  if (!payload || typeof payload.email !== 'string' || payload.email.trim() === 0 || !validator.isEmail(payload.email)) {
     isFormValid = false;
     errors.email = 'Please provide a valid email address.';
   }
 
-  if (!response || typeof response.password !== 'string' || response.password.trim().length === 0) {
+  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
     isFormValid = false;
     errors.password = 'Please provide a password.';
   }
 
-  if (!response || typeof response.password !== 'string' || response.password.trim() !== response.confirmPassword.trim()) {
+  if (!payload || typeof payload.password !== 'string' || payload.password.trim() !== payload.confirmPassword.trim()) {
     isFormValid = false;
     errors.password = 'Passwords do not match. Please try again.';
   }
 
-  if (!response || typeof response.firstName !== 'string' || response.firstName.trim().length === 0) {
+  if (!payload || typeof payload.firstName !== 'string' || payload.firstName.trim().length === 0) {
     isFormValid = false;
     errors.firstName = 'Please provide your first name.';
   }
 
-  if (!response || typeof response.lastName !== 'string' || response.lastName.trim().length === 0) {
+  if (!payload || typeof payload.lastName !== 'string' || payload.lastName.trim().length === 0) {
     isFormValid = false;
     errors.lastName = 'Please provide your last name.';
   }
@@ -55,17 +54,16 @@ function validateRegistrationForm(payload) {
 // returns the result of validation. object contains boolean validation, error tips and a global message for whole form
 function validateLoginForm(payload) {
   console.log('*Login', payload);
-  const response = payload.userData;
   const errors = {};
   let isFormValid = true;
   let message = '';
 
-  if (!response || typeof response.email !== 'string' || response.email.trim().length === 0) {
+  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
     isFormValid = false;
     errors.email = 'Please provide your email address.';
   }
 
-  if (!response || typeof response.password !== 'string' || response.password.trim().length === 0) {
+  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
     isFormValid = false;
     errors.password = 'Please provide your password.';
   }
@@ -129,10 +127,21 @@ router.post('/login', (req, res, next) => {
   }
   return passport.authenticate('local-login', (err, token, userData) => {
     if (err) {
-      if (err.name === 'IncorrectEmailError' || err.name === 'IncorrectPasswordError') {
+      if (err.name === 'IncorrectEmailError') {
         return res.status(400).json({
           success: false,
-          message: err.message,
+          message: 'Check the form for errors.',
+          errors: {
+            email: err.message,
+          },
+        });
+      } else if (err.name === 'IncorrectPasswordError') {
+        return res.status(400).json({
+          success: false,
+          message: 'Check the form for errors.',
+          errors: {
+            password: err.message,
+          },
         });
       }
 

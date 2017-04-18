@@ -40,6 +40,7 @@ class RegistrationPageContainer extends Component {
   }
 
   render() {
+    console.log('^^RegistrationContainer', this.props.errors);
     return (
       <RegistrationPage
         onSubmit={this.processForm}
