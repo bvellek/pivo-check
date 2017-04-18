@@ -1,0 +1,17 @@
+exports[`<AuthHeader /> it renders correctly 1`] = `
+<header
+  className="auth-header top-header"
+  role="banner">
+  <Link
+    replace={false}
+    to="/">
+    <h1>
+      <span
+        className="visually-hidden">
+        Pivo-Check
+      </span>
+      <SVGLogo />
+    </h1>
+  </Link>
+</header>
+`;

@@ -1,0 +1,6 @@
+exports[`<LandingPage /> it renders correctly 1`] = `
+<div>
+  <LandingHeader />
+  <LandingContent />
+</div>
+`;

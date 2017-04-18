@@ -1,0 +1,7 @@
+exports[`<LoginRegisterLink /> it renders correctly 1`] = `
+<Link
+  replace={false}
+  to="/login">
+  Login/Register
+</Link>
+`;

@@ -30,11 +30,18 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "babel-jest": "^19.0.0",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
+    "nock": "^9.0.13",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
+    "react-addons-test-utils": "^15.5.1",
     "react-scripts": "0.9.5",
-    "redux-logger": "^3.0.1"
+    "react-test-renderer": "^15.5.4",
+    "redux-logger": "^3.0.1",
+    "redux-mock-store": "^1.2.3"
   }
 }
