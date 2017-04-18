@@ -9,7 +9,8 @@
   },
   "proxy": "http://localhost:3001/",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "cd client && yarn install && yarn test && cd ../"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
