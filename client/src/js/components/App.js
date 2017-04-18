@@ -18,8 +18,8 @@ class App extends Component {
             <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={LoginPageContainer} />
             <Route path="/registration" component={RegistrationPageContainer} />
-            <Route path="/cities" component={CitiesPage} />
-            <Route exact path="/cities/:city" component={CityPage} />
+            <Route exact path="/cities" component={CitiesPage} />
+            <Route path="/cities/:city" component={CityPage} />
           </div>
         </ScrollToTop>
       </BrowserRouter>
