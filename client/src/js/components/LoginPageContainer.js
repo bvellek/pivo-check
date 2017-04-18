@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/index';
 import LoginPage from './LoginPage';
 
 class LoginPageContainer extends Component {
@@ -6,7 +8,6 @@ class LoginPageContainer extends Component {
     super(props);
 
     this.state = {
-      errors: {},
       user: {
         email: '',
         password: '',
@@ -26,6 +27,7 @@ class LoginPageContainer extends Component {
 
   processForm = (e) => {
     e.preventDefault();
+    this.props.dispatch(actions.loginUser(this.state.user));
     console.log(`email: ${this.state.user.email}`);
     console.log(`password: ${this.state.user.password}`);
   }
@@ -49,12 +51,20 @@ class LoginPageContainer extends Component {
       <LoginPage
         onSubmit={this.processForm}
         onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
         demoSubmit={this.demoSubmit}
+        user={this.state.user}
+        registrationSuccessMessage={this.props.registrationSuccessMessage}
+        errors={this.props.errors}
+        // loadingStatus={this.props.loadingStatus}
       />
     );
   }
 }
 
-export default LoginPageContainer;
+const mapStateToProps = (state) => ({
+  errors: state.auth.loginErrorMessage,
+  // loadingStatus: state.auth.loadingStatus,
+  registrationSuccessMessage: state.auth.registrationSuccessMessage,
+});
+
+export default connect(mapStateToProps)(LoginPageContainer);

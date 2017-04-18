@@ -8,7 +8,7 @@ const router = new express.Router();
 // payload object is the HTTP body message
 // returns the result of validation. object contains boolean validation, error tips and a global message for whole form
 function validateRegistrationForm(payload) {
-  console.log('*', payload);
+  console.log('*Registraion', payload);
   const response = payload.userData;
   const errors = {};
   let isFormValid = true;
@@ -54,16 +54,18 @@ function validateRegistrationForm(payload) {
 // payload object is the HTTP body message
 // returns the result of validation. object contains boolean validation, error tips and a global message for whole form
 function validateLoginForm(payload) {
+  console.log('*Login', payload);
+  const response = payload.userData;
   const errors = {};
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
+  if (!response || typeof response.email !== 'string' || response.email.trim().length === 0) {
     isFormValid = false;
     errors.email = 'Please provide your email address.';
   }
 
-  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
+  if (!response || typeof response.password !== 'string' || response.password.trim().length === 0) {
     isFormValid = false;
     errors.password = 'Please provide your password.';
   }
@@ -80,9 +82,7 @@ function validateLoginForm(payload) {
 }
 
 router.post('/registration', (req, res, next) => {
-  console.log('**', req.body);
   const validationResult = validateRegistrationForm(req.body);
-  console.log('***', validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -118,7 +118,7 @@ router.post('/registration', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-  console.log(req.body);
+  console.log('$login', req.body);
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
@@ -141,8 +141,8 @@ router.post('/login', (req, res, next) => {
         message: 'Could not process the form.',
       });
     }
-
-    return res.json({
+    console.log('$Login-return', userData);
+    return res.status(200).json({
       success: true,
       message: 'You have successfully logged in!',
       token,

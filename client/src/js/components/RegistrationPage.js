@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuthHeader from './AuthHeader';
-import Loader from './Loader';
 import Footer from './Footer';
 
 const RegistrationPage = ({
@@ -9,7 +8,7 @@ const RegistrationPage = ({
   onChange,
   user,
   errors,
-  loadingStatus,
+  // loadingStatus,
 }) => (
   <div>
     <AuthHeader />
@@ -64,7 +63,7 @@ const RegistrationPage = ({
               required
             />
           </fieldset>
-          {loadingStatus ? <Loader /> : <button className="register-btn" type="submit" name="button">Register 🍻</button>}
+          <button className="register-btn" type="submit" name="button">Register 🍻</button>
           {errors && <p className="error-message">
           <span>{errors.email}</span>
           <span>{errors.firstName}</span>
@@ -83,7 +82,7 @@ RegistrationPage.propTypes = {
   onChange: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  loadingStatus: PropTypes.bool.isRequired,
+  // loadingStatus: PropTypes.bool.isRequired,
 };
 
 export default RegistrationPage;

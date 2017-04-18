@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AuthHeader from './AuthHeader';
+import Loader from './Loader';
 import Footer from './Footer';
 
 const LoginPage = ({
   onSubmit,
   onChange,
-  errors,
-  user,
   demoSubmit,
+  user,
+  registrationSuccessMessage,
+  errors,
+  // loadingStatus,
 }) => (
   <div>
     <AuthHeader />
@@ -17,6 +20,7 @@ const LoginPage = ({
       <main role="main">
         <form className="login-form" method="post" onSubmit={onSubmit}>
           <fieldset>
+          {registrationSuccessMessage && <p className="success-message">{registrationSuccessMessage.message}</p>}
             <legend><h2>Login</h2></legend>
             <label htmlFor="user-email">Email</label>
             <input
@@ -68,8 +72,10 @@ LoginPage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   demoSubmit: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  registrationSuccessMessage: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  // loadingStatus: PropTypes.bool.isRequired,
 };
 
 export default LoginPage;

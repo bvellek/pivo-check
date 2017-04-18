@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RegistrationPage from './RegistrationPage';
 import * as actions from '../actions/index';
-
+import RegistrationPage from './RegistrationPage';
 
 class RegistrationPageContainer extends Component {
   constructor(props) {
@@ -47,7 +46,7 @@ class RegistrationPageContainer extends Component {
         onChange={this.changeUser}
         user={this.state.user}
         errors={this.props.errors}
-        loadingStatus={this.props.loadingStatus}
+        // loadingStatus={this.props.loadingStatus}
       />
     );
   }
@@ -55,7 +54,7 @@ class RegistrationPageContainer extends Component {
 
 const mapStateToProps = (state) => ({
   errors: state.auth.registrationErrorMessage,
-  loadingStatus: state.auth.loadingStatus,
+  // loadingStatus: state.auth.loadingStatus,
 });
 
 export default connect(mapStateToProps)(RegistrationPageContainer);

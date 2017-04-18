@@ -56,7 +56,7 @@ module.exports = new LocalStrategy({
       // create a token
       const token = jwt.sign(payload, config.jwtSecret);
       const data = {
-        firstName: user.firstName,
+        userID: payload.sub,
       };
 
       return done(null, token, data);

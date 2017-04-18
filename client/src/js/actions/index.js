@@ -51,6 +51,50 @@ export const registerUser = user => dispatch => {
   ));
 };
 
+// Login User
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const loginUserSuccess = (loginSuccessMessage) => ({
+  type: LOGIN_USER_SUCCESS,
+  loginSuccessMessage,
+});
+
+export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
+export const loginUserError = (loginErrorMessage) => ({
+  type: LOGIN_USER_ERROR,
+  loginErrorMessage,
+});
+
+// AJAX to server for Login
+export const loginUser = user => dispatch => {
+  dispatch(loadingStatusTrue());
+  const loginEndpoint = '/auth/login';
+  const userData = user;
+  return fetch(loginEndpoint, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({ userData }),
+  }).then((response) => {
+    if (response.status === 200) {
+      // success
+      console.log('the form is valid!');
+      return response.json()
+        .then((successResponse) => (
+          dispatch(loginUserSuccess(successResponse))
+        ));
+    } return response.json()
+      // failure
+        .then((errorResponse) => {
+          const errors = errorResponse.errors ? errorResponse.errors : {};
+          errors.summary = errorResponse.message;
+          dispatch(loginUserError(errors));
+        });
+  }).catch((error) => (
+    console.log(error)
+  ));
+};
 // export const fetchSunTimes = coords => dispatch => {
 //   const url = 'https://lumen-spot.herokuapp.com/location'; // server requires absolute address
 //   const coordinates = coords;
