@@ -7,8 +7,9 @@ import Footer from './Footer';
 const RegistrationPage = ({
   onSubmit,
   onChange,
-  errors,
   user,
+  errors,
+  loadingStatus,
 }) => (
   <div>
     <AuthHeader />
@@ -63,17 +64,14 @@ const RegistrationPage = ({
               required
             />
           </fieldset>
-          <Loader />
-          <button className="register-btn" type="submit" name="button">Register 🍻</button>
-        </form>
-
-        {errors && <p className="error-message">
-          <span>{errors.summary}</span>
+          {loadingStatus ? <Loader /> : <button className="register-btn" type="submit" name="button">Register 🍻</button>}
+          {errors && <p className="error-message">
+          <span>{errors.email}</span>
           <span>{errors.firstName}</span>
           <span>{errors.lastName}</span>
-          <span>{errors.email}</span>
           <span>{errors.password}</span>
-        </p>}
+          </p>}
+        </form>
       </main>
       <Footer />
     </div>
@@ -83,8 +81,9 @@ const RegistrationPage = ({
 RegistrationPage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  loadingStatus: PropTypes.bool.isRequired,
 };
 
 export default RegistrationPage;

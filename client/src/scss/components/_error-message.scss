@@ -1,0 +1,11 @@
+.error-message {
+  margin: 0 auto;
+  text-align: center;
+
+  span {
+    display: block;
+    margin: 0 auto;
+    color: $dk-brick;
+    font-size: 0.9rem;
+  }
+}

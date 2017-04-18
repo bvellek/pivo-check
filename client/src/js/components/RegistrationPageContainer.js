@@ -9,7 +9,6 @@ class RegistrationPageContainer extends Component {
     super(props);
 
     this.state = {
-      errors: {},
       user: {
         email: '',
         firstName: '',
@@ -46,11 +45,17 @@ class RegistrationPageContainer extends Component {
       <RegistrationPage
         onSubmit={this.processForm}
         onChange={this.changeUser}
-        errors={this.state.errors}
         user={this.state.user}
+        errors={this.props.errors}
+        loadingStatus={this.props.loadingStatus}
       />
     );
   }
 }
 
-export default connect()(RegistrationPageContainer);
+const mapStateToProps = (state) => ({
+  errors: state.auth.registrationErrorMessage,
+  loadingStatus: state.auth.loadingStatus,
+});
+
+export default connect(mapStateToProps)(RegistrationPageContainer);
