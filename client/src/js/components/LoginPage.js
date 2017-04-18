@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AuthHeader from './AuthHeader';
-import Loader from './Loader';
+// import Loader from './Loader';
 import Footer from './Footer';
 
 const LoginPage = ({

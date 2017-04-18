@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import '../../App.css';
 
+import ScrollToTop from './ScrollToTop';
 import LandingPage from './LandingPage';
 import LoginPageContainer from './LoginPageContainer';
 import RegistrationPageContainer from './RegistrationPageContainer';
@@ -12,24 +13,16 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/login" component={LoginPageContainer} />
-          <Route path="/registration" component={RegistrationPageContainer} />
-          <Route path="/cities/:city" component={CitiesPage} />
-          <Route exact path="/cities" component={CityPage} />
-        </div>
+        <ScrollToTop>
+          <div className="App">
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/login" component={LoginPageContainer} />
+            <Route path="/registration" component={RegistrationPageContainer} />
+            <Route path="/cities" component={CityPage} />
+            <Route path="/cities/:city" component={CitiesPage} />
+          </div>
+        </ScrollToTop>
       </BrowserRouter>
-      // <BrowserRouter>
-      //   <div className="App">
-      //     <LandingPage />
-      //     <LoginPageContainer />
-      //     <RegistrationPageContainer />
-      //     <CitiesPage />
-      //     <CityPage />
-      //   </div>
-      // </BrowserRouter>
-
     );
   }
 }
