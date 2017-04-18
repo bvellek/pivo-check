@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuthHeader from './AuthHeader';
+import Loader from './Loader';
 import Footer from './Footer';
 
 const RegistrationPage = ({
@@ -62,8 +63,10 @@ const RegistrationPage = ({
               required
             />
           </fieldset>
+          <Loader />
           <button className="register-btn" type="submit" name="button">Register 🍻</button>
         </form>
+
         {errors && <p className="error-message">
           <span>{errors.summary}</span>
           <span>{errors.firstName}</span>
