@@ -12,7 +12,7 @@ import CityPage from './CityPage';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename='/'>
         <ScrollToTop>
           <div className="App">
             <Route exact path="/" component={LandingPage} />
