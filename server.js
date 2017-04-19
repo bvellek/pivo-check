@@ -10,7 +10,7 @@ const { PORT, DATABASE_URL } = require('./config/config');
 
 mongoose.Promise = global.Promise;
 
-// Compression for pagespeed
+// compression for pagespeed
 // app.use(compression({ level: 9, threshold: 0 }));
 
 // serve static files including the app bundle
@@ -40,6 +40,9 @@ const apiRoutes = require('./routes/api');
 app.use('/api', authCheckMiddleware);
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
+
+// all routes that are not the auth or api will be served the react app
+app.use('/*', express.static('./client/build'));
 
 let server;
 // closeServer needs access to a server object, but that only
