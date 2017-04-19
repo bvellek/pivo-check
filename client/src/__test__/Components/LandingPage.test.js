@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import LandingHeader from '../js/components/Landing/LandingHeader';
+import LandingPage from '../../js/components/LandingPage';
 
-describe('<LandingHeader />', () => {
+describe('<LandingPage />', () => {
   it('it renders correctly', () => {
     const component = shallow(
-      <LandingHeader />
+      <LandingPage />
     );
     expect(shallowToJson(component)).toMatchSnapshot();
   });
