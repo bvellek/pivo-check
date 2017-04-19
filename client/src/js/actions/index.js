@@ -79,7 +79,6 @@ export const loginUser = user => dispatch => {
   }).then((response) => {
     if (response.status === 200) {
       // success
-      console.log('the form is valid!');
       return response.json()
         .then((successResponse) => (
           dispatch(loginUserSuccess(successResponse))
@@ -89,7 +88,6 @@ export const loginUser = user => dispatch => {
         .then((errorResponse) => {
           const errors = errorResponse.errors ? errorResponse.errors : {};
           errors.summary = errorResponse.message;
-          console.log('!!LoginAction', errorResponse);
           dispatch(loginUserError(errors));
         });
   }).catch((error) => (

@@ -25,12 +25,12 @@ export const authReducer = (state = initialState, action) => {
   } else if (action.type === actions.LOGIN_USER_SUCCESS) {
     const successMessage = action.loginSuccessMessage;
     console.log('% Reducer', successMessage);
-    const userID = successMessage.user;
+    const userID = successMessage.user.userID;
     const modState = Object.assign({}, state, {
       loadingStatus: false,
       registrationSuccessMessage: {},
       loginErrorMessage: {},
-      userID,
+      currentUser: userID,
     });
     return modState;
   } else if (action.type === actions.LOGIN_USER_ERROR) {

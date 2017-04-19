@@ -4,4 +4,5 @@ export default {
   registrationErrorMessage: {},
   loginSuccessMessage: {},
   loginErrorMessage: {},
+  currentUser: null,
 };
