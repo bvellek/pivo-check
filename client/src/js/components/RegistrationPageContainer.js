@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
 import * as actions from '../actions/index';
 import RegistrationPage from './RegistrationPage';
-import { Route, Redirect } from 'react-router-dom';
 
 class RegistrationPageContainer extends Component {
   constructor(props) {
@@ -45,7 +45,6 @@ class RegistrationPageContainer extends Component {
   }
 
   render() {
-    console.log('^^RegistrationContainer', this.props.errors);
     return (
       <Route path="/registration" render={() => ( // eslint-disable-line
           !this.props.registerSucces.success
