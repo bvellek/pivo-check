@@ -42,7 +42,7 @@ class CitiesPage extends Component {
                     <div className="city-info">
                       <p className="city-list-brew-count">7/20</p>
                       <form className="city-list-delete-form" action="index.html" method="post">
-                        <button type="submit" name="button">❌&nbsp;<span className="visually-hidden">Delete Seattle</span></button>
+                        <button type="submit" name="button">❌<span className="visually-hidden">Delete Seattle</span></button>
                       </form>
                     </div>
                   </div>
@@ -63,7 +63,7 @@ class CitiesPage extends Component {
                     <div className="city-info">
                       <p className="city-list-brew-count">2/68</p>
                       <form className="city-list-delete-form" action="index.html" method="post">
-                        <button type="button" name="button">❌&nbsp;<span className="visually-hidden">Delete Portland</span></button>
+                        <button type="button" name="button">❌<span className="visually-hidden">Delete Portland</span></button>
                       </form>
                     </div>
                   </div>
@@ -74,7 +74,7 @@ class CitiesPage extends Component {
                     <div className="city-info">
                       <p className="city-list-brew-count">5/19</p>
                       <form className="city-list-delete-form" action="index.html" method="post">
-                        <button type="button" name="button">❌&nbsp;<span className="visually-hidden">Delete Austin</span></button>
+                        <button type="button" name="button">❌<span className="visually-hidden">Delete Austin</span></button>
                       </form>
                     </div>
                   </div>
