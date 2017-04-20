@@ -89,6 +89,7 @@ export const loginUser = user => dispatch => {
       return response.json()
         .then((successResponse) => {
           Auth.authenticateUser(successResponse.token);
+          Auth.storeUserID(successResponse.user.userID);
           dispatch(loginUserSuccess(successResponse));
         });
     } return response.json()
