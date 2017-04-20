@@ -8,7 +8,6 @@ const RegistrationPage = ({
   onChange,
   user,
   errors,
-  // loadingStatus,
 }) => (
   <div>
     <AuthHeader />

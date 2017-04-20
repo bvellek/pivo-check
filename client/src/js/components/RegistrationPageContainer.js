@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import RegistrationPage from './RegistrationPage';
+import { Route, Redirect } from 'react-router-dom';
 
 class RegistrationPageContainer extends Component {
   constructor(props) {
@@ -46,12 +47,16 @@ class RegistrationPageContainer extends Component {
   render() {
     console.log('^^RegistrationContainer', this.props.errors);
     return (
-      <RegistrationPage
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        user={this.state.user}
-        errors={this.props.errors}
-        // loadingStatus={this.props.loadingStatus}
+      <Route path="/registration" render={() => ( // eslint-disable-line
+          !this.props.registerSucces.success
+          ? (<RegistrationPage
+            onSubmit={this.processForm}
+            onChange={this.changeUser}
+            user={this.state.user}
+            errors={this.props.errors}
+          />)
+          : <Redirect to="/login" />
+        )}
       />
     );
   }
@@ -59,7 +64,7 @@ class RegistrationPageContainer extends Component {
 
 const mapStateToProps = (state) => ({
   errors: state.auth.registrationErrorMessage,
-  // loadingStatus: state.auth.loadingStatus,
+  registerSucces: state.auth.registrationSuccessMessage,
 });
 
 export default connect(mapStateToProps)(RegistrationPageContainer);
