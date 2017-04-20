@@ -77,8 +77,8 @@ class CityPage extends Component {
                       </div>
 
                     <div className="brewery-phone">
-                      <span>Phone: </span>
-                      <a href="tel:(206) 451.4646" className="tel">(206) 451.4646</a>
+                      <span id="phone-KX35c">Phone: </span>
+                      <a href="tel:(206) 451.4646" className="tel" aria-labelledby="phone-KX35c">(206) 451.4646</a>
                     </div>
                     <details>
                       <summary>Details <span className="visually-hidden">for Bainbridge Island Brewing Company</span></summary>
