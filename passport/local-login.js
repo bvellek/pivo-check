@@ -13,7 +13,7 @@ module.exports = new LocalStrategy({
   passReqToCallback: true,
 }, (req, email, password, done) => {
   const userData = {
-    email: email.trim(),
+    email: email.trim().toLowerCase(),
     password: password.trim(),
   };
 
