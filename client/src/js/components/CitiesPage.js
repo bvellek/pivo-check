@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/index';
 import InAppHeader from './InAppHeader';
 import CityAddForm from './CityAddForm';
 import Footer from './Footer';
@@ -7,8 +9,11 @@ class CitiesPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
+  }
+
+  componentDidMount() {
+    this.props.dispatch(actions.cleanAuth());
   }
 
   render() {
@@ -84,4 +89,5 @@ class CitiesPage extends Component {
   }
 }
 
-export default CitiesPage;
+export default connect()(CitiesPage);
+

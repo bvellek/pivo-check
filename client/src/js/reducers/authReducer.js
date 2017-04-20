@@ -30,6 +30,7 @@ export const authReducer = (state = initialState, action) => {
       loadingStatus: false,
       registrationSuccessMessage: {},
       loginErrorMessage: {},
+      loginRedirect: true,
       currentUser: userID,
     });
     return modState;
@@ -40,6 +41,16 @@ export const authReducer = (state = initialState, action) => {
       loadingStatus: false,
       registrationSuccessMessage: {},
       loginErrorMessage: errorMessage,
+    });
+    return modState;
+  } else if (action.type === actions.CLEAN_AUTH) {
+    const modState = Object.assign({}, state, {
+      loadingStatus: false,
+      registrationSuccessMessage: {},
+      registrationErrorMessage: {},
+      loginSuccessMessage: {},
+      loginErrorMessage: {},
+      loginRedirect: false,
     });
     return modState;
   }

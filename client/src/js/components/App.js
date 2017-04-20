@@ -54,15 +54,3 @@ class App extends Component {
 }
 
 export default App;
-
-// <Route exact path="/" component={LandingPage} />
-// <Route path="/login" component={LoginPageContainer} />
-// <Route path="/registration" component={RegistrationPageContainer} />
-// <Route exact path="/cities" component={CitiesPage} />
-// <Route path="/cities/:city" component={CityPage} />
-
-// <Route exact path="logout" render={() => (
-//                 Auth.deauthenticatUser();
-//                 <Redirect to="/login" />
-//               )}
-//             />

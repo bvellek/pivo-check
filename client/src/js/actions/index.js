@@ -1,9 +1,16 @@
 import 'isomorphic-fetch';
+import Auth from '../components/modules/Auth';
 
 // Loading Element
 export const LOADING_STATUS_TRUE = 'LOADING_STATUS_TRUE';
 export const loadingStatusTrue = () => ({
   type: LOADING_STATUS_TRUE,
+});
+
+// Clean Auth - set all auth related state to initial
+export const CLEAN_AUTH = 'CLEAN_AUTH';
+export const cleanAuth = () => ({
+  type: CLEAN_AUTH,
 });
 
 // Register User
@@ -80,9 +87,10 @@ export const loginUser = user => dispatch => {
     if (response.status === 200) {
       // success
       return response.json()
-        .then((successResponse) => (
-          dispatch(loginUserSuccess(successResponse))
-        ));
+        .then((successResponse) => {
+          Auth.authenticateUser(successResponse.token);
+          dispatch(loginUserSuccess(successResponse));
+        });
     } return response.json()
       // failure
         .then((errorResponse) => {
