@@ -60,3 +60,9 @@ export default App;
 // <Route path="/registration" component={RegistrationPageContainer} />
 // <Route exact path="/cities" component={CitiesPage} />
 // <Route path="/cities/:city" component={CityPage} />
+
+// <Route exact path="logout" render={() => (
+//                 Auth.deauthenticatUser();
+//                 <Redirect to="/login" />
+//               )}
+//             />

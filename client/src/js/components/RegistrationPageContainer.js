@@ -18,6 +18,10 @@ class RegistrationPageContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    document.querySelector('head > title').innerHTML = 'Registration | PIVO-CHECK';
+  }
+
   changeUser = (e) => {
     const field = e.target.name;
     const user = this.state.user;

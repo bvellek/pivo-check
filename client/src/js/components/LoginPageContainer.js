@@ -15,6 +15,10 @@ class LoginPageContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    document.querySelector('head > title').innerHTML = 'Login | PIVO-CHECK';
+  }
+
   changeUser = (e) => {
     const field = e.target.name;
     const user = this.state.user;
