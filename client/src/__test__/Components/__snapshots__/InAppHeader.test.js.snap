@@ -17,11 +17,7 @@ exports[`<InAppHeader /> it renders correctly 1`] = `
       to="/cities">
       My Cities
     </Link>
-    <Link
-      replace={false}
-      to="#">
-      Logout
-    </Link>
+    <withRouter() />
   </nav>
 </header>
 `;
