@@ -31,7 +31,7 @@ const LoginPage = ({
               onChange={onChange}
               required
             />
-            {errors.email ? <p className="error-message">
+            {errors.email ? <p className="error-message" aria-live="polite">
               <span>{errors.email}</span>
             </p> : <div />}
             <label htmlFor="user-password">Password</label>
@@ -43,7 +43,7 @@ const LoginPage = ({
               onChange={onChange}
               required
             />
-            {errors.password ? <p className="error-message">
+            {errors.password ? <p className="error-message" aria-live="polite">
               <span>{errors.password}</span>
             </p> : <div />}
             <button className="login-btn" type="submit" name="button">Log In 🍻</button>
