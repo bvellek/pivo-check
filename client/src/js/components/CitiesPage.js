@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import InAppHeader from './InAppHeader';
 import CityAddForm from './CityAddForm';
+import SVGDelete from './SVGDelete';
 import Footer from './Footer';
 
 class CitiesPage extends Component {
@@ -42,7 +43,7 @@ class CitiesPage extends Component {
                     <div className="city-info">
                       <p className="city-list-brew-count">7/20</p>
                       <form className="city-list-delete-form" action="index.html" method="post">
-                        <button type="submit" name="button">❌<span className="visually-hidden">Delete Seattle</span></button>
+                        <button type="submit" name="button"><SVGDelete /><span className="visually-hidden">Delete Seattle</span></button>
                       </form>
                     </div>
                   </div>
@@ -52,7 +53,7 @@ class CitiesPage extends Component {
                     <p>Deleting a location will permanently remove it from your checklist and you will lose your visited brewery record.</p>
                     <form className="delete-city-form" action="index.html" method="post">
                       <button className="keep-city-btn" type="button" name="button">No, Keep Seattle</button> {' '}
-                      <button className="delete-city-btn" type="button" name="button">❌&nbsp;&nbsp;Yes, Delete Seattle</button>
+                      <button className="delete-city-btn" type="button" name="button"><SVGDelete />&nbsp;Yes, Delete Seattle</button>
                     </form>
                   </div>
                 </li>
@@ -63,7 +64,7 @@ class CitiesPage extends Component {
                     <div className="city-info">
                       <p className="city-list-brew-count">2/68</p>
                       <form className="city-list-delete-form" action="index.html" method="post">
-                        <button type="button" name="button">❌<span className="visually-hidden">Delete Portland</span></button>
+                        <button type="button" name="button"><SVGDelete /><span className="visually-hidden">Delete Portland</span></button>
                       </form>
                     </div>
                   </div>
@@ -74,7 +75,7 @@ class CitiesPage extends Component {
                     <div className="city-info">
                       <p className="city-list-brew-count">5/19</p>
                       <form className="city-list-delete-form" action="index.html" method="post">
-                        <button type="button" name="button">❌<span className="visually-hidden">Delete Austin</span></button>
+                        <button type="button" name="button"><SVGDelete /><span className="visually-hidden">Delete Austin</span></button>
                       </form>
                     </div>
                   </div>
