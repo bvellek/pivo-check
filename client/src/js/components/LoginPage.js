@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AuthHeader from './AuthHeader';
-// import Loader from './Loader';
+import Loader from './Loader';
 import Footer from './Footer';
 
 const LoginPage = ({
@@ -12,7 +12,7 @@ const LoginPage = ({
   user,
   registrationSuccessMessage,
   errors,
-  // loadingStatus,
+  loadingStatus,
 }) => (
   <div>
     <AuthHeader />
@@ -47,6 +47,7 @@ const LoginPage = ({
               <span>{errors.password}</span>
             </p> : <div />}
             <button className="login-btn" type="submit" name="button">Log In 🍻</button>
+            {loadingStatus ? <Loader /> : <div />}
             <div className="login-form-links">
               <Link to='/registration'>Register</Link> {' | '}
               <a href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password.">Forgot Password?</a>
@@ -76,7 +77,7 @@ LoginPage.propTypes = {
   user: PropTypes.object.isRequired,
   registrationSuccessMessage: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  // loadingStatus: PropTypes.bool.isRequired,
+  loadingStatus: PropTypes.bool.isRequired,
 };
 
 export default LoginPage;

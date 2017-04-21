@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
 import * as actions from '../actions/index';
-import LoginPage from './LoginPage';
+import CitiesPage from './CitiesPage';
 
-class LoginPageContainer extends Component {
+class CitiesPageContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: {
-        email: '',
-        password: '',
-      },
     };
   }
 
   componentDidMount() {
-    document.querySelector('head > title').innerHTML = 'Login | PIVO-CHECK';
+    document.querySelector('head > title').innerHTML = 'My Cities | PIVO-CHECK';
   }
 
   changeUser = (e) => {
@@ -62,7 +57,6 @@ class LoginPageContainer extends Component {
             user={this.state.user}
             registrationSuccessMessage={this.props.registrationSuccessMessage}
             errors={this.props.errors}
-            loadingStatus={this.props.loadingStatus}
           />)
           : <Redirect to="/cities" />
         )}
@@ -75,7 +69,6 @@ const mapStateToProps = (state) => ({
   errors: state.auth.loginErrorMessage,
   registrationSuccessMessage: state.auth.registrationSuccessMessage,
   loginRedirect: state.auth.loginRedirect,
-  loadingStatus: state.auth.loadingStatus,
 });
 
 export default connect(mapStateToProps)(LoginPageContainer);
