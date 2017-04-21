@@ -63,7 +63,7 @@ const RegistrationPage = ({
             />
           </fieldset>
           <button className="register-btn" type="submit" name="button">Register 🍻</button>
-          {errors && <p className="error-message" aria-live="polite">
+          {errors && <p className="error-message" aria-live="assertive" >
           <span>{errors.email}</span>
           <span>{errors.firstName}</span>
           <span>{errors.lastName}</span>
