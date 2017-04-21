@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const User = require('../models/user');
+const City = require('../models/city');
 const bodyParser = require('body-parser');
 const Checkoff = require('../models/checkoff');
-const User = require('../models/user');
+
 require('isomorphic-fetch');
 
 mongoose.Promise = global.Promise;
@@ -15,17 +17,16 @@ router.get('/dashboard', (req, res) => {
   });
 });
 
-// Cities
+// Get User's Cities Array
 router.get('/cities/:userID', (req, res) => {
-  User
-    .findById(req.params.userID, (err, user) => {
-      const userCities = user.cityList;
-      const numCities = user.cityList.length;
-      const cityData = {
-        numCities,
-        cityArr: userCities,
-      };
-      res.status(200).json(cityData);
+  City
+    .find({ userID: req.params.userID })
+    .then(cities => res.status(200).json(cities))
+    .catch(err => {
+      res.status(500).json({
+        error: err,
+        message: 'Could not get cities.',
+      });
     });
 });
 

@@ -104,8 +104,20 @@ export const loginUser = user => dispatch => {
   ));
 };
 
-// AJAX to server to get all cities
+// Get Cities
+export const GET_CITIES_SUCCESS = 'GET_CITIES_SUCCESS';
+export const getCitiesSuccess = (citiesList) => ({
+  type: GET_CITIES_SUCCESS,
+  citiesList,
+});
 
+export const GET_CITIES_ERROR = 'GET_CITIES_ERROR';
+export const getCitiesError = (citiesError) => ({
+  type: GET_CITIES_ERROR,
+  citiesError,
+});
+
+// AJAX to server to get all cities
 export const getCities = () => dispatch => {
   dispatch(loadingStatusTrue());
   const userID = Auth.getUserID();
@@ -118,25 +130,17 @@ export const getCities = () => dispatch => {
       Authorization: `bearer ${Auth.getToken()}`,
     },
   }).then((response) => {
-    return response.json()
-    .then((successResponse) => {
-      console.log(successResponse);
-    });
-    // if (response.status === 200) {
-    //   // success
-    //   return response.json()
-    //     .then((successResponse) => {
-    //       Auth.authenticateUser(successResponse.token);
-    //       Auth.storeUserID(successResponse.user.userID);
-    //       dispatch(loginUserSuccess(successResponse));
-    //     });
-    // } return response.json()
-    //   // failure
-    //     .then((errorResponse) => {
-    //       const errors = errorResponse.errors ? errorResponse.errors : {};
-    //       errors.summary = errorResponse.message;
-    //       dispatch(loginUserError(errors));
-    //     });
+    if (response.status === 200) {
+      return response.json()
+        .then((successResponse) => {
+          console.log(successResponse);
+          dispatch(getCitiesSuccess(successResponse));
+        });
+    } return response.json()
+      .then((errorResponse) => {
+        console.log(errorResponse);
+        dispatch(getCitiesError(errorResponse));
+      });
   }).catch((error) => (
     console.log(error)
   ));
