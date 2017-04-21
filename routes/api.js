@@ -15,6 +15,20 @@ router.get('/dashboard', (req, res) => {
   });
 });
 
+// Cities
+router.get('/cities/:userID', (req, res) => {
+  User
+    .findById(req.params.userID, (err, user) => {
+      const userCities = user.cityList;
+      const numCities = user.cityList.length;
+      const cityData = {
+        numCities,
+        cityArr: userCities,
+      };
+      res.status(200).json(cityData);
+    });
+});
+
 // BreweryDB API proxy
 router.post('/city', (req, res) => {
   const coords = req.body.coords;

@@ -103,3 +103,41 @@ export const loginUser = user => dispatch => {
     console.log(error)
   ));
 };
+
+// AJAX to server to get all cities
+
+export const getCities = () => dispatch => {
+  dispatch(loadingStatusTrue());
+  const userID = Auth.getUserID();
+  const citiesEndpoint = `/api/cities/${userID}`;
+  return fetch(citiesEndpoint, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+  }).then((response) => {
+    return response.json()
+    .then((successResponse) => {
+      console.log(successResponse);
+    });
+    // if (response.status === 200) {
+    //   // success
+    //   return response.json()
+    //     .then((successResponse) => {
+    //       Auth.authenticateUser(successResponse.token);
+    //       Auth.storeUserID(successResponse.user.userID);
+    //       dispatch(loginUserSuccess(successResponse));
+    //     });
+    // } return response.json()
+    //   // failure
+    //     .then((errorResponse) => {
+    //       const errors = errorResponse.errors ? errorResponse.errors : {};
+    //       errors.summary = errorResponse.message;
+    //       dispatch(loginUserError(errors));
+    //     });
+  }).catch((error) => (
+    console.log(error)
+  ));
+};

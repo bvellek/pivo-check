@@ -15,6 +15,7 @@ class CitiesPage extends Component {
 
   componentDidMount() {
     this.props.dispatch(actions.cleanAuth());
+    this.props.dispatch(actions.getCities());
   }
 
   render() {
