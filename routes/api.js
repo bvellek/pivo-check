@@ -68,10 +68,12 @@ router.post('/cities', (req, res) => {
     const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
     return openBreweries;
   })
-  .then((results) => (
-    results.length
-  ))
-  .then((brewCount) => (
+  .then((results) => {
+    const breweries = results;
+    return breweries.length;
+  })
+  .then((brewCount) => {
+    console.log(brewCount);
     City
       .create({
         userID: user,
@@ -83,8 +85,8 @@ router.post('/cities', (req, res) => {
         brewTotal: brewCount,
       })
       .exec()
-  ))
-  .then(res.end())
+      .then(res.status(201).json(`Successfully added ${cityString}`));
+  })
   .catch((err) => {
     if (err.name === 'brewError') {
       res.status(202).json(err.message);
@@ -94,8 +96,8 @@ router.post('/cities', (req, res) => {
   });
 });
 
-// Delete a user city
-router.delete('/cities/:cityID', (req, res) => {
+// Delete a user city - removes city and all related checkoff documents
+const deleteCity = (req, res) => {
   const cityID = req.params.cityID;
   return new Promise((resolve, reject) => {
     Checkoff
@@ -117,10 +119,12 @@ router.delete('/cities/:cityID', (req, res) => {
   }).then(() => {
     res.status(200).json({ message: `${cityID} removed.` });
   }).catch(err => (res.status(500).json(err)));
-});
+};
+
+router.delete('/cities/:cityID', deleteCity);
 
 // BreweryDB API proxy
-router.post('/city', (req, res) => {
+const getBreweryData = (req, res) => {
   const coords = req.body.coords;
   const lat = coords.lat;
   const lng = coords.lng;
@@ -157,7 +161,9 @@ router.post('/city', (req, res) => {
       res.status(500).json(err.message);
     }
   });
-});
+};
+
+router.post('/city', getBreweryData);
 
 
 // Functions
@@ -175,35 +181,5 @@ function getCompletedByCityID(cityID) {
       });
   });
 }
-
-// function getBreweryData(lat, lng) {
-//   const api = `https://api.brewerydb.com/v2/search/geo/point?lat=${lat}8&lng=${lng}&key=c97314af1e304cd0ad2f0d5e2cff7c18`;
-//   fetch(api).then((response) => (
-//     response.json()
-//   ))
-//   .then((rawResults) => {
-//     if (rawResults.totalResults >= 1) {
-//       const brewArr = rawResults.data;
-//       const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
-//       return publicBreweries;
-//     }
-//     function BrewError(message) {
-//       this.name = 'brewError';
-//       this.message = message || 'Brew Error';
-//       this.stack = (new Error()).stack;
-//     }
-//     BrewError.prototype = Object.create(Error.prototype);
-//     BrewError.prototype.constructor = BrewError;
-//     throw new BrewError('There are no breweries here.');
-//   })
-//   .then((publicBreweries) => {
-//     const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
-//     return openBreweries;
-//   })
-//   .catch((err) => ({
-//     status: 'fail',
-//     message: err.message,
-//   }));
-// }
 
 module.exports = router;
