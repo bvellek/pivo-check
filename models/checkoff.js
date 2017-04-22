@@ -9,6 +9,10 @@ const checkoffSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cityID: {
+    type: String,
+    required: true,
+  },
   rating: {
     type: Number,
   },

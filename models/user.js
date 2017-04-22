@@ -27,34 +27,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  google: {
-    id: String,
-    token: String,
-  },
-  cityList: [
-    {
-      cityName: {
-        type: String,
-        lowercase: true,
-        required: true,
-        trim: true,
-      },
-      cityCoords: {
-        lat: {
-          type: Number,
-          required: true,
-          trim: true,
-        },
-        lng: {
-          type: Number,
-          required: true,
-          trim: true,
-        },
-      },
-      brewTotal: Number,
-      brewCompleted: Number,
-    },
-  ],
 });
 
 // Compare passed password with value in database
