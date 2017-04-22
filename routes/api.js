@@ -38,7 +38,6 @@ const deleteCity = (req, res) => {
 
 router.delete('/cities/:cityID', deleteCity);
 
-
 // Functions
 const getCities = (req, res) => {
   City
@@ -47,7 +46,16 @@ const getCities = (req, res) => {
       const cityPromises = cities.map((city) => (
         getCompletedByCityID(city.id)
           .then((completedCount) => {
-            const cityWithCount = Object.assign({ completedCount }, { city });
+            const cityWithCount = Object.assign({}, { completedCount }, {
+              _id: city._id,
+              userID: city.userID,
+              cityName: city.cityName,
+              brewTotal: city.brewTotal,
+              cityCoords: {
+                lat: city.cityCoords.lat,
+                lng: city.cityCoords.lng,
+              },
+            });
             return cityWithCount;
           })
       ));
@@ -103,7 +111,6 @@ const getBreweries = (lat, lng) => {
     return openBreweries;
   });
 };
-
 
 // Get User's Cities with completed count
 router.get('/cities/:userID', getCities);
