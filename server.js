@@ -72,7 +72,7 @@ function runServer() {
 // use it in our integration tests later.
 function closeServer() {
   return mongoose.disconnect().then(() => new Promise((resolve, reject) => {
-    console.log('Closing server');
+    console.log('Closing server'); // eslint-disable-line
     server.close(err => {
       if (err) {
         return reject(err);
