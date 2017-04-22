@@ -19,9 +19,36 @@ router.get('/dashboard', (req, res) => {
 
 // Get User's Cities Array
 router.get('/cities/:userID', (req, res) => {
+  console.log(req.params.userID);
+  // Checkoff
+  //   .create({
+  //     userID: req.params.userID,
+  //     breweryID: 'qlT9u4',
+  //     cityID: '58fab22cd5edf3240233d275',
+  //     completionStatus: false,
+  //     rating: 1,
+  //   });
   City
-    .find({ userID: req.params.userID })
-    .then(cities => res.status(200).json(cities))
+    .find({
+      userID: req.params.userID,
+    })
+    .exec((err, cities) => {
+      console.log('##');
+      const cityPromises = cities.map((city) => {
+        console.log('###', city);
+        return getCompletedByCityID(city.id)
+          .then((completedCount) => {
+            console.log('####', completedCount);
+            const cityWithCount = Object.assign({ completedCount }, { city });
+            console.log(cityWithCount);
+            return cityWithCount;
+          });
+      });
+      Promise.all(cityPromises).then((citiesWithCount) => {
+        console.log(citiesWithCount);
+        res.status(200).json(citiesWithCount);
+      });
+    })
     .catch(err => {
       res.status(500).json({
         error: err,
@@ -70,5 +97,24 @@ router.post('/city', (req, res) => {
     }
   });
 });
+
+
+// Functions
+function getCompletedByCityID(cityID) {
+  return new Promise((res, rej) => {
+    Checkoff
+      .find({ cityID, completionStatus: true })
+      .exec((err, results) => {
+        console.log('%%%');
+        if (err) {
+          rej(err);
+        } else {
+          const count = results.length;
+          console.log('$$$', count);
+          res(count);
+        }
+      });
+  });
+}
 
 module.exports = router;

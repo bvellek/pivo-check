@@ -22,7 +22,6 @@ const citySchema = new mongoose.Schema({
     required: true,
   },
   brewTotal: Number,
-  brewCompleted: Number,
 });
 
 const City = mongoose.model('City', citySchema);
