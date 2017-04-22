@@ -8,6 +8,9 @@
     "url": "git+https://github.com/bvellek/pivo-check.git"
   },
   "proxy": "http://localhost:3001/",
+  "engines": {
+    "node": "^7.6.0"
+  },
   "scripts": {
     "start": "node server.js",
     "test": "cd client && yarn install && yarn test && cd ../"
