@@ -24,13 +24,13 @@ router.get('/cities/:userID', (req, res) => {
       userID: req.params.userID,
     })
     .exec((err, cities) => {
-      const cityPromises = cities.map((city) => {
-        return getCompletedByCityID(city.id)
+      const cityPromises = cities.map((city) => (
+        getCompletedByCityID(city.id)
           .then((completedCount) => {
             const cityWithCount = Object.assign({ completedCount }, { city });
             return cityWithCount;
-          });
-      });
+          })
+      ));
       Promise.all(cityPromises).then((citiesWithCount) => {
         res.status(200).json(citiesWithCount);
       });
