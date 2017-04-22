@@ -92,23 +92,27 @@ const getBreweries = (lat, lng) => {
     response.json()
   ))
   .then((rawResults) => {
-    if (rawResults.totalResults >= 1) {
+    if (rawResults.totalResults) {
       const brewArr = rawResults.data;
       const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
       return publicBreweries;
     }
-    function BrewError(message) {
-      this.name = 'brewError';
-      this.message = message || 'Brew Error';
-      this.stack = (new Error()).stack;
-    }
-    BrewError.prototype = Object.create(Error.prototype);
-    BrewError.prototype.constructor = BrewError;
-    throw new BrewError('There are no breweries here.');
+    return [];
+    // function BrewError(message) {
+    //   this.name = 'brewError';
+    //   this.message = message || 'Brew Error';
+    //   this.stack = (new Error()).stack;
+    // }
+    // BrewError.prototype = Object.create(Error.prototype);
+    // BrewError.prototype.constructor = BrewError;
+    // throw new BrewError('There are no breweries here.');
   })
   .then((publicBreweries) => {
-    const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
-    return openBreweries;
+    if (publicBreweries >= 1) {
+      const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
+      return openBreweries;
+    }
+    return publicBreweries;
   });
 };
 
@@ -142,11 +146,11 @@ router.post('/cities', async (req, res) => {
       .then(res.status(201).json(`Successfully added ${cityString}`));
   })
   .catch((err) => {
-    if (err.name === 'brewError') {
-      res.status(202).json(err.message);
-    } else {
-      res.status(500).json(err.message);
-    }
+    // if (err.name === 'brewError') {
+    //   res.status(202).json(err.message);
+    // } else {
+    res.status(500).json(err.message);
+    // }
   });
 });
 
@@ -161,11 +165,11 @@ router.post('/city', async (req, res) => {
     res.status(200).json(results);
   })
   .catch((err) => {
-    if (err.name === 'brewError') {
-      res.status(202).json(err.message);
-    } else {
-      res.status(500).json(err.message);
-    }
+    // if (err.name === 'brewError') {
+    //   res.status(202).json(err.message);
+    // } else {
+    res.status(500).json(err.message);
+    // }
   });
 });
 
