@@ -70,6 +70,7 @@ class CitiesPageContainer extends Component {
         myCities={citiesDisplay}
         citiesErrorStatus={this.props.citiesErrorStatus}
         addCityErrorStatus={this.props.addCityErrorStatus}
+        deleteCityErrorStatus={this.props.deleteCityErrorStatus}
       />
     );
   }
@@ -80,21 +81,7 @@ const mapStateToProps = (state) => ({
   myCities: state.cities.myCities,
   citiesErrorStatus: state.cities.citiesErrorStatus,
   addCityErrorStatus: state.cities.addCityErrorStatus,
+  deleteCityErrorStatus: state.cities.deleteCityErrorStatus,
 });
 
 export default connect(mapStateToProps)(CitiesPageContainer);
-
-
-// <Route exact path="/login" render={() => ( // eslint-disable-line
-//           !this.props.loginRedirect
-//           ? (<LoginPage
-//             onSubmit={this.processForm}
-//             onChange={this.changeUser}
-//             demoSubmit={this.demoSubmit}
-//             user={this.state.user}
-//             registrationSuccessMessage={this.props.registrationSuccessMessage}
-//             errors={this.props.errors}
-//           />)
-//           : <Redirect to="/cities" />
-//         )}
-//       />

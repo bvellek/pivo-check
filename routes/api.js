@@ -30,9 +30,10 @@ const deleteCity = (req, res) => {
     City
       .findById(cityToDelete)
       .remove()
-      .exec();
-  }).then(() => {
-    res.status(200).json({ message: `${cityToDelete} removed.` });
+      .exec()
+      .then(() => {
+        res.status(200).json({ message: `${cityToDelete} removed.` });
+      });
   }).catch(err => (res.status(500).json(err)));
 };
 

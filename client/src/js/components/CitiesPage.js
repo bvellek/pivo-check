@@ -10,6 +10,7 @@ const CitiesPage = ({
   myCities,
   citiesErrorStatus,
   addCityErrorStatus,
+  deleteCityErrorStatus,
 }) => (
   <div>
     <InAppHeader />
@@ -19,6 +20,7 @@ const CitiesPage = ({
         <CityAddForm />
         {citiesErrorStatus ? <div className="app-error-msg">Sorry we could not retrieve your cities at this time. Please refresh to try&nbsp;again.</div> : <div />}
         {addCityErrorStatus ? <div className="app-error-msg">Sorry we could not add your city at this time. Please try&nbsp;again.</div> : <div />}
+        {deleteCityErrorStatus ? <div className="app-error-msg">Sorry we could not delete your city at this time. Please try&nbsp;again.</div> : <div />}
         {loadingStatus ? <Loader /> : myCities }
       </main>
       <Footer />
