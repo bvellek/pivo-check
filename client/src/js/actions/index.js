@@ -1,10 +1,10 @@
 import 'isomorphic-fetch';
 import Auth from '../components/modules/Auth';
 
-// Loading Element
-export const LOADING_STATUS_TRUE = 'LOADING_STATUS_TRUE';
-export const loadingStatusTrue = () => ({
-  type: LOADING_STATUS_TRUE,
+// Auth Loading Element
+export const AUTH_LOADING_STATUS_TRUE = 'AUTH_LOADING_STATUS_TRUE';
+export const authLoadingStatusTrue = () => ({
+  type: AUTH_LOADING_STATUS_TRUE,
 });
 
 // Clean Auth - set all auth related state to initial
@@ -28,7 +28,7 @@ export const registerUserError = (registrationErrorMessage) => ({
 
 // AJAX to server for registration
 export const registerUser = user => dispatch => {
-  dispatch(loadingStatusTrue());
+  dispatch(authLoadingStatusTrue());
   const registrationEndpoint = '/auth/registration';
   const userData = user;
   return fetch(registrationEndpoint, {
@@ -73,7 +73,7 @@ export const loginUserError = (loginErrorMessage) => ({
 
 // AJAX to server for Login
 export const loginUser = user => dispatch => {
-  dispatch(loadingStatusTrue());
+  dispatch(authLoadingStatusTrue());
   const loginEndpoint = '/auth/login';
   const userData = user;
   return fetch(loginEndpoint, {
@@ -104,6 +104,12 @@ export const loginUser = user => dispatch => {
   ));
 };
 
+// Cities Loading Element
+export const CITIES_LOADING_STATUS_TRUE = 'CITIES_LOADING_STATUS_TRUE';
+export const citiesLoadingStatusTrue = () => ({
+  type: CITIES_LOADING_STATUS_TRUE,
+});
+
 // Get Cities
 export const GET_CITIES_SUCCESS = 'GET_CITIES_SUCCESS';
 export const getCitiesSuccess = (citiesList) => ({
@@ -119,7 +125,7 @@ export const getCitiesError = (citiesError) => ({
 
 // AJAX to server to get all cities
 export const getCities = () => dispatch => {
-  dispatch(loadingStatusTrue());
+  dispatch(citiesLoadingStatusTrue());
   const userID = Auth.getUserID();
   const citiesEndpoint = `/api/cities/${userID}`;
   return fetch(citiesEndpoint, {

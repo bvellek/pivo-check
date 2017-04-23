@@ -53,6 +53,8 @@
       font-weight: 700;
       font-size: 0.9em;
       margin-left: 0.5em;
+      max-width: 40rem;
+      width: 100%;
 
       @media only screen and (min-width: $small-break) {
         margin-left: 1.5em;

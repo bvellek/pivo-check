@@ -12,20 +12,22 @@ class CityAddForm extends Component {
     event.preventDefault();
     const { address } = this.state;
 
-    geocodeByAddress(address, (err, { lat, lng }) => {
+    geocodeByAddress(address, (err, { lat, lng }, results) => {
       if (err) { console.log('Oh no!', err); }
 
-      console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng });
+      console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng }, 'whole results: ', results);
+      console.log('new result: ', results[0].address_components[0].short_name, ', ', results[0].address_components[2].short_name);
     });
   }
 
   handleSelect = (address) => {
     this.setState({ address });
 
-    geocodeByAddress(address, (err, { lat, lng }) => {
+    geocodeByAddress(address, (err, { lat, lng }, results) => {
       if (err) { console.log('Oh no!', err); }
 
-      console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng });
+      console.log(`Yay! got latitude and longitude for ${address.locality}`, { lat, lng }, 'whole results: ', results);
+      console.log('new result: ', results[0].address_components[0].short_name, ', ', results[0].address_components[2].short_name);
     });
   }
 
@@ -49,8 +51,19 @@ class CityAddForm extends Component {
         lineHeight: '2em',
         margin: '0 auto',
         padding: '0 0.2em',
+        color: '#44484D',
+      },
+      autocompleteItemActive: {
+        backgroundColor: '#FFBAB3',
       },
     };
+
+    const AutocompleteItem = ({ formattedSuggestion }) => (
+      <div>
+        <strong>{ formattedSuggestion.mainText }</strong>{' '}
+        <small>{ formattedSuggestion.secondaryText }</small>
+      </div>
+    );
 
     return (
 
@@ -71,6 +84,7 @@ class CityAddForm extends Component {
               inputId={'city-search'}
               inputName={'city'}
               styles={myStyles}
+              autocompleteItem={AutocompleteItem}
               placeholder={'Seattle, WA'}
             />
             <button aria-label='Add city' type='submit' name='addCity'>Submit City 📍</button>

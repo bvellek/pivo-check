@@ -75,7 +75,7 @@ const mapStateToProps = (state) => ({
   errors: state.auth.loginErrorMessage,
   registrationSuccessMessage: state.auth.registrationSuccessMessage,
   loginRedirect: state.auth.loginRedirect,
-  loadingStatus: state.auth.loadingStatus,
+  loadingStatus: state.auth.authLoadingStatus,
 });
 
 export default connect(mapStateToProps)(LoginPageContainer);

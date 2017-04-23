@@ -7,7 +7,7 @@ import ScrollToTop from './ScrollToTop';
 import LandingPage from './LandingPage';
 import LoginPageContainer from './LoginPageContainer';
 import RegistrationPageContainer from './RegistrationPageContainer';
-import CitiesPage from './CitiesPage';
+import CitiesPageContainer from './CitiesPageContainer';
 import CityPage from './CityPage';
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
             />
             <Route exact path="/cities" render={() => ( // eslint-disable-line
                 Auth.isUserAuthenticated()
-                ? <CitiesPage />
+                ? <CitiesPageContainer />
                 : <Redirect to="/login" />
               )}
             />
