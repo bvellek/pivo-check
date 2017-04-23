@@ -22,7 +22,7 @@ class CityAddForm extends Component {
           lat,
           lng,
         },
-        cityName: `${results[0].address_components[0].short_name}, ${results[0].address_components[2].short_name}`,
+        cityName: `${results[0].address_components[0].long_name}, ${results[0].address_components[2].short_name}`,
       }));
     });
   }
@@ -38,7 +38,7 @@ class CityAddForm extends Component {
           lat,
           lng,
         },
-        cityName: `${results[0].address_components[0].short_name}, ${results[0].address_components[2].short_name}`,
+        cityName: `${results[0].address_components[0].long_name}, ${results[0].address_components[2].short_name}`,
       }));
       // console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng }, 'whole results: ', results);
     });

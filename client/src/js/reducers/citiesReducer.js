@@ -6,6 +6,7 @@ const initialState = {
   citiesErrorStatus: false,
   displayCities: false,
   addCityErrorStatus: false,
+  deleteCityErrorStatus: false,
 };
 
 export const citiesReducer = (state = initialState, action) => {
@@ -43,6 +44,18 @@ export const citiesReducer = (state = initialState, action) => {
     const modState = Object.assign({}, state, {
       citiesLoadingStatus: false,
       addCityErrorStatus: true,
+    });
+    return modState;
+  } else if (action.type === actions.DELETE_CITY_SUCCESS) {
+    const modState = Object.assign({}, state, {
+      citiesLoadingStatus: false,
+      deleteCityErrorStatus: false,
+    });
+    return modState;
+  } else if (action.type === actions.DELETE_CITY_ERROR) {
+    const modState = Object.assign({}, state, {
+      citiesLoadingStatus: false,
+      deleteCityErrorStatus: true,
     });
     return modState;
   }

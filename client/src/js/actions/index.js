@@ -209,3 +209,47 @@ export const addCity = (cityData) => dispatch => {
     console.log(error)
   ));
 };
+
+// Delete City
+export const DELETE_CITY_SUCCESS = 'DELETE_CITY_SUCCESS';
+export const deleteCitySuccess = (deleteCityMsg) => ({
+  type: DELETE_CITY_SUCCESS,
+  deleteCityMsg,
+});
+
+export const DELETE_CITY_ERROR = 'DELETE_CITY_ERROR';
+export const deleteCityError = (deleteCityMsg) => ({
+  type: DELETE_CITY_ERROR,
+  deleteCityMsg,
+});
+
+// AJAX to server to Add city
+export const deleteCity = (cityID) => dispatch => {
+  dispatch(citiesLoadingStatusTrue());
+  const citiesEndpoint = `/api/cities/${cityID}`;
+  return fetch(citiesEndpoint, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+  }).then((response) => {
+    if (response.status === 200) {
+      return response.json()
+        .then((successResponse) => {
+          console.log(successResponse);
+          dispatch(deleteCitySuccess(successResponse));
+        })
+        .then(() => (
+          dispatch(getCities())
+        ));
+    } return response.json()
+      .then((errorResponse) => {
+        console.log(errorResponse);
+        dispatch(deleteCityError(errorResponse));
+      });
+  }).catch((error) => (
+    console.log(error)
+  ));
+};
