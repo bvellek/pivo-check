@@ -14,9 +14,7 @@ const CitiesPage = ({
     <div className="cities-page">
       <main role="main">
         <h1>My Cities</h1>
-        <section className="city-add">
-          <CityAddForm />
-        </section>
+        <CityAddForm />
         {loadingStatus ? <Loader /> : myCities }
       </main>
       <Footer />

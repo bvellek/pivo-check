@@ -5,6 +5,7 @@ const initialState = {
   myCities: [],
   citiesErrorStatus: false,
   displayCities: false,
+  addCityMsg: null,
 };
 
 export const citiesReducer = (state = initialState, action) => {
@@ -30,6 +31,20 @@ export const citiesReducer = (state = initialState, action) => {
       myCities: [],
       citiesErrorStatus: true,
       displayCities: false,
+    });
+    return modState;
+  } else if (action.type === actions.ADD_CITY_SUCCESS) {
+    const addCityMsg = action.addCityMsg;
+    const modState = Object.assign({}, state, {
+      citiesLoadingStatus: false,
+      addCityMsg,
+    });
+    return modState;
+  } else if (action.type === actions.ADD_CITY_ERROR) {
+    const addCityMsg = action.addCityMsg;
+    const modState = Object.assign({}, state, {
+      citiesLoadingStatus: false,
+      addCityMsg,
     });
     return modState;
   }

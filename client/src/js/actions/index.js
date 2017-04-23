@@ -151,3 +151,61 @@ export const getCities = () => dispatch => {
     console.log(error)
   ));
 };
+
+
+// Add City
+export const ADD_CITY_SUCCESS = 'ADD_CITY_SUCCESS';
+export const addCitySuccess = (addCityMsg) => ({
+  type: ADD_CITY_SUCCESS,
+  addCityMsg,
+});
+
+export const ADD_CITY_ERROR = 'ADD_CITY_ERROR';
+export const addCityError = (addCityMsg) => ({
+  type: ADD_CITY_ERROR,
+  addCityMsg,
+});
+
+// AJAX to server to Add city
+export const addCity = (cityData) => dispatch => {
+  dispatch(citiesLoadingStatusTrue());
+  const userID = Auth.getUserID();
+  const coords = cityData.coords;
+  const lat = coords.lat;
+  const lng = coords.lng;
+  const cityName = cityData.cityName;
+  const citiesEndpoint = `/api/cities`;
+  return fetch(citiesEndpoint, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+    body: JSON.stringify({
+      userID,
+      coords: {
+        lat,
+        lng,
+      },
+      cityName,
+    }),
+  }).then((response) => {
+    if (response.status === 201) {
+      return response.json()
+        .then((successResponse) => {
+          console.log(successResponse);
+          dispatch(addCitySuccess(successResponse));
+        })
+        .then(() => (
+          dispatch(getCities())
+        ));
+    } return response.json()
+      .then((errorResponse) => {
+        console.log(errorResponse);
+        dispatch(addCityError(errorResponse));
+      });
+  }).catch((error) => (
+    console.log(error)
+  ));
+};

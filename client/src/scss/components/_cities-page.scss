@@ -16,11 +16,15 @@
       font-size: $size-lg-heading-large-vp;
     }
   }
+
+  main {
+    max-width: 26rem;
+    width: 100%;
+  }
 }
 
 
   .city-add {
-
     .city-add-form {
       display: flex;
       flex-direction: column;
@@ -29,7 +33,7 @@
       border: 1px solid $white;
       border-radius: 3px;
       padding: 1em 0.5em 1em;
-      max-width: 26em;
+      max-width: 26rem;
       width: 92%;
       background-color: lighten($dk-grey, 3%);
       color: $white;
@@ -37,7 +41,7 @@
 
 
       .city-form-content {
-        max-width: 30em;
+        max-width: 30rem;
         width: 100%;
         font-size: 1em;
       }
