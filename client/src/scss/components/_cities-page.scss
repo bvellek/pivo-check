@@ -29,7 +29,7 @@
       border: 1px solid $white;
       border-radius: 3px;
       padding: 1em 0.5em 1em;
-      max-width: 24em;
+      max-width: 26em;
       width: 92%;
       background-color: lighten($dk-grey, 3%);
       color: $white;
@@ -67,7 +67,7 @@
 
   .no-cities {
     margin: 0 auto;
-    max-width: 20em;
+    max-width: 22em;
     h2 {
       font-size: 1.4em;
     }
@@ -81,7 +81,7 @@
       align-items: center;
       list-style: none;
       padding: 0;
-      max-width: 24em;
+      max-width: 26em;
 
       li {
         text-align: left;
@@ -123,7 +123,7 @@
     }
 
     .delete-city-warning {
-      max-width: 24em;
+      max-width: 26em;
       background: $dk-white;
       border-radius: 3px;
       padding: 0.8em;
@@ -137,6 +137,8 @@
       }
       button {
         font-size: 0.8rem;
+        padding-top: 0.6em;
+        padding-bottom: 0.6em;
       }
       .delete-city-btn {
         background: $lt-brick;
