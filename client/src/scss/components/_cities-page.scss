@@ -135,7 +135,9 @@
         font-weight: 700;
         color: $dk-brick;
       }
-
+      button {
+        font-size: 0.8rem;
+      }
       .delete-city-btn {
         background: $lt-brick;
         box-shadow: none;
