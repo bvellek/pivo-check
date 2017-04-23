@@ -8,15 +8,17 @@ import Footer from './Footer';
 const CitiesPage = ({
   loadingStatus,
   myCities,
+  citiesErrorStatus,
+  addCityErrorStatus,
 }) => (
   <div>
     <InAppHeader />
     <div className="cities-page">
       <main role="main">
         <h1>My Cities</h1>
-        <section className="city-add">
-          <CityAddForm />
-        </section>
+        <CityAddForm />
+        {citiesErrorStatus ? <div className="app-error-msg">Sorry we could not retrieve your cities at this time. Please refresh to try&nbsp;again.</div> : <div />}
+        {addCityErrorStatus ? <div className="app-error-msg">Sorry we could not add your city at this time. Please try&nbsp;again.</div> : <div />}
         {loadingStatus ? <Loader /> : myCities }
       </main>
       <Footer />
@@ -27,6 +29,8 @@ const CitiesPage = ({
 CitiesPage.propTypes = {
   loadingStatus: PropTypes.bool.isRequired,
   myCities: PropTypes.object.isRequired,
+  citiesErrorStatus: PropTypes.bool.isRequired,
+  addCityErrorStatus: PropTypes.bool.isRequired,
 };
 
 export default CitiesPage;

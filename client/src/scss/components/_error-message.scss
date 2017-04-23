@@ -10,3 +10,13 @@
     font-size: 0.9rem;
   }
 }
+
+.app-error-msg {
+  margin: 0 auto;
+  background-color: $lt-brick;
+  color: $dk-grey;
+  max-width: 18em;
+  padding: 1em;
+  border-radius: 3px;
+  font-weight: 700;
+}

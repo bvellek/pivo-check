@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
+import * as actions from '../actions/index';
 
 class CityAddForm extends Component {
   constructor(props) {
@@ -15,8 +17,13 @@ class CityAddForm extends Component {
     geocodeByAddress(address, (err, { lat, lng }, results) => {
       if (err) { console.log('Oh no!', err); }
 
-      console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng }, 'whole results: ', results);
-      console.log('new result: ', results[0].address_components[0].short_name, ', ', results[0].address_components[2].short_name);
+      this.props.dispatch(actions.addCity({
+        coords: {
+          lat,
+          lng,
+        },
+        cityName: `${results[0].address_components[0].short_name}, ${results[0].address_components[2].short_name}`,
+      }));
     });
   }
 
@@ -26,8 +33,14 @@ class CityAddForm extends Component {
     geocodeByAddress(address, (err, { lat, lng }, results) => {
       if (err) { console.log('Oh no!', err); }
 
-      console.log(`Yay! got latitude and longitude for ${address.locality}`, { lat, lng }, 'whole results: ', results);
-      console.log('new result: ', results[0].address_components[0].short_name, ', ', results[0].address_components[2].short_name);
+      this.props.dispatch(actions.addCity({
+        coords: {
+          lat,
+          lng,
+        },
+        cityName: `${results[0].address_components[0].short_name}, ${results[0].address_components[2].short_name}`,
+      }));
+      // console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng }, 'whole results: ', results);
     });
   }
 
@@ -95,5 +108,5 @@ class CityAddForm extends Component {
   }
 }
 
-export default CityAddForm;
+export default connect()(CityAddForm);
 
