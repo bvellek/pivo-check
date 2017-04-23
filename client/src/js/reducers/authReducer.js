@@ -1,16 +1,25 @@
 import * as actions from '../actions/index';
-import initialState from './initialState';
+
+const initialState = {
+  authLoadingStatus: false,
+  registrationSuccessMessage: {},
+  registrationErrorMessage: {},
+  loginSuccessMessage: {},
+  loginErrorMessage: {},
+  loginStatus: false,
+  currentUser: null,
+};
 
 export const authReducer = (state = initialState, action) => {
-  if (action.type === actions.LOADING_STATUS_TRUE) {
+  if (action.type === actions.AUTH_LOADING_STATUS_TRUE) {
     const modState = Object.assign({}, state, {
-      loadingStatus: true,
+      authLoadingStatus: true,
     });
     return modState;
   } else if (action.type === actions.REGISTER_USER_SUCCESS) {
     const successMessage = action.registrationSuccessMessage;
     const modState = Object.assign({}, state, {
-      loadingStatus: false,
+      authLoadingStatus: false,
       registrationSuccessMessage: successMessage,
       registrationErrorMessage: {},
     });
@@ -18,7 +27,7 @@ export const authReducer = (state = initialState, action) => {
   } else if (action.type === actions.REGISTER_USER_ERROR) {
     const errors = action.registrationErrorMessage;
     const modState = Object.assign({}, state, {
-      loadingStatus: false,
+      authLoadingStatus: false,
       registrationErrorMessage: errors,
     });
     return modState;
@@ -27,7 +36,7 @@ export const authReducer = (state = initialState, action) => {
     console.log('% Reducer', successMessage);
     const userID = successMessage.user.userID;
     const modState = Object.assign({}, state, {
-      loadingStatus: false,
+      authLoadingStatus: false,
       registrationSuccessMessage: {},
       loginErrorMessage: {},
       loginRedirect: true,
@@ -38,14 +47,14 @@ export const authReducer = (state = initialState, action) => {
     const errorMessage = action.loginErrorMessage;
     console.log('% Reducer ErrorMsg', errorMessage);
     const modState = Object.assign({}, state, {
-      loadingStatus: false,
+      authLadingStatus: false,
       registrationSuccessMessage: {},
       loginErrorMessage: errorMessage,
     });
     return modState;
   } else if (action.type === actions.CLEAN_AUTH) {
     const modState = Object.assign({}, state, {
-      loadingStatus: false,
+      authLoadingStatus: false,
       registrationSuccessMessage: {},
       registrationErrorMessage: {},
       loginSuccessMessage: {},
