@@ -135,9 +135,20 @@
       text-align: center;
 
       h3 {
-        font-size: 1.625em;
+        font-size: 1.2em;
         font-weight: 700;
         color: $dk-brick;
+
+        @media only screen and (min-width: $small-break) {
+          font-size: 1.625em;
+        }
+      }
+
+      p {
+        font-size: 0.8rem;
+        @media only screen and (min-width: $small-break) {
+          font-size: 1rem;
+        }
       }
       button {
         font-size: 0.8rem;

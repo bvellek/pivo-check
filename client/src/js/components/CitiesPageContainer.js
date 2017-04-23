@@ -68,6 +68,8 @@ class CitiesPageContainer extends Component {
         loadingStatus={this.props.loadingStatus}
         addCity={this.addCity}
         myCities={citiesDisplay}
+        citiesErrorStatus={this.props.citiesErrorStatus}
+        addCityErrorStatus={this.props.addCityErrorStatus}
       />
     );
   }
@@ -76,6 +78,8 @@ class CitiesPageContainer extends Component {
 const mapStateToProps = (state) => ({
   loadingStatus: state.cities.citiesLoadingStatus,
   myCities: state.cities.myCities,
+  citiesErrorStatus: state.cities.citiesErrorStatus,
+  addCityErrorStatus: state.cities.addCityErrorStatus,
 });
 
 export default connect(mapStateToProps)(CitiesPageContainer);

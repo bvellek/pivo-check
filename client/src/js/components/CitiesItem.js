@@ -18,7 +18,7 @@ const CitiesItem = ({
 
     <div className="delete-city-warning">
       <h3>Delete {cityInfo.cityName}?</h3>
-      <p>Deleting a location will permanently remove it from your checklist and you will lose your visited brewery record.</p>
+      <p>Deleting a location will permanently remove it from your checklist and you will lose your visited brewery&nbsp;record.</p>
       <form className="delete-city-form" action="index.html" method="post">
         <button className="keep-city-btn" type="button" name="button">No, Keep {cityInfo.cityName}</button> {' '}
         <button className="delete-city-btn" type="button" name="button"><SVGDelete />&nbsp;Yes, Delete {cityInfo.cityName}</button>
