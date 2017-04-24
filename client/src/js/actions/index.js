@@ -152,7 +152,6 @@ export const getCities = () => dispatch => {
   ));
 };
 
-
 // Add City
 export const ADD_CITY_SUCCESS = 'ADD_CITY_SUCCESS';
 export const addCitySuccess = (addCityMsg) => ({
@@ -174,7 +173,7 @@ export const addCity = (cityData) => dispatch => {
   const lat = coords.lat;
   const lng = coords.lng;
   const cityName = cityData.cityName;
-  const citiesEndpoint = `/api/cities`;
+  const citiesEndpoint = '/api/cities';
   return fetch(citiesEndpoint, {
     method: 'POST',
     headers: {
@@ -300,3 +299,9 @@ export const getCityBreweryList = (cityID) => dispatch => {
     console.log(error)
   ));
 };
+
+// Clean City Brew List  - set all brew list related state to initial
+export const CLEAN_CITY_BREW_LIST = 'CLEAN_CITY_BREW_LIST';
+export const cleanCityBrewList = () => ({
+  type: CLEAN_CITY_BREW_LIST,
+});

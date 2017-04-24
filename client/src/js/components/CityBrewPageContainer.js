@@ -8,27 +8,23 @@ import NoBreweries from './NoBreweries';
 class CityPageContainer extends Component {
 
   async componentDidMount() {
-    await this.props.dispatch(actions.getCityBreweryList(this.props.match.params.cityID)); document.querySelector('head > title').innerHTML = `${this.props.currentCityData.cityName} | PIVO-CHECK`;
+    await this.props.dispatch(actions.getCityBreweryList(this.props.match.params.cityID));
+    document.querySelector('head > title').innerHTML = `${this.props.currentCityData.cityName} | PIVO-CHECK`;
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(actions.cleanCityBrewList());
   }
 
   render() {
-    // const citiesArr = this.props.myCities;
-    // let citiesDisplay;
-    // if (citiesArr.length > 0) {
-    //   citiesDisplay = <CitiesList cities={citiesArr} />;
-    // } else {
-    //   citiesDisplay = <NoCities />;
-    // }
     const brewArr = this.props.currentCityData.brewArr;
     console.log(brewArr);
     let breweryDisplay;
-    try {
-      if (brewArr.length > 0) {
-        breweryDisplay = <CityBrewList breweries={brewArr} />;
-      } else {
-        breweryDisplay = <NoBreweries cityName={this.props.currentCityData.cityName} />;
-      }
-    } catch (error) {
+    if (this.props.loadingStatus) {
+      breweryDisplay = <div />;
+    } else if (brewArr.length > 0) {
+      breweryDisplay = <CityBrewList breweries={brewArr} />;
+    } else {
       breweryDisplay = <NoBreweries cityName={this.props.currentCityData.cityName} />;
     }
 
@@ -37,6 +33,7 @@ class CityPageContainer extends Component {
         loadingStatus={this.props.loadingStatus}
         currentCityData={this.props.currentCityData}
         breweriesList={breweryDisplay}
+        currentCityListErrorStatus={this.props.currentCityListErrorStatus}
       />
     );
   }
@@ -45,6 +42,7 @@ class CityPageContainer extends Component {
 const mapStateToProps = (state) => ({
   loadingStatus: state.breweryList.breweryListLoadingStatus,
   currentCityData: state.breweryList.currentCityData,
+  currentCityListErrorStatus: state.breweryList.currentCityListErrorStatus,
 });
 
 export default connect(mapStateToProps)(CityPageContainer);

@@ -21,7 +21,7 @@ const CityBrewItem = ({ breweryInfo }) => (
       <form className="brewery-rating-form" action="index.html" method="post">
         <label htmlFor={`rating-${breweryInfo.id}`}>Rating: <span className="visually-hidden">for {breweryInfo.brewery.name}</span></label>
         <select id={`rating-${breweryInfo.id}`} className="brew-rating-select" name={`select-${breweryInfo.id}`}>
-          <option defaultValue value=" " />
+          <option defaultValue value="0">{' '}</option>
           <option value="1">🍺</option>
           <option value="2">🍺🍺</option>
           <option value="3">🍺🍺🍺</option>
