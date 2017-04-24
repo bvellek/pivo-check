@@ -253,3 +253,50 @@ export const deleteCity = (cityID) => dispatch => {
     console.log(error)
   ));
 };
+
+// City Brewery List Loading Element
+export const BREWERY_LIST_LOADING_STATUS_TRUE = 'BREWERY_LIST_LOADING_STATUS_TRUE';
+export const breweryListLoadingStatusTrue = () => ({
+  type: BREWERY_LIST_LOADING_STATUS_TRUE,
+});
+
+// Get City Brewery List
+export const GET_CITY_BREWERY_LIST_SUCCESS = 'GET_CITY_BREWERY_LIST_SUCCESS';
+export const getCityBreweryListSuccess = (currentCityData) => ({
+  type: GET_CITY_BREWERY_LIST_SUCCESS,
+  currentCityData,
+});
+
+export const GET_CITY_BREWERY_LIST_ERROR = 'GET_CITY_BREWERY_LIST_ERROR';
+export const getCityBreweryListError = (currentCityListError) => ({
+  type: GET_CITY_BREWERY_LIST_ERROR,
+  currentCityListError,
+});
+
+// AJAX to server to Get City Brewery List
+export const getCityBreweryList = (cityID) => dispatch => {
+  dispatch(breweryListLoadingStatusTrue());
+  const citiesEndpoint = `/api/city/${cityID}`;
+  return fetch(citiesEndpoint, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+  }).then((response) => {
+    if (response.status === 200) {
+      return response.json()
+        .then((successResponse) => {
+          console.log(successResponse);
+          dispatch(getCityBreweryListSuccess(successResponse));
+        });
+    } return response.json()
+      .then((errorResponse) => {
+        console.log(errorResponse);
+        dispatch(getCityBreweryListError(errorResponse));
+      });
+  }).catch((error) => (
+    console.log(error)
+  ));
+};

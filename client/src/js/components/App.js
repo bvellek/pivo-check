@@ -8,7 +8,7 @@ import LandingPage from './LandingPage';
 import LoginPageContainer from './LoginPageContainer';
 import RegistrationPageContainer from './RegistrationPageContainer';
 import CitiesPageContainer from './CitiesPageContainer';
-import CityPage from './CityPage';
+import CityBrewPageContainer from './CityBrewPageContainer';
 
 class App extends Component {
   render() {
@@ -40,9 +40,9 @@ class App extends Component {
                 : <Redirect to="/login" />
               )}
             />
-            <Route path="/cities/:city" render={() => ( // eslint-disable-line
+            <Route path="/cities/:cityID" render={(props) => ( // eslint-disable-line
                 Auth.isUserAuthenticated()
-                ? <CityPage />
+                ? <CityBrewPageContainer {...props} />
                 : <Redirect to="/login" />
               )}
             />

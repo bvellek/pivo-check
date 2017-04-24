@@ -71,10 +71,12 @@
           margin: 0 0.5em 0 0;
           max-width: 20rem;
 
+
           a {
             font-family: $heading-text;
             font-weight: 700;
             font-size: 1rem;
+            text-transform: capitalize;
 
             @media only screen and (min-width: $small-break) {
               font-size: 1.25rem;
