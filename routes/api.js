@@ -91,38 +91,30 @@ const getCompletedByCityID = (cityID) => (
 );
 
 const getBreweries = (lat, lng) => new Promise((resolve, reject) => {
-    const api = `https://api.brewerydb.com/v2/search/geo/point?lat=${lat}8&lng=${lng}&key=c97314af1e304cd0ad2f0d5e2cff7c18`;
-    return fetch(api).then((response) => (
+  const api = `https://api.brewerydb.com/v2/search/geo/point?lat=${lat}8&lng=${lng}&key=c97314af1e304cd0ad2f0d5e2cff7c18`;
+  return fetch(api).then((response) => (
       response.json()
-    ))
-    .then((rawResults) => {
-      if (rawResults.totalResults) {
-        const brewArr = rawResults.data;
-        const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
-        return publicBreweries;
-      }
-      return [];
-      // function BrewError(message) {
-      //   this.name = 'brewError';
-      //   this.message = message || 'Brew Error';
-      //   this.stack = (new Error()).stack;
-      // }
-      // BrewError.prototype = Object.create(Error.prototype);
-      // BrewError.prototype.constructor = BrewError;
-      // throw new BrewError('There are no breweries here.');
-    })
-    .then((publicBreweries) => {
-      if (publicBreweries >= 1) {
-        const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
-        return resolve(openBreweries);
-      }
-      return resolve(publicBreweries);
-    })
-    .catch((err) => {
-      console.log(err);
-      reject(err);
-    });
+  ))
+  .then((rawResults) => {
+    if (rawResults.totalResults) {
+      const brewArr = rawResults.data;
+      const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
+      return publicBreweries;
+    }
+    return [];
+  })
+  .then((publicBreweries) => {
+    if (publicBreweries >= 1) {
+      const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
+      return resolve(openBreweries);
+    }
+    return resolve(publicBreweries);
+  })
+  .catch((err) => {
+    console.log(err);
+    reject(err);
   });
+});
 
 // Add User City receive: userID, city string, coords
 router.post('/cities', async (req, res) => {
@@ -151,11 +143,7 @@ router.post('/cities', async (req, res) => {
       .then(res.status(201).json(`Successfully added ${cityString}`));
   })
   .catch((err) => {
-    // if (err.name === 'brewError') {
-    //   res.status(202).json(err.message);
-    // } else {
     res.status(500).json(err.message);
-    // }
   });
 });
 
@@ -170,11 +158,7 @@ router.post('/city', async (req, res) => {
     res.status(200).json(results);
   })
   .catch((err) => {
-    // if (err.name === 'brewError') {
-    //   res.status(202).json(err.message);
-    // } else {
     res.status(500).json(err.message);
-    // }
   });
 });
 
