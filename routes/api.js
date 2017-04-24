@@ -1,8 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const User = require('../models/user');
 const City = require('../models/city');
-const bodyParser = require('body-parser');
 const Checkoff = require('../models/checkoff');
 
 require('isomorphic-fetch');
@@ -255,6 +253,24 @@ const getCityData = (cityID) => (
       console.log(err)
     ))
 );
+
+const updateBreweryTotal = (cityID, newBrewTotal) => (
+  new Promise((resolve, reject) => {
+    City
+      .findByIdAndUpdate(cityID, { $set: { brewTotal: newBrewTotal } }, { new: true })
+      .exec()
+      .then(updatedBrew => resolve(updatedBrew))
+      .catch(err => reject(err));
+  })
+);
+
+router.post(('/updateBrewery'), (req, res) => {
+  const cityToUpdate = req.body.cityID;
+  const newBrewTotal = req.body.brewTotal;
+  updateBreweryTotal(cityToUpdate, newBrewTotal)
+  .then((updated => res.json(updated)))
+  .catch(err => res.json(err));
+});
 
 // Checkoff/Rate Brewery - breweryID, userID, cityID, check value
 // router.post('/city', (req, res) => {

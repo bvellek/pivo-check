@@ -6,53 +6,11 @@ import CitiesList from './CitiesList';
 import NoCities from './NoCities';
 
 class CitiesPageContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-    };
-  }
-
   componentDidMount() {
     document.querySelector('head > title').innerHTML = 'My Cities | PIVO-CHECK';
     this.props.dispatch(actions.cleanAuth());
     this.props.dispatch(actions.getCities());
   }
-
-  addCity = (e) => {
-    e.preventDefault();
-  }
-
-  // changeUser = (e) => {
-  //   const field = e.target.name;
-  //   const user = this.state.user;
-  //   user[field] = e.target.value;
-
-  //   this.setState({
-  //     user,
-  //   });
-  // }
-
-  // processForm = (e) => {
-  //   e.preventDefault();
-  //   this.props.dispatch(actions.loginUser(this.state.user));
-  //   console.log(`email: ${this.state.user.email}`);
-  //   console.log(`password: ${this.state.user.password}`);
-  // }
-
-  // demoSubmit = (e) => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     user: {
-  //       password: 'demoPassword',
-  //       email: 'demouser@PivoCheck.com',
-  //     },
-  //   }, () => {
-  //     document.querySelector('.login-btn').click();
-  //   });
-  //   console.log(`email: ${this.state.user.email}`);
-  //   console.log(`password: ${this.state.user.password}`);
-  // }
 
   render() {
     const citiesArr = this.props.myCities;
