@@ -1,4 +1,4 @@
-# PIVO-CHECK 🍻
+# PIVO-CHECK 🍻 [![Build Status](https://travis-ci.org/bvellek/pivo-check.svg?branch=master)](https://travis-ci.org/bvellek/pivo-check)
 
 [PIVO-CHECK](https://pivo-check.herokuapp.com/) is a full-stack JavaScript web application designed to help users discover all the breweries! It provides a responsive, intuitive experience for users to add cities and track all the breweries they visit.
 
