@@ -58,7 +58,7 @@ userSchema.pre('save', function saveHook(next) {
         return next(hashError);
       }
 
-      // replace password string with hash
+      // Replace password string with hash
       user.password = hash;
 
       return next();

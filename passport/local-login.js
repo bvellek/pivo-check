@@ -17,7 +17,7 @@ module.exports = new LocalStrategy({
     password: password.trim(),
   };
 
-  // find user by email
+  // Find user by email
   return User.findOne({ email: userData.email }, (err, user) => {
     if (err) {
       return done(err);
@@ -47,7 +47,7 @@ module.exports = new LocalStrategy({
         sub: user._id,
       };
 
-      // create a token
+      // Create a token
       const token = jwt.sign(payload, config.jwtSecret);
       const data = {
         userID: payload.sub,

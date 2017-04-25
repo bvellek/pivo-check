@@ -4,9 +4,12 @@ const validator = require('validator');
 
 const router = new express.Router();
 
-// Registration Form
-// payload object is the HTTP body message
-// returns the result of validation. object contains boolean validation, error tips and a global message for whole form
+/**
+* Registration Form
+*
+* payload object is the HTTP body message
+* returns the result of validation. object contains boolean validation, error tips and a global message for whole form
+**/
 function validateRegistrationForm(payload) {
   const errors = {};
   let isFormValid = true;
@@ -48,9 +51,12 @@ function validateRegistrationForm(payload) {
   };
 }
 
-// Login Form
-// payload object is the HTTP body message
-// returns the result of validation. object contains boolean validation, error tips and a global message for whole form
+/**
+* Login Form
+*
+* payload object is the HTTP body message
+* returns the result of validation. object contains boolean validation, error tips and a global message for whole form
+**/
 function validateLoginForm(payload) {
   const errors = {};
   let isFormValid = true;

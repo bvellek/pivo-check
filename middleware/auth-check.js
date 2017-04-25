@@ -10,10 +10,10 @@ module.exports = (req, res, next) => {
     return res.status(401).end();
   }
 
-  // get the last part from a authorization header string like "bearer token-value"
+  // Get the last part from a authorization header string like "bearer token-value"
   const token = req.headers.authorization.split(' ')[1];
 
-  // decode token using the secret key
+  // Decode token using the secret key
   return jwt.verify(token, config.jwtSecret, (err, decoded) => {
     // 401 code for unauthorized status
     if (err) {
@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
 
     const userId = decoded.sub;
 
-    // check if user exists
+    // Check if user exists
     return User.findById(userId, (userErr, user) => {
       if (userErr || !user) {
         return res.status(401).end();
