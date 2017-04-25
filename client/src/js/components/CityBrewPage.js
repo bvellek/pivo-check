@@ -6,6 +6,8 @@ import Loader from './Loader';
 import Footer from './Footer';
 
 const CityBrewPage = ({
+  onFilter,
+  filterValue,
   loadingStatus,
   currentCityData,
   breweriesList,
@@ -18,21 +20,20 @@ const CityBrewPage = ({
         <header>
           <h1>{currentCityData.cityName}</h1>
           <label htmlFor="brewery-filter"><h2>Brewery&nbsp;Filter: </h2></label> {' '}
-          <select id="brewery-filter" name="brewery-filter">
-            <option defaultValue value="">All {currentCityData.cityName} Breweries</option>
+          <select id="brewery-filter" name="brewery-filter" onChange={onFilter} value={filterValue}>
+            <option defaultValue value="none">All {currentCityData.cityName} Breweries</option>
             <optgroup label="Completed">
-              <option value="">Visited</option>
-              <option value="">Not Visited</option>
+              <option value="visited">Visited</option>
+              <option value="not">Not Visited</option>
             </optgroup>
             <optgroup label="Brewery Type">
-              <option value="">Production Facility</option>
-              <option value="">Micro Brewery</option>
-              <option value="">Nano Brewery</option>
-              <option value="">Restaurant/Ale House</option>
-              <option value="">Brewpub</option>
-              <option value="">Cidery</option>
-              <option value="">Tasting Room</option>
-              <option value="">Office</option>
+              <option value='production'>Production Facility</option>
+              <option value='micro'>Micro Brewery</option>
+              <option value='nano'>Nano Brewery</option>
+              <option value='restaurant'>Restaurant/Ale House</option>
+              <option value='brewpub'>Brewpub</option>
+              <option value='cidery'>Cidery</option>
+              <option value='tasting'>Tasting Room</option>
             </optgroup>
           </select>
         </header>
@@ -48,6 +49,8 @@ const CityBrewPage = ({
 );
 
 CityBrewPage.propTypes = {
+  onFilter: PropTypes.func.isRequired,
+  filterValue: PropTypes.string.isRequired,
   loadingStatus: PropTypes.bool.isRequired,
   currentCityData: PropTypes.object.isRequired,
   currentCityListErrorStatus: PropTypes.bool.isRequired,

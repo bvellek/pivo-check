@@ -164,20 +164,21 @@ router.post('/city', async (req, res) => {
 router.get('/city/:cityID', async (req, res) => {
   const cityToGet = req.params.cityID;
   let cityName;
-  console.log('!', cityToGet);
   await getCityData(cityToGet)
   .then((results) => {
-    console.log('@@@@@@@@@@@@@@@@@@@');
     const lat = results.cityCoords.lat;
     const lng = results.cityCoords.lng;
     cityName = results.cityName;
     getBreweries(lat, lng)
     .then((breweries) => {
-      console.log('&&&&&&&&&&&&&&&&');
       return mapBreweryToCheckoff(breweries, cityToGet);
     })
+    .then((breweriesWithCheck) => {
+      const newBrewCount = breweriesWithCheck.length;
+      updateBreweryTotal(cityToGet, newBrewCount);
+      return breweriesWithCheck;
+    })
       .then((breweriesWithCheck) => {
-        console.log('@@@', breweriesWithCheck);
         res.status(200).json({
           cityID: cityToGet,
           cityName,
@@ -192,19 +193,14 @@ router.get('/city/:cityID', async (req, res) => {
 });
 
 const mapBreweryToCheckoff = (breweryArr, cityID) => new Promise((resolve, reject) => {
-  console.log('%%%%%%%%%%%%%%%%%%%%%%%', cityID);
   const breweryPromises = breweryArr.map((brewery) => {
-    console.log('0000000000000000000');
     return getCheckoffByBreweryAndCity(brewery.id, cityID)
     .then((checkoffInfo) => {
-      console.log('~~~~~~~~~~~~~~~~~~~~~~', checkoffInfo);
       const breweryWithCheckoff = Object.assign({ checkoffInfo }, brewery);
-      console.log('$$$$$$$$$$$$$$$$');
       return breweryWithCheckoff;
     });
   });
   Promise.all(breweryPromises).then((breweriesWithCheckoff) => {
-    console.log('AHHHHHHHHHHHHHHHHHHHH', breweriesWithCheckoff);
     return resolve(breweriesWithCheckoff);
   })
   .catch(err => {
@@ -215,7 +211,6 @@ const mapBreweryToCheckoff = (breweryArr, cityID) => new Promise((resolve, rejec
 
 const getCheckoffByBreweryAndCity = (breweryID, cityID) => (
   new Promise((resolve, reject) => {
-    console.log('9999999999999999999');
     let checkoffInfo;
     return Checkoff
       .find({ cityID, breweryID })
@@ -224,9 +219,11 @@ const getCheckoffByBreweryAndCity = (breweryID, cityID) => (
           console.log('err');
           reject([]);
         } else {
-          console.log('888888888888888888', results);
           if (results.length === 0) {
-            checkoffInfo = {};
+            checkoffInfo = {
+              completionStatus: false,
+              rating: 0,
+            };
           } else {
             const rating = results[0].rating;
             const completionStatus = results[0].completionStatus;
@@ -245,10 +242,9 @@ const getCityData = (cityID) => (
   City
     .findById(cityID)
     .exec()
-    .then(results => {
-      console.log('@', results);
-      return results;
-    })
+    .then(results => (
+      results
+    ))
     .catch(err => (
       console.log(err)
     ))
@@ -264,13 +260,13 @@ const updateBreweryTotal = (cityID, newBrewTotal) => (
   })
 );
 
-router.post(('/updateBrewery'), (req, res) => {
-  const cityToUpdate = req.body.cityID;
-  const newBrewTotal = req.body.brewTotal;
-  updateBreweryTotal(cityToUpdate, newBrewTotal)
-  .then((updated => res.json(updated)))
-  .catch(err => res.json(err));
-});
+// router.post(('/updateBrewery'), (req, res) => {
+//   const cityToUpdate = req.body.cityID;
+//   const newBrewTotal = req.body.brewTotal;
+//   updateBreweryTotal(cityToUpdate, newBrewTotal)
+//   .then((updated => res.json(updated)))
+//   .catch(err => res.json(err));
+// });
 
 // Checkoff/Rate Brewery - breweryID, userID, cityID, check value
 // router.post('/city', (req, res) => {

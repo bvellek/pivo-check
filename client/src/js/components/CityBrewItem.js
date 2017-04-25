@@ -1,11 +1,12 @@
 import React from 'react';
+import noImage from './noImage.png';
 
 const CityBrewItem = ({ breweryInfo }) => (
   <li>
     <form className="checkoff-form" action="index.html" method="post">
       <label htmlFor={`check-${breweryInfo.id}`} className="visually-hidden">Checkoff {breweryInfo.brewery.name}</label>
       <div className='brew-check'>
-        <input id={`check-${breweryInfo.id}`} type='checkbox' name={breweryInfo.id} />
+        <input id={`check-${breweryInfo.id}`} type='checkbox' name={breweryInfo.id} checked={breweryInfo.checkoffInfo.completionStatus} />
           <div>&#10003;</div>
           <div>&#10003;</div>
           <div>&#10003;</div>
@@ -14,13 +15,13 @@ const CityBrewItem = ({ breweryInfo }) => (
     <div className="brewery-info-container">
       <header>
         <h3>{breweryInfo.brewery.website ? (<a href={breweryInfo.brewery.website} target={`_${breweryInfo.id}`}>{breweryInfo.brewery.name}</a>) : (<a href={`https://www.google.com/search?q=${breweryInfo.brewery.name}`} target={`_${breweryInfo.id}`}>{breweryInfo.brewery.name}</a>)}</h3>
-        {breweryInfo.brewery.images ? (<img className="brewery-logo" src={breweryInfo.brewery.images.squareMedium} alt={`${breweryInfo.brewery.name} Logo`} />) : (<img className="brewery-logo" src="https://placehold.it/200x200" alt="No Logo Provided" />)}
+        {breweryInfo.brewery.images ? (<img className="brewery-logo" src={breweryInfo.brewery.images.squareMedium} alt={`${breweryInfo.brewery.name} Logo`} />) : (<img className="brewery-logo" src={noImage} alt="No Logo Provided" />)}
 
       </header>
 
       <form className="brewery-rating-form" action="index.html" method="post">
         <label htmlFor={`rating-${breweryInfo.id}`}>Rating: <span className="visually-hidden">for {breweryInfo.brewery.name}</span></label>
-        <select id={`rating-${breweryInfo.id}`} className="brew-rating-select" name={`select-${breweryInfo.id}`}>
+        <select id={`rating-${breweryInfo.id}`} className="brew-rating-select" name={`select-${breweryInfo.id}`} value={breweryInfo.checkoffInfo.rating}>
           <option defaultValue value="0">{' '}</option>
           <option value="1">🍺</option>
           <option value="2">🍺🍺</option>
@@ -31,7 +32,7 @@ const CityBrewItem = ({ breweryInfo }) => (
         <div className="adr"><span>Address:</span>
           <a
             className="brewery-adr-link"
-            href={`https://www.google.com/maps/place/${breweryInfo.streetAddress || ''},${breweryInfo.locality || ''},+${breweryInfo.region || ''}+${breweryInfo.postalCode || ''}`}
+            href={`https://www.google.com/maps/place/${breweryInfo.streetAddress ? encodeURIComponent(breweryInfo.streetAddress) : ''},${breweryInfo.locality ? encodeURIComponent(breweryInfo.locality) : ''},+${breweryInfo.region || ''}+${breweryInfo.postalCode || ''}`}
             target={`_map-${breweryInfo.id}`}
           >
           <div className="street-address">{breweryInfo.streetAddress}</div>
