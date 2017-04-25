@@ -16,13 +16,16 @@ class CityAddForm extends Component {
 
     geocodeByAddress(address, (err, { lat, lng }, results) => {
       if (err) { console.log('Oh no!', err); }
-
+      // the State name is not always returned in the same array item, so filter by the type
+      const filterStateResults = results[0].address_components.filter((object) => (
+        object.types[0] === 'administrative_area_level_1'
+      ));
       this.props.dispatch(actions.addCity({
         coords: {
           lat,
           lng,
         },
-        cityName: `${results[0].address_components[0].long_name}, ${results[0].address_components[2].short_name}`,
+        cityName: `${results[0].address_components[0].long_name}, ${filterStateResults[0].short_name}`,
       }));
     });
   }
@@ -32,13 +35,16 @@ class CityAddForm extends Component {
 
     geocodeByAddress(address, (err, { lat, lng }, results) => {
       if (err) { console.log('Oh no!', err); }
-
+      // the State name is not always returned in the same array item, so filter by the type
+      const filterStateResults = results[0].address_components.filter((object) => (
+        object.types[0] === 'administrative_area_level_1'
+      ));
       this.props.dispatch(actions.addCity({
         coords: {
           lat,
           lng,
         },
-        cityName: `${results[0].address_components[0].long_name}, ${results[0].address_components[2].short_name}`,
+        cityName: `${results[0].address_components[0].long_name}, ${filterStateResults[0].short_name}`,
       }));
       // console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng }, 'whole results: ', results);
     });

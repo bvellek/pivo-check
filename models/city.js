@@ -22,6 +22,10 @@ const citySchema = new mongoose.Schema({
     required: true,
   },
   brewTotal: Number,
+  created: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const City = mongoose.model('City', citySchema);

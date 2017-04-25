@@ -13,7 +13,9 @@ class CitiesPageContainer extends Component {
   }
 
   render() {
-    const citiesArr = this.props.myCities;
+    const citiesArr = this.props.myCities.sort((a, b) => (
+      new Date(b.created).getTime() - new Date(a.created).getTime()
+    ));
     let citiesDisplay;
     if (citiesArr.length > 0) {
       citiesDisplay = <CitiesList cities={citiesArr} />;

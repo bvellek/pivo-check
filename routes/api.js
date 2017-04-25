@@ -54,6 +54,7 @@ const getCities = (req, res) => {
                 lat: city.cityCoords.lat,
                 lng: city.cityCoords.lng,
               },
+              created: city.created,
             });
             return cityWithCount;
           })
@@ -170,9 +171,9 @@ router.get('/city/:cityID', async (req, res) => {
     const lng = results.cityCoords.lng;
     cityName = results.cityName;
     getBreweries(lat, lng)
-    .then((breweries) => {
-      return mapBreweryToCheckoff(breweries, cityToGet);
-    })
+    .then((breweries) => (
+      mapBreweryToCheckoff(breweries, cityToGet)
+    ))
     .then((breweriesWithCheck) => {
       const newBrewCount = breweriesWithCheck.length;
       updateBreweryTotal(cityToGet, newBrewCount);
@@ -200,9 +201,9 @@ const mapBreweryToCheckoff = (breweryArr, cityID) => new Promise((resolve, rejec
       return breweryWithCheckoff;
     });
   });
-  Promise.all(breweryPromises).then((breweriesWithCheckoff) => {
-    return resolve(breweriesWithCheckoff);
-  })
+  Promise.all(breweryPromises).then((breweriesWithCheckoff) => (
+    resolve(breweriesWithCheckoff)
+  ))
   .catch(err => {
     console.log(err);
     reject(err);
