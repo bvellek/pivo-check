@@ -1,6 +1,12 @@
 import 'isomorphic-fetch';
 import Auth from '../components/modules/Auth';
 
+/**
+*
+* AUTH SECTION
+*
+**/
+
 // Auth Loading Element
 export const AUTH_LOADING_STATUS_TRUE = 'AUTH_LOADING_STATUS_TRUE';
 export const authLoadingStatusTrue = () => ({
@@ -13,7 +19,9 @@ export const cleanAuth = () => ({
   type: CLEAN_AUTH,
 });
 
-// Register User
+/**
+* REGISTER USER
+**/
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const registerUserSuccess = (registrationSuccessMessage) => ({
   type: REGISTER_USER_SUCCESS,
@@ -26,7 +34,7 @@ export const registerUserError = (registrationErrorMessage) => ({
   registrationErrorMessage,
 });
 
-// AJAX to server for registration
+// POST to API for new user registration
 export const registerUser = user => dispatch => {
   dispatch(authLoadingStatusTrue());
   const registrationEndpoint = '/auth/registration';
@@ -41,7 +49,6 @@ export const registerUser = user => dispatch => {
   }).then((response) => {
     if (response.status === 200) {
       // success
-      console.log('the form is valid!');
       return response.json()
         .then((successResponse) => (
           dispatch(registerUserSuccess(successResponse))
@@ -54,11 +61,13 @@ export const registerUser = user => dispatch => {
           dispatch(registerUserError(errors));
         });
   }).catch((error) => (
-    console.log(error)
+    console.log(error) // eslint-disable-line
   ));
 };
 
-// Login User
+/**
+* LOGIN USER
+**/
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const loginUserSuccess = (loginSuccessMessage) => ({
   type: LOGIN_USER_SUCCESS,
@@ -71,7 +80,7 @@ export const loginUserError = (loginErrorMessage) => ({
   loginErrorMessage,
 });
 
-// AJAX to server for Login
+// POST to API to login existing user
 export const loginUser = user => dispatch => {
   dispatch(authLoadingStatusTrue());
   const loginEndpoint = '/auth/login';
@@ -100,9 +109,15 @@ export const loginUser = user => dispatch => {
           dispatch(loginUserError(errors));
         });
   }).catch((error) => (
-    console.log(error)
+    console.log(error) // eslint-disable-line
   ));
 };
+
+/**
+*
+* CITIES SECTION
+*
+**/
 
 // Cities Loading Element
 export const CITIES_LOADING_STATUS_TRUE = 'CITIES_LOADING_STATUS_TRUE';
@@ -110,7 +125,9 @@ export const citiesLoadingStatusTrue = () => ({
   type: CITIES_LOADING_STATUS_TRUE,
 });
 
-// Get Cities
+/**
+* GET CITIES
+**/
 export const GET_CITIES_SUCCESS = 'GET_CITIES_SUCCESS';
 export const getCitiesSuccess = (citiesList) => ({
   type: GET_CITIES_SUCCESS,
@@ -123,7 +140,7 @@ export const getCitiesError = (citiesError) => ({
   citiesError,
 });
 
-// AJAX to server to get all cities
+// GET request to API for all cities
 export const getCities = () => dispatch => {
   dispatch(citiesLoadingStatusTrue());
   const userID = Auth.getUserID();
@@ -139,20 +156,20 @@ export const getCities = () => dispatch => {
     if (response.status === 200) {
       return response.json()
         .then((successResponse) => {
-          console.log(successResponse);
           dispatch(getCitiesSuccess(successResponse));
         });
     } return response.json()
       .then((errorResponse) => {
-        console.log(errorResponse);
         dispatch(getCitiesError(errorResponse));
       });
   }).catch((error) => (
-    console.log(error)
+    console.log(error) // eslint-disable-line
   ));
 };
 
-// Add City
+/**
+* ADD CITY
+**/
 export const ADD_CITY_SUCCESS = 'ADD_CITY_SUCCESS';
 export const addCitySuccess = (addCityMsg) => ({
   type: ADD_CITY_SUCCESS,
@@ -165,7 +182,7 @@ export const addCityError = (addCityMsg) => ({
   addCityMsg,
 });
 
-// AJAX to server to Add city
+// POST to API for adding city
 export const addCity = (cityData) => dispatch => {
   dispatch(citiesLoadingStatusTrue());
   const userID = Auth.getUserID();
@@ -193,7 +210,6 @@ export const addCity = (cityData) => dispatch => {
     if (response.status === 201) {
       return response.json()
         .then((successResponse) => {
-          console.log(successResponse);
           dispatch(addCitySuccess(successResponse));
         })
         .then(() => (
@@ -201,15 +217,16 @@ export const addCity = (cityData) => dispatch => {
         ));
     } return response.json()
       .then((errorResponse) => {
-        console.log(errorResponse);
         dispatch(addCityError(errorResponse));
       });
   }).catch((error) => (
-    console.log(error)
+    console.log(error) // eslint-disable-line
   ));
 };
 
-// Delete City
+/**
+* DELETE CITY
+**/
 export const DELETE_CITY_SUCCESS = 'DELETE_CITY_SUCCESS';
 export const deleteCitySuccess = (deleteCityMsg) => ({
   type: DELETE_CITY_SUCCESS,
@@ -222,7 +239,7 @@ export const deleteCityError = (deleteCityMsg) => ({
   deleteCityMsg,
 });
 
-// AJAX to server to Add city
+// DELETE request to API to delete a city
 export const deleteCity = (cityID) => dispatch => {
   dispatch(citiesLoadingStatusTrue());
   const citiesEndpoint = `/api/cities/${cityID}`;
@@ -237,7 +254,6 @@ export const deleteCity = (cityID) => dispatch => {
     if (response.status === 200) {
       return response.json()
         .then((successResponse) => {
-          console.log(successResponse);
           dispatch(deleteCitySuccess(successResponse));
         })
         .then(() => (
@@ -245,13 +261,18 @@ export const deleteCity = (cityID) => dispatch => {
         ));
     } return response.json()
       .then((errorResponse) => {
-        console.log(errorResponse);
         dispatch(deleteCityError(errorResponse));
       });
   }).catch((error) => (
-    console.log(error)
+    console.log(error) // eslint-disable-line
   ));
 };
+
+/**
+*
+* CITIY BREW SECTION
+*
+**/
 
 // City Brewery List Loading Element
 export const BREWERY_LIST_LOADING_STATUS_TRUE = 'BREWERY_LIST_LOADING_STATUS_TRUE';
@@ -272,7 +293,9 @@ export const setBreweryFilter = (filter) => ({
   filter,
 });
 
-// Get City Brewery List
+/**
+* GET CITY BREWERY LIST
+**/
 export const GET_CITY_BREWERY_LIST_SUCCESS = 'GET_CITY_BREWERY_LIST_SUCCESS';
 export const getCityBreweryListSuccess = (currentCityData) => ({
   type: GET_CITY_BREWERY_LIST_SUCCESS,
@@ -285,7 +308,7 @@ export const getCityBreweryListError = (currentCityListError) => ({
   currentCityListError,
 });
 
-// AJAX to server to Get City Brewery List
+// GET request to API for list of breweries
 export const getCityBreweryList = (cityID) => dispatch => {
   dispatch(breweryListLoadingStatusTrue());
   const citiesEndpoint = `/api/city/${cityID}`;
@@ -300,21 +323,20 @@ export const getCityBreweryList = (cityID) => dispatch => {
     if (response.status === 200) {
       return response.json()
         .then((successResponse) => {
-          console.log(successResponse);
           dispatch(getCityBreweryListSuccess(successResponse));
         });
     } return response.json()
       .then((errorResponse) => {
-        console.log(errorResponse);
         dispatch(getCityBreweryListError(errorResponse));
       });
   }).catch((error) => (
-    console.log(error)
+    console.log(error) // eslint-disable-line
   ));
 };
 
-
-// Checkoff Brewery
+/**
+* CHECKOFF BREWERY
+**/
 export const CHECKOFF_BREWERY_SUCCESS = 'CHECKOFF_BREWERY_SUCCESS';
 export const checkoffBrewerySuccess = () => ({
   type: CHECKOFF_BREWERY_SUCCESS,
@@ -325,10 +347,9 @@ export const checkoffBreweryError = () => ({
   type: CHECKOFF_BREWERY_ERROR,
 });
 
-// AJAX to server to change Checkoff status of Brewery
+// POST to API to add or update completionStatus of a brewery
 export const checkoffBrewery = (breweryID, cityID, checkValue) => dispatch => {
   dispatch(breweryListLoadingStatusTrue());
-  console.log('******* FROM ACTIONS *******', checkValue);
   const currentCityID = cityID;
   const userID = Auth.getUserID();
   const cityEndpoint = '/api/city';
@@ -348,25 +369,24 @@ export const checkoffBrewery = (breweryID, cityID, checkValue) => dispatch => {
   }).then((response) => {
     if (response.status >= 200 || response.status < 300) {
       return response.json()
-        .then((successResponse) => {
-          console.log(successResponse);
+        .then(() => {
           dispatch(checkoffBrewerySuccess());
         })
         .then(() => (
           dispatch(getCityBreweryList(currentCityID)))
         );
     } return response.json()
-      .then((errorResponse) => {
-        console.log(errorResponse);
+      .then(() => {
         dispatch(checkoffBreweryError());
       });
   }).catch((error) => (
-    console.log(error)
+    console.log(error) // eslint-disable-line
   ));
 };
 
-
-// Rate Brewery
+/**
+* RATE BREWERY
+**/
 export const RATE_BREWERY_SUCCESS = 'RATE_BREWERY_SUCCESS';
 export const rateBrewerySuccess = () => ({
   type: RATE_BREWERY_SUCCESS,
@@ -377,10 +397,9 @@ export const rateBreweryError = () => ({
   type: RATE_BREWERY_ERROR,
 });
 
-// AJAX to server to change Checkoff status of Brewery
+// POST to API to add or update rating of a brewery
 export const rateBrewery = (breweryID, cityID, ratingValue) => dispatch => {
   dispatch(breweryListLoadingStatusTrue());
-  console.log('******* FROM ACTIONS *******', ratingValue);
   const currentCityID = cityID;
   const userID = Auth.getUserID();
   const cityEndpoint = '/api/city';
@@ -400,20 +419,18 @@ export const rateBrewery = (breweryID, cityID, ratingValue) => dispatch => {
   }).then((response) => {
     if (response.status >= 200 || response.status < 300) {
       return response.json()
-        .then((successResponse) => {
-          console.log(successResponse);
+        .then(() => {
           dispatch(rateBrewerySuccess());
         })
         .then(() => (
           dispatch(getCityBreweryList(currentCityID)))
         );
     } return response.json()
-      .then((errorResponse) => {
-        console.log(errorResponse);
+      .then(() => {
         dispatch(rateBreweryError());
       });
   }).catch((error) => (
-    console.log(error)
+    console.log(error) // eslint-disable-line
   ));
 };
 
