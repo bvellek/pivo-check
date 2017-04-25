@@ -8,6 +8,7 @@ const initialState = {
     cityID: '',
   },
   currentCityListErrorStatus: false,
+  breweryFilter: 'none',
 };
 
 export const breweryListReducer = (state = initialState, action) => {
@@ -30,6 +31,12 @@ export const breweryListReducer = (state = initialState, action) => {
       currentCityListErrorStatus: true,
     });
     return modState;
+  } else if (action.type === actions.SET_BREWERY_FILTER) {
+    const filter = action.filter;
+    const modState = Object.assign({}, state, {
+      breweryFilter: filter,
+    });
+    return modState;
   } else if (action.type === actions.CLEAN_CITY_BREW_LIST) {
     const modState = Object.assign({}, state, {
       breweryListLoadingStatus: false,
@@ -39,6 +46,7 @@ export const breweryListReducer = (state = initialState, action) => {
         cityID: '',
       },
       currentCityListErrorStatus: false,
+      breweryFilter: 'none',
     });
     return modState;
   }

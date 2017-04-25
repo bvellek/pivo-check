@@ -6,14 +6,6 @@ import CityBrewList from './CityBrewList';
 import NoBreweries from './NoBreweries';
 
 class CityPageContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filter: 'none',
-    };
-  }
-
   async componentDidMount() {
     await this.props.dispatch(actions.getCityBreweryList(this.props.match.params.cityID));
     document.querySelector('head > title').innerHTML = `${this.props.currentCityData.cityName} | PIVO-CHECK`;
@@ -24,23 +16,30 @@ class CityPageContainer extends Component {
   }
 
   brewFilterChange = (e) => {
-    console.log('hello from the filter select', e.target.value);
-    this.setState({ filter: e.target.value });
+    this.props.dispatch(actions.setBreweryFilter(e.target.value));
   }
 
   render() {
     const brewArr = this.props.currentCityData.brewArr;
+    const breweryFilter = this.props.breweryFilter;
     const filteredBrewArr = brewArr.filter((brewery) => {
-      if (this.state.filter === 'visited') {
+      if (breweryFilter === 'visited') {
         return brewery.checkoffInfo.completionStatus === 'true';
-      } else if (this.state.filter === 'not') {
+      } else if (breweryFilter === 'not') {
         return brewery.checkoffInfo.completionStatus !== 'true';
-      } else if (this.state.filter === 'none') {
+      } else if (breweryFilter === 'none') {
         return brewery;
       }
-      return brewery.locationType === this.state.filter;
+      return brewery.locationType === breweryFilter;
+    }).sort((a, b) => {
+      if (a.brewery.name < b.brewery.name) {
+        return -1;
+      } else if (a.brewery.name > b.brewery.name) {
+        return 1;
+      }
+      return 0;
     });
-    console.log(brewArr);
+
     let breweryDisplay;
     if (this.props.loadingStatus) {
       breweryDisplay = <div />;
@@ -53,7 +52,7 @@ class CityPageContainer extends Component {
     return (
       <CityBrewPage
         onFilter={this.brewFilterChange}
-        filterValue={this.state.filter}
+        filterValue={this.props.breweryFilter}
         loadingStatus={this.props.loadingStatus}
         currentCityData={this.props.currentCityData}
         breweriesList={breweryDisplay}
@@ -67,6 +66,7 @@ const mapStateToProps = (state) => ({
   loadingStatus: state.breweryList.breweryListLoadingStatus,
   currentCityData: state.breweryList.currentCityData,
   currentCityListErrorStatus: state.breweryList.currentCityListErrorStatus,
+  breweryFilter: state.breweryList.breweryFilter,
 });
 
 export default connect(mapStateToProps)(CityPageContainer);

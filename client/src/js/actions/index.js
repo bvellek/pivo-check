@@ -259,6 +259,19 @@ export const breweryListLoadingStatusTrue = () => ({
   type: BREWERY_LIST_LOADING_STATUS_TRUE,
 });
 
+// Clean City Brew List  - set all brew list related state to initial
+export const CLEAN_CITY_BREW_LIST = 'CLEAN_CITY_BREW_LIST';
+export const cleanCityBrewList = () => ({
+  type: CLEAN_CITY_BREW_LIST,
+});
+
+// Set Brewery Filter
+export const SET_BREWERY_FILTER = 'SET_BREWERY_FILTER';
+export const setBreweryFilter = (filter) => ({
+  type: SET_BREWERY_FILTER,
+  filter,
+});
+
 // Get City Brewery List
 export const GET_CITY_BREWERY_LIST_SUCCESS = 'GET_CITY_BREWERY_LIST_SUCCESS';
 export const getCityBreweryListSuccess = (currentCityData) => ({
@@ -300,8 +313,3 @@ export const getCityBreweryList = (cityID) => dispatch => {
   ));
 };
 
-// Clean City Brew List  - set all brew list related state to initial
-export const CLEAN_CITY_BREW_LIST = 'CLEAN_CITY_BREW_LIST';
-export const cleanCityBrewList = () => ({
-  type: CLEAN_CITY_BREW_LIST,
-});

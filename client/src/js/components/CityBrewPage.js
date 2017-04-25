@@ -21,7 +21,7 @@ const CityBrewPage = ({
           <h1>{currentCityData.cityName}</h1>
           <label htmlFor="brewery-filter"><h2>Brewery&nbsp;Filter: </h2></label> {' '}
           <select id="brewery-filter" name="brewery-filter" onChange={onFilter} value={filterValue}>
-            <option defaultValue value="none">All {currentCityData.cityName} Breweries</option>
+            <option value="none">All {currentCityData.cityName} Breweries</option>
             <optgroup label="Completed">
               <option value="visited">Visited</option>
               <option value="not">Not Visited</option>
