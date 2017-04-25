@@ -15,9 +15,12 @@ const checkoffSchema = new mongoose.Schema({
   },
   rating: {
     type: Number,
+    max: 3,
+    default: 0,
   },
   completionStatus: {
     type: Boolean,
+    default: false,
   },
 });
 

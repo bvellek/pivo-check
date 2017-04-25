@@ -19,19 +19,28 @@ class CityPageContainer extends Component {
     this.props.dispatch(actions.setBreweryFilter(e.target.value));
   }
 
+  checkboxSubmit = (breweryID, checkValue) => {
+    this.props.dispatch(actions.checkoffBrewery(breweryID, this.props.match.params.cityID, checkValue));
+  }
+
+  ratingSubmit = (breweryID, value) => {
+    console.log(breweryID, value, this.props.match.params.cityID);
+    this.props.dispatch(actions.rateBrewery(breweryID, this.props.match.params.cityID, value));
+  }
+
   render() {
     const brewArr = this.props.currentCityData.brewArr;
     const breweryFilter = this.props.breweryFilter;
-    const filteredBrewArr = brewArr.filter((brewery) => {
+    const filteredBrewArr = brewArr.filter((brewery) => {   // Filter the Array of breweries to match the filter setting
       if (breweryFilter === 'visited') {
-        return brewery.checkoffInfo.completionStatus === 'true';
+        return brewery.checkoffInfo.completionStatus === true;
       } else if (breweryFilter === 'not') {
-        return brewery.checkoffInfo.completionStatus !== 'true';
+        return brewery.checkoffInfo.completionStatus !== true;
       } else if (breweryFilter === 'none') {
         return brewery;
       }
       return brewery.locationType === breweryFilter;
-    }).sort((a, b) => {
+    }).sort((a, b) => {                                   // Sort the breweries alphabetically by name
       if (a.brewery.name < b.brewery.name) {
         return -1;
       } else if (a.brewery.name > b.brewery.name) {
@@ -43,9 +52,9 @@ class CityPageContainer extends Component {
     let breweryDisplay;
     if (this.props.loadingStatus) {
       breweryDisplay = <div />;
-    } else if (brewArr.length > 0) {
-      breweryDisplay = <CityBrewList breweries={filteredBrewArr} />;
-    } else {
+    } else if (filteredBrewArr.length > 0) {            // Send list of filtered breweries to CityBrewList component for display
+      breweryDisplay = <CityBrewList breweries={filteredBrewArr} checkboxSubmit={this.checkboxSubmit} ratingSubmit={this.ratingSubmit} />;
+    } else {                                            // If no breweries left after filtering, display NoBreweries component
       breweryDisplay = <NoBreweries cityName={this.props.currentCityData.cityName} />;
     }
 
@@ -56,7 +65,8 @@ class CityPageContainer extends Component {
         loadingStatus={this.props.loadingStatus}
         currentCityData={this.props.currentCityData}
         breweriesList={breweryDisplay}
-        currentCityListErrorStatus={this.props.currentCityListErrorStatus}
+        currentBreweryListErrorStatus={this.props.currentBreweryListErrorStatus}
+        checkoffErrorStatus={this.props.checkoffErrorStatus}
       />
     );
   }
@@ -65,7 +75,8 @@ class CityPageContainer extends Component {
 const mapStateToProps = (state) => ({
   loadingStatus: state.breweryList.breweryListLoadingStatus,
   currentCityData: state.breweryList.currentCityData,
-  currentCityListErrorStatus: state.breweryList.currentCityListErrorStatus,
+  currentBreweryListErrorStatus: state.breweryList.currentBreweryListErrorStatus,
+  checkoffErrorStatus: state.breweryList.checkoffErrorStatus,
   breweryFilter: state.breweryList.breweryFilter,
 });
 

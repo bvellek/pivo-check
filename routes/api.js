@@ -147,19 +147,19 @@ router.post('/cities', async (req, res) => {
 });
 
 // BreweryDB API proxy
-router.post('/city', async (req, res) => {
-  const coords = req.body.coords;
-  const lat = coords.lat;
-  const lng = coords.lng;
+// router.post('/city', async (req, res) => {
+//   const coords = req.body.coords;
+//   const lat = coords.lat;
+//   const lng = coords.lng;
 
-  await getBreweries(lat, lng)
-  .then((results) => {
-    res.status(200).json(results);
-  })
-  .catch((err) => {
-    res.status(500).json(err.message);
-  });
-});
+//   await getBreweries(lat, lng)
+//   .then((results) => {
+//     res.status(200).json(results);
+//   })
+//   .catch((err) => {
+//     res.status(500).json(err.message);
+//   });
+// });
 
 // Get City - breweries list
 router.get('/city/:cityID', async (req, res) => {
@@ -261,17 +261,49 @@ const updateBreweryTotal = (cityID, newBrewTotal) => (
   })
 );
 
-// router.post(('/updateBrewery'), (req, res) => {
-//   const cityToUpdate = req.body.cityID;
-//   const newBrewTotal = req.body.brewTotal;
-//   updateBreweryTotal(cityToUpdate, newBrewTotal)
-//   .then((updated => res.json(updated)))
-//   .catch(err => res.json(err));
-// });
-
-// Checkoff/Rate Brewery - breweryID, userID, cityID, check value
-// router.post('/city', (req, res) => {
-
-// });
+// Checkoff/Rate Brewery - breweryID, userID, cityID, check value/rating value
+router.post('/city', (req, res) => {
+  const userID = req.body.userID;
+  const breweryID = req.body.breweryID;
+  const cityID = req.body.cityID;
+  const updated = {};
+  const updateableFields = ['rating', 'completionStatus'];
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      updated[field] = req.body[field];
+    }
+  });
+  let checkoffID;
+  Checkoff
+    .findOne({
+      cityID,
+      breweryID,
+      userID,
+    }, (err, checkoff) => {
+      if (err) {
+        res.status(500).json('error searching for checkoff');
+      }
+      if (checkoff) {
+        checkoffID = checkoff._id;
+        Checkoff
+          .findByIdAndUpdate(checkoffID, {
+            $set: updated,
+          }, { new: true })
+          .exec()
+          .then(() => res.status(200).json(`${checkoffID} was successfully updated!`));
+      } else {
+        Checkoff
+          .create(Object.assign({}, updated, {
+            userID,
+            breweryID,
+            cityID,
+          }))
+          .then((newCheckoff) => (res.status(201).json(`${newCheckoff._id} was successfully created!`)))
+          .catch(error => {
+            res.status(500).json(error.message);
+          });
+      }
+    });
+});
 
 module.exports = router;

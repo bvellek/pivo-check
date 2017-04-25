@@ -7,7 +7,8 @@ const initialState = {
     cityName: '',
     cityID: '',
   },
-  currentCityListErrorStatus: false,
+  currentBreweryListErrorStatus: false,
+  checkoffErrorStatus: false,
   breweryFilter: 'none',
 };
 
@@ -22,19 +23,43 @@ export const breweryListReducer = (state = initialState, action) => {
     const modState = Object.assign({}, state, {
       breweryListLoadingStatus: false,
       currentCityData,
-      currentCityListErrorStatus: false,
+      currentBreweryListErrorStatus: false,
     });
     return modState;
   } else if (action.type === actions.GET_CITY_BREWERY_LIST_ERROR) {
     const modState = Object.assign({}, state, {
       breweryListLoadingStatus: false,
-      currentCityListErrorStatus: true,
+      currentBreweryListErrorStatus: true,
     });
     return modState;
   } else if (action.type === actions.SET_BREWERY_FILTER) {
     const filter = action.filter;
     const modState = Object.assign({}, state, {
       breweryFilter: filter,
+    });
+    return modState;
+  } else if (action.type === actions.CHECKOFF_BREWERY_SUCCESS) {
+    const modState = Object.assign({}, state, {
+      breweryListLoadingStatus: false,
+      checkoffErrorStatus: false,
+    });
+    return modState;
+  } else if (action.type === actions.CHECKOFF_BREWERY_ERROR) {
+    const modState = Object.assign({}, state, {
+      breweryListLoadingStatus: false,
+      checkoffErrorStatus: true,
+    });
+    return modState;
+  } else if (action.type === actions.CHECKOFF_BREWERY_SUCCESS) {
+    const modState = Object.assign({}, state, {
+      breweryListLoadingStatus: false,
+      checkoffErrorStatus: false,
+    });
+    return modState;
+  } else if (action.type === actions.CHECKOFF_BREWERY_ERROR) {
+    const modState = Object.assign({}, state, {
+      breweryListLoadingStatus: false,
+      checkoffErrorStatus: true,
     });
     return modState;
   } else if (action.type === actions.CLEAN_CITY_BREW_LIST) {
@@ -45,8 +70,9 @@ export const breweryListReducer = (state = initialState, action) => {
         cityName: '',
         cityID: '',
       },
-      currentCityListErrorStatus: false,
+      currentBreweryListErrorStatus: false,
       breweryFilter: 'none',
+      checkoffErrorStatus: false,
     });
     return modState;
   }

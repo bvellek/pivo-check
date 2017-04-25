@@ -313,3 +313,107 @@ export const getCityBreweryList = (cityID) => dispatch => {
   ));
 };
 
+
+// Checkoff Brewery
+export const CHECKOFF_BREWERY_SUCCESS = 'CHECKOFF_BREWERY_SUCCESS';
+export const checkoffBrewerySuccess = () => ({
+  type: CHECKOFF_BREWERY_SUCCESS,
+});
+
+export const CHECKOFF_BREWERY_ERROR = 'CHECKOFF_BREWERY_ERROR';
+export const checkoffBreweryError = () => ({
+  type: CHECKOFF_BREWERY_ERROR,
+});
+
+// AJAX to server to change Checkoff status of Brewery
+export const checkoffBrewery = (breweryID, cityID, checkValue) => dispatch => {
+  dispatch(breweryListLoadingStatusTrue());
+  console.log('******* FROM ACTIONS *******', checkValue);
+  const currentCityID = cityID;
+  const userID = Auth.getUserID();
+  const cityEndpoint = '/api/city';
+  return fetch(cityEndpoint, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+    body: JSON.stringify({
+      userID,
+      cityID,
+      breweryID,
+      completionStatus: checkValue,
+    }),
+  }).then((response) => {
+    if (response.status >= 200 || response.status < 300) {
+      return response.json()
+        .then((successResponse) => {
+          console.log(successResponse);
+          dispatch(checkoffBrewerySuccess());
+        })
+        .then(() => (
+          dispatch(getCityBreweryList(currentCityID)))
+        );
+    } return response.json()
+      .then((errorResponse) => {
+        console.log(errorResponse);
+        dispatch(checkoffBreweryError());
+      });
+  }).catch((error) => (
+    console.log(error)
+  ));
+};
+
+
+// Rate Brewery
+export const RATE_BREWERY_SUCCESS = 'RATE_BREWERY_SUCCESS';
+export const rateBrewerySuccess = () => ({
+  type: RATE_BREWERY_SUCCESS,
+});
+
+export const RATE_BREWERY_ERROR = 'RATE_BREWERY_ERROR';
+export const rateBreweryError = () => ({
+  type: RATE_BREWERY_ERROR,
+});
+
+// AJAX to server to change Checkoff status of Brewery
+export const rateBrewery = (breweryID, cityID, ratingValue) => dispatch => {
+  dispatch(breweryListLoadingStatusTrue());
+  console.log('******* FROM ACTIONS *******', ratingValue);
+  const currentCityID = cityID;
+  const userID = Auth.getUserID();
+  const cityEndpoint = '/api/city';
+  return fetch(cityEndpoint, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+    body: JSON.stringify({
+      userID,
+      cityID,
+      breweryID,
+      rating: ratingValue,
+    }),
+  }).then((response) => {
+    if (response.status >= 200 || response.status < 300) {
+      return response.json()
+        .then((successResponse) => {
+          console.log(successResponse);
+          dispatch(rateBrewerySuccess());
+        })
+        .then(() => (
+          dispatch(getCityBreweryList(currentCityID)))
+        );
+    } return response.json()
+      .then((errorResponse) => {
+        console.log(errorResponse);
+        dispatch(rateBreweryError());
+      });
+  }).catch((error) => (
+    console.log(error)
+  ));
+};
+

@@ -11,7 +11,8 @@ const CityBrewPage = ({
   loadingStatus,
   currentCityData,
   breweriesList,
-  currentCityListErrorStatus,
+  currentBreweryListErrorStatus,
+  checkoffErrorStatus,
 }) => (
   <div>
     <InAppHeader />
@@ -39,7 +40,8 @@ const CityBrewPage = ({
         </header>
         <section className="breweries-list">
           {loadingStatus ? <Loader /> : <div />}
-          {currentCityListErrorStatus ? <div className="app-error-msg">Sorry we could not retrieve your breweries at this time. Please refresh to try&nbsp;again.</div> : <div />}
+          {currentBreweryListErrorStatus ? <div className="app-error-msg">Sorry we could not retrieve your breweries at this time. Please refresh to try&nbsp;again.</div> : <div />}
+          {checkoffErrorStatus ? <div className="app-error-msg">Sorry we could not checkoff or rate this brewery. Please refresh to try&nbsp;again.</div> : <div />}
           {breweriesList || <div />}
         </section>
       </main>
@@ -53,8 +55,9 @@ CityBrewPage.propTypes = {
   filterValue: PropTypes.string.isRequired,
   loadingStatus: PropTypes.bool.isRequired,
   currentCityData: PropTypes.object.isRequired,
-  currentCityListErrorStatus: PropTypes.bool.isRequired,
+  currentBreweryListErrorStatus: PropTypes.bool.isRequired,
   breweriesList: PropTypes.object.isRequired,
+  checkoffErrorStatus: PropTypes.bool.isRequired,
 };
 
 export default CityBrewPage;

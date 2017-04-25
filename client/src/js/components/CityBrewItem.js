@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import noImage from './noImage.png';
 
-const CityBrewItem = ({ breweryInfo }) => (
+const CityBrewItem = ({ checkboxSubmit, ratingSubmit, breweryInfo }) => (
   <li>
     <form className="checkoff-form" action="index.html" method="post">
       <label htmlFor={`check-${breweryInfo.id}`} className="visually-hidden">Checkoff {breweryInfo.brewery.name}</label>
       <div className='brew-check'>
-        <input id={`check-${breweryInfo.id}`} type='checkbox' name={breweryInfo.id} checked={breweryInfo.checkoffInfo.completionStatus} />
+        <input id={`check-${breweryInfo.id}`} type='checkbox' name={breweryInfo.id} checked={breweryInfo.checkoffInfo.completionStatus} onChange={(e) => (checkboxSubmit(breweryInfo.id, e.target.checked))} />
           <div>&#10003;</div>
           <div>&#10003;</div>
           <div>&#10003;</div>
@@ -21,8 +22,8 @@ const CityBrewItem = ({ breweryInfo }) => (
 
       <form className="brewery-rating-form" action="index.html" method="post">
         <label htmlFor={`rating-${breweryInfo.id}`}>Rating: <span className="visually-hidden">for {breweryInfo.brewery.name}</span></label>
-        <select id={`rating-${breweryInfo.id}`} className="brew-rating-select" name={`select-${breweryInfo.id}`} value={breweryInfo.checkoffInfo.rating}>
-          <option defaultValue value="0">{' '}</option>
+        <select id={`rating-${breweryInfo.id}`} className="brew-rating-select" name={`select-${breweryInfo.id}`} value={breweryInfo.checkoffInfo.rating} onChange={(e) => (ratingSubmit(breweryInfo.id, e.target.value))}>
+          <option value="0">{' '}</option>
           <option value="1">🍺</option>
           <option value="2">🍺🍺</option>
           <option value="3">🍺🍺🍺</option>
@@ -59,5 +60,12 @@ const CityBrewItem = ({ breweryInfo }) => (
     </div>
   </li>
 );
+
+
+CityBrewItem.propTypes = {
+  checkboxSubmit: PropTypes.func.isRequired,
+  ratingSubmit: PropTypes.func.isRequired,
+  breweryInfo: PropTypes.object.isRequired,
+};
 
 export default CityBrewItem;
