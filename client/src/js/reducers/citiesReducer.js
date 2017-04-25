@@ -25,8 +25,6 @@ export const citiesReducer = (state = initialState, action) => {
     });
     return modState;
   } else if (action.type === actions.GET_CITIES_ERROR) {
-    // const citiesErrorMsg = action.citiesError;
-    console.log('$ coming from citiesReducer', action.citiesError);
     const modState = Object.assign({}, state, {
       citiesLoadingStatus: false,
       myCities: [],

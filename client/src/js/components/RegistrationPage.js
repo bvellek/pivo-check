@@ -81,7 +81,6 @@ RegistrationPage.propTypes = {
   onChange: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  // loadingStatus: PropTypes.bool.isRequired,
 };
 
 export default RegistrationPage;

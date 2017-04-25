@@ -35,13 +35,7 @@ class RegistrationPageContainer extends Component {
 
   processForm = (e) => {
     e.preventDefault();
-
     this.props.dispatch(actions.registerUser(this.state.user));
-    console.log(`firstName: ${this.state.user.firstName}`);
-    console.log(`lastName: ${this.state.user.lastName}`);
-    console.log(`email: ${this.state.user.email}`);
-    console.log(`password: ${this.state.user.password}`);
-    console.log(`confirmPassword: ${this.state.user.confirmPassword}`);
   }
 
   render() {

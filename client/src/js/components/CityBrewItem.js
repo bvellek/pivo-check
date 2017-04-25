@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import noImage from './noImage.png';
 
-const CityBrewItem = ({ checkboxSubmit, ratingSubmit, breweryInfo }) => (
+const CityBrewItem = ({
+  checkboxSubmit,
+  ratingSubmit,
+  breweryInfo,
+}) => (
   <li>
     <form className="checkoff-form" action="index.html" method="post">
       <label htmlFor={`check-${breweryInfo.id}`} className="visually-hidden">Checkoff {breweryInfo.brewery.name}</label>
@@ -60,7 +64,6 @@ const CityBrewItem = ({ checkboxSubmit, ratingSubmit, breweryInfo }) => (
     </div>
   </li>
 );
-
 
 CityBrewItem.propTypes = {
   checkboxSubmit: PropTypes.func.isRequired,

@@ -33,7 +33,6 @@ export const authReducer = (state = initialState, action) => {
     return modState;
   } else if (action.type === actions.LOGIN_USER_SUCCESS) {
     const successMessage = action.loginSuccessMessage;
-    console.log('% Reducer', successMessage);
     const userID = successMessage.user.userID;
     const modState = Object.assign({}, state, {
       authLoadingStatus: false,
@@ -45,7 +44,6 @@ export const authReducer = (state = initialState, action) => {
     return modState;
   } else if (action.type === actions.LOGIN_USER_ERROR) {
     const errorMessage = action.loginErrorMessage;
-    console.log('% Reducer ErrorMsg', errorMessage);
     const modState = Object.assign({}, state, {
       authLadingStatus: false,
       registrationSuccessMessage: {},

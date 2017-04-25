@@ -33,6 +33,7 @@ CitiesPage.propTypes = {
   myCities: PropTypes.object.isRequired,
   citiesErrorStatus: PropTypes.bool.isRequired,
   addCityErrorStatus: PropTypes.bool.isRequired,
+  deleteCityErrorStatus: PropTypes.bool.isRequired,
 };
 
 export default CitiesPage;

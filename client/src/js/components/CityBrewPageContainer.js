@@ -24,7 +24,6 @@ class CityPageContainer extends Component {
   }
 
   ratingSubmit = (breweryID, value) => {
-    console.log(breweryID, value, this.props.match.params.cityID);
     this.props.dispatch(actions.rateBrewery(breweryID, this.props.match.params.cityID, value));
   }
 

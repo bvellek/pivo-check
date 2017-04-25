@@ -33,8 +33,6 @@ class LoginPageContainer extends Component {
   processForm = (e) => {
     e.preventDefault();
     this.props.dispatch(actions.loginUser(this.state.user));
-    console.log(`email: ${this.state.user.email}`);
-    console.log(`password: ${this.state.user.password}`);
   }
 
   demoSubmit = (e) => {
@@ -47,8 +45,6 @@ class LoginPageContainer extends Component {
     }, () => {
       document.querySelector('.login-btn').click();
     });
-    console.log(`email: ${this.state.user.email}`);
-    console.log(`password: ${this.state.user.password}`);
   }
 
   render() {

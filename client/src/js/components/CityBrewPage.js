@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import InAppHeader from './InAppHeader';
 import Loader from './Loader';
-
 import Footer from './Footer';
 
 const CityBrewPage = ({
