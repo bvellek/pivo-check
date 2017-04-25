@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-// const compression = require('compression');
+const compression = require('compression');
 
 const app = express();
 const { PORT, DATABASE_URL } = require('./config/config');
@@ -11,7 +11,7 @@ const { PORT, DATABASE_URL } = require('./config/config');
 mongoose.Promise = global.Promise;
 
 // compression for pagespeed
-// app.use(compression({ level: 9, threshold: 0 }));
+app.use(compression({ level: 9, threshold: 0 }));
 
 // serve static files including the app bundle
 app.use(express.static('./client/build'));
