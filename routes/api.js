@@ -110,7 +110,7 @@ const getBreweries = (lat, lng) => new Promise((resolve, reject) => {
     return resolve(publicBreweries);
   })
   .catch((err) => {
-    console.log(err);
+    console.log(err); // eslint-disable-line
     reject(err);
   });
 });
@@ -173,7 +173,7 @@ router.get('/city/:cityID', async (req, res) => {
       });
   })
   .catch((err) => {
-    console.log(`couln't get breweries: ${err}`);
+    console.log(`couln't get breweries: ${err}`); // eslint-disable-line
     res.status(500).json(err.message);
   });
 });
@@ -190,7 +190,7 @@ const mapBreweryToCheckoff = (breweryArr, cityID) => new Promise((resolve, rejec
     resolve(breweriesWithCheckoff)
   ))
   .catch(err => {
-    console.log(err);
+    console.log(err); // eslint-disable-line
     reject(err);
   });
 });
@@ -202,7 +202,7 @@ const getCheckoffByBreweryAndCity = (breweryID, cityID) => (
       .find({ cityID, breweryID })
       .exec((err, results) => {
         if (err) {
-          console.log('err');
+          console.log('err'); // eslint-disable-line
           reject([]);
         } else {
           if (results.length === 0) {
@@ -232,7 +232,7 @@ const getCityData = (cityID) => (
       results
     ))
     .catch(err => (
-      console.log(err)
+      console.log(err) // eslint-disable-line
     ))
 );
 
