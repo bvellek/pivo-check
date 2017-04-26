@@ -9,35 +9,45 @@ mongoose.Promise = global.Promise;
 
 const router = new express.Router();
 
-// Delete a user city - removes city and all related checkoff documents
-const deleteCity = (req, res) => {
-  const cityToDelete = req.params.cityID;
-  return new Promise((resolve, reject) => {
-    Checkoff
-      .find({ 'cityID': cityToDelete }) // eslint-disable-line
-      .remove()
-      .exec((err, results) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(results);
-        }
-      });
+/**
+* GET BREWERIES
+*
+* Retrieve brewery data for a specific city
+* Params: lat, lng
+**/
+const getBreweries = (lat, lng) => new Promise((resolve, reject) => {
+  const api = `https://api.brewerydb.com/v2/search/geo/point?lat=${lat}8&lng=${lng}&key=c97314af1e304cd0ad2f0d5e2cff7c18`;
+  return fetch(api).then((response) => (
+      response.json()
+  ))
+  .then((rawResults) => {
+    if (rawResults.totalResults) {
+      const brewArr = rawResults.data;
+      const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
+      return publicBreweries;
+    }
+    return [];
   })
-  .then(() => {
-    City
-      .findById(cityToDelete)
-      .remove()
-      .exec()
-      .then(() => {
-        res.status(200).json({ message: `${cityToDelete} removed.` });
-      });
-  }).catch(err => (res.status(500).json(err)));
-};
+  .then((publicBreweries) => {
+    if (publicBreweries >= 1) {
+      const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
+      return resolve(openBreweries);
+    }
+    return resolve(publicBreweries);
+  })
+  .catch((err) => {
+    console.log(err); // eslint-disable-line
+    reject(err);
+  });
+});
 
-router.delete('/cities/:cityID', deleteCity);
-
-// Functions
+/**
+* GET CITIES
+*
+* Retrieve user's city list with updated checkoff count
+* GET '/cities/:userID'
+* Params: userID
+**/
 const getCities = (req, res) => {
   City
     .find({ userID: req.params.userID })
@@ -71,9 +81,6 @@ const getCities = (req, res) => {
     });
 };
 
-// Get User's Cities with completed count
-router.get('/cities/:userID', getCities);
-
 const getCompletedByCityID = (cityID) => (
   new Promise((res, rej) => {
     Checkoff
@@ -89,34 +96,50 @@ const getCompletedByCityID = (cityID) => (
   })
 );
 
-const getBreweries = (lat, lng) => new Promise((resolve, reject) => {
-  const api = `https://api.brewerydb.com/v2/search/geo/point?lat=${lat}8&lng=${lng}&key=c97314af1e304cd0ad2f0d5e2cff7c18`;
-  return fetch(api).then((response) => (
-      response.json()
-  ))
-  .then((rawResults) => {
-    if (rawResults.totalResults) {
-      const brewArr = rawResults.data;
-      const publicBreweries = brewArr.filter((i) => (i.openToPublic === 'y' || i.openToPublic === 'Y'));
-      return publicBreweries;
-    }
-    return [];
-  })
-  .then((publicBreweries) => {
-    if (publicBreweries >= 1) {
-      const openBreweries = publicBreweries.filter((i) => (i.isClosed === 'n' || i.isClosed === 'N'));
-      return resolve(openBreweries);
-    }
-    return resolve(publicBreweries);
-  })
-  .catch((err) => {
-    console.log(err); // eslint-disable-line
-    reject(err);
-  });
-});
+router.get('/cities/:userID', getCities);
 
-// Add User City receive: userID, city string, coords
-router.post('/cities', async (req, res) => {
+/**
+* DELETE CITY
+*
+* Removes user city and all related checkoff docs
+* DELETE - '/cities/:cityID'
+* Params: cityID
+**/
+const deleteCity = (req, res) => {
+  const cityToDelete = req.params.cityID;
+  return new Promise((resolve, reject) => {
+    Checkoff
+      .find({ 'cityID': cityToDelete }) // eslint-disable-line
+      .remove()
+      .exec((err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+  })
+  .then(() => {
+    City
+      .findById(cityToDelete)
+      .remove()
+      .exec()
+      .then(() => {
+        res.status(200).json({ message: `${cityToDelete} removed.` });
+      });
+  }).catch(err => (res.status(500).json(err)));
+};
+
+router.delete('/cities/:cityID', deleteCity);
+
+/**
+* ADD CITY
+*
+* Add a new user city
+* POST '/cities'
+* Params: userID, cityName string, lat, lng
+**/
+const addCity = async (req, res) => {
   const user = req.body.userID;
   const coords = req.body.coords;
   const lat = coords.lat;
@@ -144,10 +167,18 @@ router.post('/cities', async (req, res) => {
   .catch((err) => {
     res.status(500).json(err.message);
   });
-});
+};
 
-// Get City - breweries list
-router.get('/city/:cityID', async (req, res) => {
+router.post('/cities', addCity);
+
+/**
+* GET CITY BREW LIST
+*
+* Retrieve breweries for a specific city
+* GET '/cities/:cityID'
+* Params: cityID
+**/
+const getCityBrewList = async (req, res) => {
   const cityToGet = req.params.cityID;
   let cityName;
   await getCityData(cityToGet)
@@ -176,7 +207,19 @@ router.get('/city/:cityID', async (req, res) => {
     console.log(`couln't get breweries: ${err}`); // eslint-disable-line
     res.status(500).json(err.message);
   });
-});
+};
+
+const getCityData = (cityID) => (
+  City
+    .findById(cityID)
+    .exec()
+    .then(results => (
+      results
+    ))
+    .catch(err => (
+      console.log(err) // eslint-disable-line
+    ))
+);
 
 const mapBreweryToCheckoff = (breweryArr, cityID) => new Promise((resolve, reject) => {
   const breweryPromises = breweryArr.map((brewery) => {
@@ -224,18 +267,6 @@ const getCheckoffByBreweryAndCity = (breweryID, cityID) => (
   })
 );
 
-const getCityData = (cityID) => (
-  City
-    .findById(cityID)
-    .exec()
-    .then(results => (
-      results
-    ))
-    .catch(err => (
-      console.log(err) // eslint-disable-line
-    ))
-);
-
 const updateBreweryTotal = (cityID, newBrewTotal) => (
   new Promise((resolve, reject) => {
     City
@@ -246,8 +277,16 @@ const updateBreweryTotal = (cityID, newBrewTotal) => (
   })
 );
 
-// Checkoff/Rate Brewery - breweryID, userID, cityID, check value/rating value
-router.post('/city', (req, res) => {
+router.get('/city/:cityID', getCityBrewList);
+
+/**
+* CREATE/UPDATE BREWERY COMPLETION/RATING
+*
+* Add a checkoff or rating or update
+* POST '/city'
+* Params: cityID, breweryID, userID, completionStatus (optional), rating (optional)
+**/
+const checkoffBrewery = (req, res) => {
   const userID = req.body.userID;
   const breweryID = req.body.breweryID;
   const cityID = req.body.cityID;
@@ -289,6 +328,8 @@ router.post('/city', (req, res) => {
           });
       }
     });
-});
+};
+
+router.post('/city', checkoffBrewery);
 
 module.exports = router;
