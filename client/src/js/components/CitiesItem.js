@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import SVGDelete from './SVGDelete';
 
-class CitiesItem extends Component {
+export class CitiesItem extends Component {
   constructor(props) {
     super(props);
     this.state = {

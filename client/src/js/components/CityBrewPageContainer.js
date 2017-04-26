@@ -5,7 +5,7 @@ import CityBrewPage from './CityBrewPage';
 import CityBrewList from './CityBrewList';
 import NoBreweries from './NoBreweries';
 
-class CityPageContainer extends Component {
+export class CityPageContainer extends Component {
   async componentDidMount() {
     await this.props.dispatch(actions.getCityBreweryList(this.props.match.params.cityID));
     document.querySelector('head > title').innerHTML = `${this.props.currentCityData.cityName} | PIVO-CHECK`;

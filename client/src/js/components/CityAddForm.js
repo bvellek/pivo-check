@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 import * as actions from '../actions/index';
 
-class CityAddForm extends Component {
+export class CityAddForm extends Component {
   constructor(props) {
     super(props);
     this.state = { address: '' };

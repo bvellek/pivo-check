@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import * as actions from '../actions/index';
 import LoginPage from './LoginPage';
 
-class LoginPageContainer extends Component {
+export class LoginPageContainer extends Component {
   constructor(props) {
     super(props);
 

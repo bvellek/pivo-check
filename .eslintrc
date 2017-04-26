@@ -1,6 +1,7 @@
 {
   "extends": "equimper",
   "rules": {
-        "max-len": 0
+        "max-len": 0,
+        "import/no-named-as-default": "off"
     }
 }

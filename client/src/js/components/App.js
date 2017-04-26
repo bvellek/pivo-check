@@ -10,7 +10,7 @@ import RegistrationPageContainer from './RegistrationPageContainer';
 import CitiesPageContainer from './CitiesPageContainer';
 import CityBrewPageContainer from './CityBrewPageContainer';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <BrowserRouter basename='/'>

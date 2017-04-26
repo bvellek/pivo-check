@@ -5,7 +5,7 @@ import CitiesPage from './CitiesPage';
 import CitiesList from './CitiesList';
 import NoCities from './NoCities';
 
-class CitiesPageContainer extends Component {
+export class CitiesPageContainer extends Component {
   componentDidMount() {
     document.querySelector('head > title').innerHTML = 'My Cities | PIVO-CHECK';
     this.props.dispatch(actions.cleanAuth());
