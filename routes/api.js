@@ -332,6 +332,5 @@ const checkoffBrewery = (req, res) => {
 
 router.post('/city', checkoffBrewery);
 
-module.exports = router;
-
-// getBreweries, getCities, getCompletedByCityID, deleteCity, addCity, getCityBrewList, getCityData, mapBreweryToCheckoff, getCheckoffByBreweryAndCity, updateBreweryTotal, checkoffBrewery;
+// module.exports = router;
+module.exports = { router, getCities, getBreweries, getCompletedByCityID, deleteCity, addCity, getCityBrewList, getCityData, mapBreweryToCheckoff, getCheckoffByBreweryAndCity, updateBreweryTotal, checkoffBrewery };

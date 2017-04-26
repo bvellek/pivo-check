@@ -1,6 +1,6 @@
 import * as actions from '../actions/index';
 
-const initialState = {
+export const initialState = {
   citiesLoadingStatus: false,
   myCities: [],
   citiesErrorStatus: false,

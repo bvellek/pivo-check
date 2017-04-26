@@ -1,6 +1,6 @@
 import * as actions from '../actions/index';
 
-const initialState = {
+export const initialState = {
   authLoadingStatus: false,
   registrationSuccessMessage: {},
   registrationErrorMessage: {},
@@ -45,7 +45,7 @@ export const authReducer = (state = initialState, action) => {
   } else if (action.type === actions.LOGIN_USER_ERROR) {
     const errorMessage = action.loginErrorMessage;
     const modState = Object.assign({}, state, {
-      authLadingStatus: false,
+      authLoadingStatus: false,
       registrationSuccessMessage: {},
       loginErrorMessage: errorMessage,
     });

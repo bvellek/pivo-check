@@ -39,7 +39,7 @@ const apiRoutes = require('./routes/api');
 
 app.use('/api', authCheckMiddleware);
 app.use('/auth', authRoutes);
-app.use('/api', apiRoutes);
+app.use('/api', apiRoutes.router);
 
 // all routes that are not the auth or api will be served the react app
 app.use('/*', express.static('./client/build'));

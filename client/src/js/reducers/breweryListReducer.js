@@ -1,6 +1,6 @@
 import * as actions from '../actions/index';
 
-const initialState = {
+export const initialState = {
   breweryListLoadingStatus: false,
   currentCityData: {
     brewArr: [],
