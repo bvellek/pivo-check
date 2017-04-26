@@ -1,0 +1,9 @@
+exports[`<Loader /> it renders correctly 1`] = `
+<div
+  className="loader-wrapper">
+  <div
+    className="loader">
+    Loading...
+  </div>
+</div>
+`;

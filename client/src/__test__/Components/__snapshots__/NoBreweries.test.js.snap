@@ -1,0 +1,8 @@
+exports[`<NoBreweries /> it renders correctly 1`] = `
+<section
+  className="no-cities">
+  <p>
+    Looks like there are no breweries here! Check back later, our database of breweries is updated frequently.
+  </p>
+</section>
+`;
