@@ -50,13 +50,13 @@ export const breweryListReducer = (state = initialState, action) => {
       checkoffErrorStatus: true,
     });
     return modState;
-  } else if (action.type === actions.CHECKOFF_BREWERY_SUCCESS) {
+  } else if (action.type === actions.RATE_BREWERY_SUCCESS) {
     const modState = Object.assign({}, state, {
       breweryListLoadingStatus: false,
       checkoffErrorStatus: false,
     });
     return modState;
-  } else if (action.type === actions.CHECKOFF_BREWERY_ERROR) {
+  } else if (action.type === actions.RATE_BREWERY_ERROR) {
     const modState = Object.assign({}, state, {
       breweryListLoadingStatus: false,
       checkoffErrorStatus: true,
