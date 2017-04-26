@@ -13,7 +13,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "cd client && yarn install && yarn test && cd ../"
+    "test": "cd client && yarn install && yarn test && cd ../",
+    "test2": "cd client && yarn install && yarn test && cd ../ && yarn install && mocha test"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",

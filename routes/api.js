@@ -333,3 +333,5 @@ const checkoffBrewery = (req, res) => {
 router.post('/city', checkoffBrewery);
 
 module.exports = router;
+
+// getBreweries, getCities, getCompletedByCityID, deleteCity, addCity, getCityBrewList, getCityData, mapBreweryToCheckoff, getCheckoffByBreweryAndCity, updateBreweryTotal, checkoffBrewery;
