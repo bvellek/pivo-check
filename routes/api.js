@@ -146,21 +146,6 @@ router.post('/cities', async (req, res) => {
   });
 });
 
-// BreweryDB API proxy
-// router.post('/city', async (req, res) => {
-//   const coords = req.body.coords;
-//   const lat = coords.lat;
-//   const lng = coords.lng;
-
-//   await getBreweries(lat, lng)
-//   .then((results) => {
-//     res.status(200).json(results);
-//   })
-//   .catch((err) => {
-//     res.status(500).json(err.message);
-//   });
-// });
-
 // Get City - breweries list
 router.get('/city/:cityID', async (req, res) => {
   const cityToGet = req.params.cityID;
