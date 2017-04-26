@@ -34,10 +34,10 @@ cd client
 yarn build
 ```
 
-
+<!--
 ## Project Summary 🌅
 Lumen Spot is a web application that I designed and developed to help inspire photographers. Light is the most important aspect of any photo. In order to find the light that best suits a photographer's vision, it is crucial to know the times at which the sun is rising and setting. This application helps users find out detailed sun times for a specific location and also provides current weather conditions. To further aid in the photographer's vision process, I include example photos taken by other photographers at the same location.
-
+-->
 
 ## Screenshots 📸
 | ![Landing Page Screenshot](https://github.com/bvellek/pivo-check/blob/master/design/screens/screen-landing.png?raw=true) |
