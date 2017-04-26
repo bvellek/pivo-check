@@ -3,23 +3,36 @@
 [PIVO-CHECK](https://pivo-check.herokuapp.com/) is a full-stack JavaScript web application designed to help users discover all the breweries! It provides a responsive, intuitive experience for users to add cities and track all the breweries they visit.
 
 
-
 ## Usage 👩‍💻
-In order to get started clone this repo. The PIVO-CHECK frontend is created with [create-react-app](https://github.com/facebookincubator/create-react-app) found in the `client` directory. Enter the commands below in your terminal:
+In order to get started clone this repo. The PIVO-CHECK frontend is created with [create-react-app](https://github.com/facebookincubator/create-react-app) found in the `client` directory. The API is in the root folder and the entry point is `server.js`. Enter the commands below in your terminal:
 ```bash
 git clone https://github.com/bvellek/pivo-check.git
 cd pivo-check
 yarn install
 cd client
 yarn install
+cd ..
 ```
-<!--- __Build__: the production build process uses , of this app uses [Grunt](http://gruntjs.com/) as a task runner for compiling Sass and autoprefixing and minifying CSS. If you do not already have Grunt CLI installed run `yarn global add grunt-cli`.
 
-- __Development__: to run the app locally use the command `yarn dev` and open your browser to 'localhost:8081'.
+- __Development__: to run the app locally you need 3 terminal windows/tabs. Open your browser to `localhost:3000`. The API is being served to `localhost:3001` but all app requests are proxied through `localhost:3000`.
+```bash
+# tab 1
+mongod
 
-- __Testing__: to start the test suite, run `yarn test` or for continuous testing `yarn run test:watch`.
+# tab 2
+yarn start
 
-- __Production__: to prepare for production run `yarn run production`. Webpack is run in production to remove all unnecessary comments and errors from React.
+# tab 3
+cd client
+yarn start
+```
+- __Testing__: there are two sets of tests: server tests and client tests. Run `yarn test` in the root directory for the server tests and `yarn test` in in the `/client` directory to run the client tests.
+
+- __Build/Production__: create-react-app optimizes and bundles everything for production. JavaScript bundle and compiles CSS are injected into the `index.html` file. All files are built to the `/client/build` folder.
+```bash
+cd client
+yarn build
+```
 
 
 ## Project Summary 🌅
@@ -27,15 +40,16 @@ Lumen Spot is a web application that I designed and developed to help inspire ph
 
 
 ## Screenshots 📸
-| <img alt="Landing Page" src="https://github.com/bvellek/lumen-spot-app/blob/master/public/img/design/screenshots/screen-landing.jpg?raw=true" width="525"> | <img alt="Location Results Page" src="https://github.com/bvellek/lumen-spot-app/blob/master/public/img/design/screenshots/screen-yosemite-search.jpg?raw=true" width="525"> |
-|:---:|:---:|
-| Landing Page | Location Results Page |
-
-
-## Design Process 📐
-| ![Wire Frame](https://github.com/bvellek/lumen-spot-app/blob/master/public/img/design/lumen-spot.jpg?raw=true) |
+| ![Landing Page Screenshot](https://github.com/bvellek/pivo-check/blob/master/design/screens/screen-landing.png?raw=true) |
 |:---:|
-| Small and Large Wireframes |
+| Landing Page |
+
+| <img alt="Login Screenshot" src="https://github.com/bvellek/pivo-check/blob/master/design/screens/screen-login.png?raw=true" width="350"> | <img alt="Registration Screenshot" src="https://github.com/bvellek/pivo-check/blob/master/design/screens/screen-registration.png?raw=true" width="350"> | <img alt="Cities List Screenshot" src="https://github.com/bvellek/pivo-check/blob/master/design/screens/screen-cities.png?raw=true" width="350"> | <img alt="Filtered Brewery List Screenshot" src="https://github.com/bvellek/pivo-check/blob/master/design/screens/screen-visited.png?raw=true" width="350"> |
+|:---:|:---:|:---:|:---:|
+| Login | Registration | Cities List | Filtered Brewery List |
+
+<!--
+## Design Process 📐
 In the design phase of this application, I started by writing user stories to determine the key features. The primary user features are to search for a location (either by entering an address, place of interest, or using current location), see sunrise, sunset, twilight times for the location, see weather for the location, and see photos from other photographers at the same location. After determining the user-critical features, I added some other features to improve the user experience. These include a link to a map of the location, a link to extended forecast weather, and photo settings with links to photographer's profiles. With these features in mind, I created wireframes of the app using [Sketch](https://www.sketchapp.com/). I tackled the design process with a mobile-first approach, because I know the majority of users will be using this app on location, on their phones. Using this approach also greatly improves the responsive design process.
 
 
@@ -62,8 +76,8 @@ Using a progressive enhancement strategy with an HTML first approach and within 
 - VoiceOver Context: in order to maintain context for non-sighted users, I added longer descriptions certain features like the Search link on the landing page and the inspiration images on the Location Search Page. To maintain visual styles, I used a `.visually-hidden` class from the [A11Y Project](http://a11yproject.com/posts/how-to-hide-content/) to hide this extra context from sighted users who have more visual context.
 - VoiceOver Rotor: the Rotor is a commonly used feature that allows for more efficient web browsing by listing common elements like headings, links, and sections. To maximize this feature I ensured that all pages had proper heading structure.
 - Details and Summary Elements: use of the details and summary elements provide interactivity without the use of JavaScript to hide content.
-- Contrast on all text elements to match Web Contact Accessibility Guidelines.-->
-
+- Contrast on all text elements to match Web Contact Accessibility Guidelines.
+-->
 
 ## Tech Used 💻
 ### Front-End
@@ -82,6 +96,7 @@ Using a progressive enhancement strategy with an HTML first approach and within 
  - [Mongoose ODM](http://mongoosejs.com/)
  - [Passport](http://passportjs.org/) - middleware for local authentication
  - [Bcrypt](https://www.npmjs.com/package/bcryptjs) - middleware for password hashing
+ - JSON Web Tokens - for authentication
 
 ### Testing and Deployment
  - [Jest](https://facebook.github.io/jest/) - testing frontend framework
