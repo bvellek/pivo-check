@@ -1,0 +1,71 @@
+exports[`<CitiesItem /> it renders correctly 1`] = `
+<div>
+  <div
+    className="city-item">
+    <Link
+      replace={false}
+      to="/cities/83jdi3dTEST">
+      <h2
+        className="city-list-title">
+        Test, TEST
+      </h2>
+    </Link>
+    <div
+      className="city-info">
+      <p
+        className="city-list-brew-count">
+        /
+        10
+      </p>
+      <div
+        className="city-list-delete">
+        <button
+          name="x-btn"
+          onClick={[Function]}
+          type="submit">
+          <SVGDelete />
+          <span
+            className="visually-hidden">
+            Delete 
+            Test, TEST
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="delete-city-warning"
+    hidden={true}>
+    <h3>
+      Delete 
+      Test, TEST
+      ?
+    </h3>
+    <p>
+      Deleting a location will permanently remove it from your checklist and you will lose your visited brewery record.
+    </p>
+    <div
+      className="delete-city">
+      <button
+        className="keep-city-btn"
+        name="keep-btn"
+        onClick={[Function]}
+        type="button">
+        No, Keep 
+        Test, TEST
+      </button>
+       
+       
+      <button
+        className="delete-city-btn"
+        name="remove-btn"
+        onClick={[Function]}
+        type="button">
+        <SVGDelete />
+         Yes, Delete 
+        Test, TEST
+      </button>
+    </div>
+  </div>
+</div>
+`;

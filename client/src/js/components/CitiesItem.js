@@ -12,7 +12,7 @@ export class CitiesItem extends Component {
     };
   }
 
-  deleteDialongChange = (e) => {
+  deleteDialogChange = (e) => {
     e.preventDefault();
     this.setState({
       deleteDialogStatus: !this.state.deleteDialogStatus,
@@ -41,7 +41,7 @@ export class CitiesItem extends Component {
           <div className="city-info">
             <p className="city-list-brew-count">{cityInfo.completedCount}/{cityInfo.brewTotal}</p>
             <div className="city-list-delete">
-              <button type="submit" name="x-btn" onClick={this.deleteDialongChange}><SVGDelete /><span className="visually-hidden">Delete {cityInfo.cityName}</span></button>
+              <button type="submit" name="x-btn" onClick={this.deleteDialogChange}><SVGDelete /><span className="visually-hidden">Delete {cityInfo.cityName}</span></button>
             </div>
           </div>
         </div>
