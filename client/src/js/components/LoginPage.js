@@ -5,7 +5,7 @@ import AuthHeader from './AuthHeader';
 import Loader from './Loader';
 import Footer from './Footer';
 
-const LoginPage = ({
+export const LoginPage = ({
   onSubmit,
   onChange,
   demoSubmit,

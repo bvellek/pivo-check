@@ -1,0 +1,84 @@
+exports[`<LoginPage /> it renders correctly 1`] = `
+<div>
+  <AuthHeader />
+  <div
+    className="login-page">
+    <main
+      role="main">
+      <form
+        className="login-form"
+        method="post"
+        onSubmit={[Function]}>
+        <fieldset>
+          <div />
+          <legend>
+            <h2>
+              Login
+            </h2>
+          </legend>
+          <label
+            htmlFor="user-email">
+            Email
+          </label>
+          <input
+            id="user-email"
+            name="email"
+            onChange={[Function]}
+            required={true}
+            type="email"
+            value="johnDoe@hotmail.com" />
+          <div />
+          <label
+            htmlFor="user-password">
+            Password
+          </label>
+          <input
+            id="user-password"
+            name="password"
+            onChange={[Function]}
+            required={true}
+            type="password"
+            value="passwordYO" />
+          <div />
+          <button
+            className="login-btn"
+            name="button"
+            type="submit">
+            Log In 🍻
+          </button>
+          <div />
+          <div
+            className="login-form-links">
+            <Link
+              replace={false}
+              to="/registration">
+              Register
+            </Link>
+             
+             | 
+            <a
+              href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password.">
+              Forgot Password?
+            </a>
+          </div>
+        </fieldset>
+      </form>
+      <h3>
+        <label
+          htmlFor="demo-btn">
+          Try it out!
+        </label>
+      </h3>
+      <button
+        className="demo-btn"
+        id="demo-btn"
+        name="demo-btn"
+        onClick={[Function]}
+        type="button">
+        Demo 🍺
+      </button>
+    </main>
+    <Footer />
+  </div>
+</div>
+`;
