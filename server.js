@@ -23,6 +23,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // use passport middleware
 app.use(passport.initialize());
 
+// force use of https://
+app.use((req, res, next) => {
+  let sslUrl;
+
+  if (process.env.NODE_ENV === 'production' && req.headers['x-forwarded-proto'] !== 'https') {
+    sslUrl = ['https://pivo-check.herokuapp.com', req.url].join('');
+    return res.redirect(sslUrl);
+  }
+  return next();
+});
+
 // load passport strategies
 const localRegistrationStrategy = require('./passport/local-registration');
 const localLoginStrategy = require('./passport/local-login');
