@@ -49,10 +49,10 @@ export class CityPageContainer extends Component {
     });
 
     let breweryDisplay;
-    if (this.props.loadingStatus) {
+    if (this.props.loadingStatus === 'true') {
       breweryDisplay = <div />;
     } else if (filteredBrewArr.length > 0) {            // Send list of filtered breweries to CityBrewList component for display
-      breweryDisplay = <CityBrewList breweries={filteredBrewArr} checkboxSubmit={this.checkboxSubmit} ratingSubmit={this.ratingSubmit} />;
+      breweryDisplay = <CityBrewList breweries={filteredBrewArr} checkboxSubmit={this.checkboxSubmit} ratingSubmit={this.ratingSubmit} loadingStatus={this.props.loadingStatus} />;
     } else {                                            // If no breweries left after filtering, display NoBreweries component
       breweryDisplay = <NoBreweries cityName={this.props.currentCityData.cityName} />;
     }

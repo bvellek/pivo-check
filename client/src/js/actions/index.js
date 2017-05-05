@@ -276,8 +276,9 @@ export const deleteCity = (cityID) => dispatch => {
 
 // City Brewery List Loading Element
 export const BREWERY_LIST_LOADING_STATUS_TRUE = 'BREWERY_LIST_LOADING_STATUS_TRUE';
-export const breweryListLoadingStatusTrue = () => ({
+export const breweryListLoadingStatusTrue = (status) => ({
   type: BREWERY_LIST_LOADING_STATUS_TRUE,
+  status,
 });
 
 // Clean City Brew List  - set all brew list related state to initial
@@ -309,8 +310,8 @@ export const getCityBreweryListError = (currentCityListError) => ({
 });
 
 // GET request to API for list of breweries
-export const getCityBreweryList = (cityID) => dispatch => {
-  dispatch(breweryListLoadingStatusTrue());
+export const getCityBreweryList = (cityID, breweryID) => dispatch => {
+  dispatch(breweryListLoadingStatusTrue(breweryID || 'true'));
   const citiesEndpoint = `/api/city/${cityID}`;
   return fetch(citiesEndpoint, {
     method: 'GET',
@@ -349,7 +350,7 @@ export const checkoffBreweryError = () => ({
 
 // POST to API to add or update completionStatus of a brewery
 export const checkoffBrewery = (breweryID, cityID, checkValue) => dispatch => {
-  dispatch(breweryListLoadingStatusTrue());
+  dispatch(breweryListLoadingStatusTrue(breweryID));
   const currentCityID = cityID;
   const userID = Auth.getUserID();
   const cityEndpoint = '/api/city';
@@ -373,7 +374,7 @@ export const checkoffBrewery = (breweryID, cityID, checkValue) => dispatch => {
           dispatch(checkoffBrewerySuccess());
         })
         .then(() => (
-          dispatch(getCityBreweryList(currentCityID)))
+          dispatch(getCityBreweryList(currentCityID, breweryID)))
         );
     } return response.json()
       .then(() => {
@@ -399,7 +400,7 @@ export const rateBreweryError = () => ({
 
 // POST to API to add or update rating of a brewery
 export const rateBrewery = (breweryID, cityID, ratingValue) => dispatch => {
-  dispatch(breweryListLoadingStatusTrue());
+  dispatch(breweryListLoadingStatusTrue(breweryID));
   const currentCityID = cityID;
   const userID = Auth.getUserID();
   const cityEndpoint = '/api/city';
@@ -423,7 +424,7 @@ export const rateBrewery = (breweryID, cityID, ratingValue) => dispatch => {
           dispatch(rateBrewerySuccess());
         })
         .then(() => (
-          dispatch(getCityBreweryList(currentCityID)))
+          dispatch(getCityBreweryList(currentCityID, breweryID)))
         );
     } return response.json()
       .then(() => {

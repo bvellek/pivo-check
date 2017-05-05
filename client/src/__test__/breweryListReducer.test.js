@@ -7,7 +7,7 @@ describe('breweryList Reducer', () => {
 
   it('should handle BREWERY_LIST_LOADING_STATUS_TRUE by changing breweryListLoadingStatus to true', () => {
     const stateAfter = Object.assign({}, initialState, {
-      breweryListLoadingStatus: true,
+      breweryListLoadingStatus: 'true',
     });
     expect(breweryListReducer(initialState, {
       type: 'BREWERY_LIST_LOADING_STATUS_TRUE',
@@ -21,7 +21,7 @@ describe('breweryList Reducer', () => {
       cityID: 'ABC123',
     };
     const stateAfter = Object.assign({}, initialState, {
-      breweryListLoadingStatus: false,
+      breweryListLoadingStatus: 'false',
       currentCityData,
       currentBreweryListErrorStatus: false,
     });
@@ -33,7 +33,7 @@ describe('breweryList Reducer', () => {
 
   it('should handle GET_CITY_BREWERY_LIST_ERROR by stopping loading status, setting currentBreweryListErrorStatus to true', () => {
     const stateAfter = Object.assign({}, initialState, {
-      breweryListLoadingStatus: false,
+      breweryListLoadingStatus: 'false',
       currentBreweryListErrorStatus: true,
     });
     expect(breweryListReducer(initialState, {
@@ -54,7 +54,7 @@ describe('breweryList Reducer', () => {
 
   it('should handle CHECKOFF_BREWERY_SUCCESS by passing clearing loading status and checkoffErrorStatus to false', () => {
     const stateAfter = Object.assign({}, initialState, {
-      breweryListLoadingStatus: false,
+      breweryListLoadingStatus: 'false',
       checkoffErrorStatus: false,
     });
     expect(breweryListReducer(initialState, {
@@ -64,7 +64,7 @@ describe('breweryList Reducer', () => {
 
   it('should handle CHECKOFF_BREWERY_ERROR by clearing loading status, setting checkoffErrorStatus to true', () => {
     const stateAfter = Object.assign({}, initialState, {
-      breweryListLoadingStatus: false,
+      breweryListLoadingStatus: 'false',
       checkoffErrorStatus: true,
     });
     expect(breweryListReducer(initialState, {
@@ -74,7 +74,7 @@ describe('breweryList Reducer', () => {
 
   it('should handle RATE_BREWERY_SUCCESS by clearing loading status, setting checkoffErrorStatus to true', () => {
     const stateAfter = Object.assign({}, initialState, {
-      breweryListLoadingStatus: false,
+      breweryListLoadingStatus: 'false',
       checkoffErrorStatus: false,
     });
     expect(breweryListReducer(initialState, {
@@ -84,7 +84,7 @@ describe('breweryList Reducer', () => {
 
   it('should handle RATE_BREWERY_ERROR by clearing loading status, setting checkoffErrorStatus to true', () => {
     const stateAfter = Object.assign({}, initialState, {
-      breweryListLoadingStatus: false,
+      breweryListLoadingStatus: 'false',
       checkoffErrorStatus: true,
     });
     expect(breweryListReducer(initialState, {
@@ -94,7 +94,7 @@ describe('breweryList Reducer', () => {
 
   it('should handle CLEAN_CITY_BREW_LIST by clearing loading status, clearing currentCityData, errorStatuses and brewFilter', () => {
     const stateAfter = Object.assign({}, initialState, {
-      breweryListLoadingStatus: false,
+      breweryListLoadingStatus: 'false',
       currentCityData: {
         brewArr: [],
         cityName: '',

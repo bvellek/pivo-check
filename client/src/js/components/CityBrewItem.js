@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noImage from './noImage.png';
+import Loader from './Loader';
 
 const CityBrewItem = ({
   checkboxSubmit,
   ratingSubmit,
   breweryInfo,
+  loadingStatus,
 }) => (
   <li>
     <form className="checkoff-form" action="index.html" method="post">
@@ -21,7 +23,6 @@ const CityBrewItem = ({
       <header>
         <h3>{breweryInfo.brewery.website ? (<a href={breweryInfo.brewery.website} target={`_${breweryInfo.id}`}>{breweryInfo.brewery.name}</a>) : (<a href={`https://www.google.com/search?q=${breweryInfo.brewery.name}`} target={`_${breweryInfo.id}`}>{breweryInfo.brewery.name}</a>)}</h3>
         {breweryInfo.brewery.images ? (<img className="brewery-logo" src={breweryInfo.brewery.images.squareMedium} alt={`${breweryInfo.brewery.name} Logo`} />) : (<img className="brewery-logo" src={noImage} alt="No Logo Provided" />)}
-
       </header>
 
       <form className="brewery-rating-form" action="index.html" method="post">
@@ -33,7 +34,7 @@ const CityBrewItem = ({
           <option value="3">🍺🍺🍺</option>
         </select>
       </form>
-
+      {loadingStatus === breweryInfo.id ? <Loader /> : <div />}
         <div className="adr"><span>Address:</span>
           <a
             className="brewery-adr-link"
@@ -69,6 +70,7 @@ CityBrewItem.propTypes = {
   checkboxSubmit: PropTypes.func.isRequired,
   ratingSubmit: PropTypes.func.isRequired,
   breweryInfo: PropTypes.object.isRequired,
+  loadingStatus: PropTypes.string.isRequired,
 };
 
 export default CityBrewItem;

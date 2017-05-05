@@ -38,7 +38,7 @@ const CityBrewPage = ({
           </select>
         </header>
         <section className="breweries-list">
-          {loadingStatus ? <Loader /> : <div />}
+          {loadingStatus === 'true' ? <Loader /> : <div />}
           {currentBreweryListErrorStatus ? <div className="app-error-msg">Sorry we could not retrieve your breweries at this time. Please refresh to try&nbsp;again.</div> : <div />}
           {checkoffErrorStatus ? <div className="app-error-msg">Sorry we could not checkoff or rate this brewery. Please refresh to try&nbsp;again.</div> : <div />}
           {breweriesList || <div />}
@@ -52,7 +52,7 @@ const CityBrewPage = ({
 CityBrewPage.propTypes = {
   onFilter: PropTypes.func.isRequired,
   filterValue: PropTypes.string.isRequired,
-  loadingStatus: PropTypes.bool.isRequired,
+  loadingStatus: PropTypes.string.isRequired,
   currentCityData: PropTypes.object.isRequired,
   currentBreweryListErrorStatus: PropTypes.bool.isRequired,
   breweriesList: PropTypes.object.isRequired,
