@@ -16,11 +16,9 @@
 
   .callout-text {
     max-width: 22rem;
-    margin-left: 1em;
     margin-bottom: 1em;
 
     @media only screen and (min-width: $tiny-break) {
-      margin-left: 2.4em;
       max-width: 26em;
     }
 
