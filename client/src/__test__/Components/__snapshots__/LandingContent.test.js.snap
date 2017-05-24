@@ -1,21 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<LandingContent /> it renders correctly 1`] = `
 <div
-  className="landing-content">
+  className="landing-content"
+>
   <section
-    className="landing-callout">
+    className="landing-callout"
+  >
     <div
-      className="callout-text">
+      className="callout-text"
+    >
       <p>
         Drink
         <span
-          className="teal-text">
+          className="teal-text"
+        >
           *
         </span>
          your way through town. Check off the breweries as you go!
       </p>
       <p>
         <span
-          className="teal-text">
+          className="teal-text"
+        >
           *
         </span>
         Please do it responsibly… and use 
@@ -28,12 +35,15 @@ exports[`<LandingContent /> it renders correctly 1`] = `
     <img
       alt="Cartoon map of breweries"
       className="callout-img"
-      src="./img/map.svg" />
+      src="./img/map.svg"
+    />
   </section>
   <main
-    role="main">
+    role="main"
+  >
     <section
-      className="landing-description">
+      className="landing-description"
+    >
       <h2>
         How to get started...
       </h2>
@@ -42,7 +52,8 @@ exports[`<LandingContent /> it renders correctly 1`] = `
       </p>
     </section>
     <section
-      className="landing-cta">
+      className="landing-cta"
+    >
       <h2>
         <LoginRegisterLink />
       </h2>

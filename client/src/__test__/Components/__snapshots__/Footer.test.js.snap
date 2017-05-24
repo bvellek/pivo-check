@@ -1,11 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<Footer /> it renders correctly 1`] = `
 <footer
   className="landing-footer"
-  role="contentinfo">
+  role="contentinfo"
+>
   Designed and Developed by 
   <a
     href="https://benvellek.com/"
-    target="_ben-portfolio">
+    target="_ben-portfolio"
+  >
     BEN VELLEK
   </a>
 </footer>

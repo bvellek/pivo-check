@@ -1,18 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<LandingHeader /> it renders correctly 1`] = `
 <header
   className="landing-header top-header"
-  role="banner">
+  role="banner"
+>
   <div
-    className="landing-wrapper">
+    className="landing-wrapper"
+  >
     <nav
       className="landing-nav"
-      role="navigation">
+      role="navigation"
+    >
       <LoginRegisterLink />
     </nav>
     <h1
-      className="landing-logo">
+      className="landing-logo"
+    >
       <span
-        className="visually-hidden">
+        className="visually-hidden"
+      >
         Pivo-Check
       </span>
       <SVGLogo />

@@ -1,14 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<LoginPage /> it renders correctly 1`] = `
 <div>
   <AuthHeader />
   <div
-    className="login-page">
+    className="login-page"
+  >
     <main
-      role="main">
+      role="main"
+    >
       <form
         className="login-form"
         method="post"
-        onSubmit={[Function]}>
+        onSubmit={[Function]}
+      >
         <fieldset>
           <div />
           <legend>
@@ -17,7 +22,8 @@ exports[`<LoginPage /> it renders correctly 1`] = `
             </h2>
           </legend>
           <label
-            htmlFor="user-email">
+            htmlFor="user-email"
+          >
             Email
           </label>
           <input
@@ -26,10 +32,12 @@ exports[`<LoginPage /> it renders correctly 1`] = `
             onChange={[Function]}
             required={true}
             type="email"
-            value="johnDoe@hotmail.com" />
+            value="johnDoe@hotmail.com"
+          />
           <div />
           <label
-            htmlFor="user-password">
+            htmlFor="user-password"
+          >
             Password
           </label>
           <input
@@ -38,26 +46,31 @@ exports[`<LoginPage /> it renders correctly 1`] = `
             onChange={[Function]}
             required={true}
             type="password"
-            value="passwordYO" />
+            value="passwordYO"
+          />
           <div />
           <button
             className="login-btn"
             name="button"
-            type="submit">
+            type="submit"
+          >
             Log In 🍻
           </button>
           <div />
           <div
-            className="login-form-links">
+            className="login-form-links"
+          >
             <Link
               replace={false}
-              to="/registration">
+              to="/registration"
+            >
               Register
             </Link>
              
              | 
             <a
-              href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password.">
+              href="mailto:resetpassword@PivoCheck.com?subject=Password Reset&body=Hi, I forgot my password. Please reset my password."
+            >
               Forgot Password?
             </a>
           </div>
@@ -65,7 +78,8 @@ exports[`<LoginPage /> it renders correctly 1`] = `
       </form>
       <h3>
         <label
-          htmlFor="demo-btn">
+          htmlFor="demo-btn"
+        >
           Try it out!
         </label>
       </h3>
@@ -74,7 +88,8 @@ exports[`<LoginPage /> it renders correctly 1`] = `
         id="demo-btn"
         name="demo-btn"
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         Demo 🍺
       </button>
     </main>

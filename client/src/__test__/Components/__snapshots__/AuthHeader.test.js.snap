@@ -1,13 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<AuthHeader /> it renders correctly 1`] = `
 <header
   className="auth-header top-header"
-  role="banner">
+  role="banner"
+>
   <Link
     replace={false}
-    to="/">
+    to="/"
+  >
     <h1>
       <span
-        className="visually-hidden">
+        className="visually-hidden"
+      >
         Pivo-Check
       </span>
       <SVGLogo />

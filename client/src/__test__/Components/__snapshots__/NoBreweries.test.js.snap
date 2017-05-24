@@ -1,6 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<NoBreweries /> it renders correctly 1`] = `
 <section
-  className="no-cities">
+  className="no-cities"
+>
   <p>
     Looks like there are no breweries here! Check back later, our database of breweries is updated frequently.
   </p>

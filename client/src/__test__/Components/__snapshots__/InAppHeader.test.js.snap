@@ -1,20 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<InAppHeader /> it renders correctly 1`] = `
 <header
   className="in-app-header top-header"
-  role="banner">
+  role="banner"
+>
   <div
-    className="in-app-logo">
+    className="in-app-logo"
+  >
     <span
-      className="visually-hidden">
+      className="visually-hidden"
+    >
       Pivo-Check
     </span>
     <SVGLogo />
   </div>
   <nav
-    role="navigation">
+    role="navigation"
+  >
     <Link
       replace={false}
-      to="/cities">
+      to="/cities"
+    >
       My Cities
     </Link>
     <withRouter() />
