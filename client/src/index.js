@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './js/store';
 import App from './js/components/App';
+import registerServiceWorker from './registerServiceWorker';
 
 const store = configureStore();
 
@@ -12,3 +13,4 @@ ReactDOM.render((
   </Provider>
   ),
   document.getElementById('root'));
+registerServiceWorker();
