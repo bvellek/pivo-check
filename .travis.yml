@@ -1,5 +1,5 @@
 language: node_js
-node_js: node
+node_js: "7.10.1"
 services:
 - mongodb
 deploy:
